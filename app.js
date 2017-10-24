@@ -13,7 +13,7 @@ var flash = require('connect-flash');
 
 // Mongoose stuff
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mern-local-auth');
+mongoose.connect('mongodb://localhost/watson');
 
 var index = require('./routes/index');
 var users = require('./routes/users');

@@ -11,7 +11,7 @@ var tone_analyzer = new ToneAnalyzerV3({
 
 
 /* This is just a basic hookup to connect to the Watson API  */
-tone_analyzer.tone({ text: 'THIS IS A TEST AND I A ANGRY!' },
+tone_analyzer.tone({ text: 'This is a different text to see if there can be differing tones that can contribute to a more thorough analysis of this certain api.' },
   function(err, tone) {
     if (err)
       console.log(err);
@@ -24,4 +24,3 @@ router.get('/', function(req, res, next) {
 })
 
 module.exports = router;
-
