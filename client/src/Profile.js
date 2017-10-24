@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import User from './User';
-import Entry from './Entry';
-import Response from './Response';
+import WatsonData from './WatsonData';
+import History from './History';
+import TwitterProfile from './TwitterProfile';
+
 
 class Profile extends Component {
     render(){
@@ -9,11 +11,12 @@ class Profile extends Component {
             <div>
                 User's Profile Page
                 <User />
-                <Entry />
-                <Response />
+                <WatsonData />
+                <History />
+                <TwitterProfile />
             </div>
         )
     }
 }
 
-export default Profile
+export default Profile;

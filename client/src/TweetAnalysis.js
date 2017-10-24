@@ -6,8 +6,8 @@ class TweetAnalysis extends Component {
             <div>
                 here's the Analysis of your tweets.
             </div>
-        )
+        );
     }
 }
 
-export default TweetAnalysis
+export default TweetAnalysis;

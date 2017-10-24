@@ -10,8 +10,8 @@ class History extends Component {
                 <User />
                 <Inventory />
             </div>
-        )
+        );
     }
 }
 
-export default History
+export default History;
