@@ -7,7 +7,6 @@ class TwitterProfile extends Component {
         return(
             <div>
                 here's the Twitter page
-                <User />
                 <TweetAnalysis />
             </div>
         );

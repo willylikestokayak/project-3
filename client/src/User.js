@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Twitter from './Twitter';
+import TwitterProfile from './TwitterProfile';
 import History from './History';
 import Profile from './Profile';
 
@@ -21,7 +21,7 @@ class User extends Component {
                         <Link to ='/profile'>Upload new text</Link>
                     </nav>
                     <Route path = '/history' component = { History }/>
-                    <Route path = '/twitter' component = { Twitter } />
+                    <Route path = '/twitter' component = { TwitterProfile } />
                 </div>
             </Router>
         )
