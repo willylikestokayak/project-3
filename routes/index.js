@@ -20,6 +20,9 @@ request.post(oauthOptions, function(e, r, body) {
   console.log(body)
 });
 
+// 10/24: WHILE THE ABOVE SENDS AND ACHIEVES AN AUTH BEARER TOKEN, WE NEED TO GRAB THAT TOKEN AND ASSIGN IT TO A VARIABLE TO BE ABLE TO
+//USE THE TWITTER NODE MODULE BELOW --- I'LL BE LOOKING AT THE WATSON API NOW -ARI      
+
 //Twitter Hook Up
 // var twitter = new Twitter({
 // 	consumer_key: TWITTER_CONSUMER_KEY,
