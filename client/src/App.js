@@ -8,6 +8,8 @@ import './App.css';
 import Signup from './Signup';
 import Login from './Login';
 import AuthenticatedRoute from './AuthenticatedRoute';
+import Home from './Home';
+import Navbar from './Navbar';
 
 class App extends Component {
   constructor(props) {

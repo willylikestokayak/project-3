@@ -5,6 +5,7 @@ import Login from './Login';
 import Signup from './Signup';
 import {Button, Icon, SideNav, SideNavItem} from 'react-materialize';
 
+
 import {
   BrowserRouter as Router,
   Route,
@@ -17,6 +18,7 @@ class Navbar extends Component {
             <Router>
                 <div>
                     <nav>
+
                       <div className="nav-wrapper black">
                         <Link to ='/home' className="brand-logo">Watson</Link>
                         <SideNav
@@ -39,13 +41,13 @@ class Navbar extends Component {
                     <Route path='/profile' component ={Profile} />
                     <Route path='/login' component ={Login} />
                     <Route path='/sign' component ={Signup} />
+
                 </div>
             </Router>
-        )
+        );
     }
 }
 
 
+export default Navbar;
 
-
-export default Navbar
