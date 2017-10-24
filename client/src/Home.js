@@ -10,8 +10,8 @@ class Home extends Component {
                 <Demo />
                 <About />
             </div>
-        )
+        );
     }
 }
 
-export default Home
+export default Home;

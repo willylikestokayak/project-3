@@ -6,8 +6,8 @@ class Demo extends Component {
             <div>
                 here's the demo
             </div>
-        )
+        );
     }
 }
 
-export default Demo
+export default Demo;

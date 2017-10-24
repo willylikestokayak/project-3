@@ -6,8 +6,8 @@ class About extends Component {
             <div>
                 About us
             </div>
-        )
+        );
     }
 }
 
-export default About
+export default About;

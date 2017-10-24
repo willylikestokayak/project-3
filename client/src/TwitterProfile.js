@@ -10,8 +10,8 @@ class TwitterProfile extends Component {
                 <User />
                 <TweetAnalysis />
             </div>
-        )
+        );
     }
 }
 
-export default TwitterProfile
+export default TwitterProfile;
