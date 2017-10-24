@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Twitter from './Twitter';
 import History from './History';
+import Profile from './Profile';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -16,6 +18,7 @@ class User extends Component {
                     <nav>
                         <Link to ='/history'>History</Link>
                         <Link to ='/twitter'>Twitter</Link>
+                        <Link to ='/profile'>Upload new text</Link>
                     </nav>
                     <Route path = '/history' component = { History }/>
                     <Route path = '/twitter' component = { Twitter } />
@@ -25,4 +28,4 @@ class User extends Component {
     }
 }
 
-export default User
+export default User;
