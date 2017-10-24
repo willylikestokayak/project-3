@@ -3,6 +3,7 @@ import App from './App';
 import Profile from './Profile';
 import Login from './Login';
 import Signup from './Signup';
+import {Button, Icon, SideNav, SideNavItem} from 'react-materialize';
 
 import {
   BrowserRouter as Router,
@@ -17,11 +18,21 @@ class Navbar extends Component {
                 <div>
                     <nav>
                       <div className="nav-wrapper black">
-                        <Link to ='/home' class="brand-logo">Watson</Link>
-                        <ul class="right hide-on-med-and-down">
-                          <li><Link to ='/profile'>Profile</Link></li>
-                          <li><Link to ='/login'>Log In</Link></li>
-                          <li><Link to ='/signup'>Sign Up</Link></li>
+                        <Link to ='/home' className="brand-logo">Watson</Link>
+                        <SideNav
+                          trigger={<a href="#" data-activities="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>}
+                          options={{closeClick: true}}
+                        >
+                          <SideNavItem><Link to ='/profile'>Profile</Link></SideNavItem>
+                          <SideNavItem><Link to ='/login'>Log In</Link></SideNavItem>
+                          <SideNavItem><Link to ='/signup'>Sign Up</Link></SideNavItem>
+                        </SideNav>
+
+
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                          <li><a href="#">Home</a></li>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Contact</a></li>
                         </ul>
                       </div>
                     </nav>
@@ -33,6 +44,7 @@ class Navbar extends Component {
         )
     }
 }
+
 
 
 
