@@ -1,13 +1,18 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .SignupBox {
-  background: lightgreen;
-  padding: 0.5em;
+    background: lightgreen;
+    padding: 0.5em;
 }
 
 .LoginBox {
-  background: lightblue;
-  padding: 0.5em;
+    background: lightblue;
+    padding: 0.5em;
+}
+
+.userNav {
+    border: 3px solid green;
+    height: 200px;
 }

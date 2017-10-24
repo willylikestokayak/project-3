@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import User from './User';
 import TweetAnalysis from './TweetAnalysis';
 
-class Twitter extends Component {
+class TwitterProfile extends Component {
     render(){
         return(
             <div>
@@ -14,4 +14,4 @@ class Twitter extends Component {
     }
 }
 
-export default Twitter
+export default TwitterProfile
