@@ -28,15 +28,15 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <div className="SignupBox hidden">
+        {/* <div className="SignupBox">
           <Signup lift={this.liftTokenToState} />
         </div>
-        <div className="LoginBox hidden">
+        <div className="LoginBox">
           <Login lift={this.liftTokenToState} />
         </div>
         <div>
 
-        </div>
+        </div> */}
       </div>
     );
   }

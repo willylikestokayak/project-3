@@ -14,6 +14,17 @@ import {
 } from 'react-router-dom';
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+          token: {}
+        }
+        this.liftTokenToState = this.liftTokenToState.bind(this)
+      }
+    
+      liftTokenToState(token) {
+        this.setState({token: token})
+      }
 
     render(){
         return(
@@ -40,9 +51,12 @@ class Navbar extends Component {
                     </nav>
 
                     <Route path='/profile' component ={Profile} />
-                    <Route path='/login' component ={Login} />
-                    <Route path='/sign' component ={Signup} />
-                    <Route path='/modal' component ={ModalTest} />
+                    <Route path='/login' render={(props) => (
+                        <Login {...props} lift={this.liftTokenToState} />
+                    )} />
+                    <Route path='/signup' render={(props) => (
+                        <Signup {...props} lift={this.liftTokenToState} />
+                    )} />
                 </div>
             </Router>
         );
