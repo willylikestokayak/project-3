@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import User from './User';
 import TweetAnalysis from './TweetAnalysis';
 
 class TwitterProfile extends Component {
@@ -7,7 +6,6 @@ class TwitterProfile extends Component {
         return(
             <div>
                 here's the Twitter page
-                <User />
                 <TweetAnalysis />
             </div>
         );
