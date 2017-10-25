@@ -37,7 +37,7 @@ class Signup extends Component {
       //Justen - I commented this out for it to work
       console.log(this.props)
       console.log(this)
-      this.props.liftfoo(result.data.token)
+      this.props.lift(result.data.token)
     })
   }
 
