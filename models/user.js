@@ -67,13 +67,15 @@ var textSchema = new mongoose.Schema({
 var twetSchema = new mongoose.Schema({
     userId: { type: Schema.Types.ObjectId, ref: 'User' },
     handle: String
-})
+});
 
 var Text = mongoose.model('Text', textSchema);
 var Twet = mongoose.model('Twet', twetSchema);
 
 module.exports = {
-    User,
-    Text,
-    Twet
+    User: User,
+    Text: Text,
+    Twet: Twet
 };
+
+// module.exports = User;

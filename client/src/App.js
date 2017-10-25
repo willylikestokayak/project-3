@@ -10,6 +10,8 @@ import Login from './Login';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import Home from './Home';
 import Navbar from './Navbar';
+import Demo from './Demo';
+import About from './About';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +29,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="SignupBox">
+        <Navbar />
+        {/* <div className="SignupBox">
           <Signup lift={this.liftTokenToState} />
         </div>
         <div className="LoginBox">
@@ -35,7 +38,7 @@ class App extends Component {
         </div>
         <div>
 
-        </div>
+        </div> */}
       </div>
     );
   }
