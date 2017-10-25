@@ -17,11 +17,12 @@ class User extends Component {
                     here's the User Profile
                     <nav>
                         <Link to ='/history'>History</Link>
-                        <Link to ='/twitter'>Twitter</Link>
+                        <Link to ='/twitterprofile'>Twitter</Link>
                         <Link to ='/profile'>Upload new text</Link>
                     </nav>
                     <Route path = '/history' component = { History }/>
-                    <Route path = '/twitter' component = { TwitterProfile } />
+                    <Route path = '/twitterprofile' component = { TwitterProfile } />
+
                 </div>
             </Router>
         )

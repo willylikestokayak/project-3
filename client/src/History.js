@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import User from './User';
 import Inventory from './Inventory';
 
 class History extends Component {

@@ -35,7 +35,8 @@ class Navbar extends Component {
                           <li><a href="#">Home</a></li>
                           <li><a href="#">About</a></li>
                           <li><a href="#">Contact</a></li>
-                          <li><a href="/signup">signisins</a></li>
+
+                          <li><a href='/signup'>signsins</a></li>
                         </ul>
                       </div>
                     </nav>

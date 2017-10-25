@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import User from './User';
 import TweetAnalysis from './TweetAnalysis';
 
 class TwitterProfile extends Component {
