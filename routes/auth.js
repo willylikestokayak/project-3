@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var User = require('../models/user');
+var { User, Text, Twet } = require('../models/user');
 // var passport = require('../config/ppConfig');
 var bcrypt = require('bcrypt');
 // Used for creating and sending tokens and protecting backend routes
@@ -27,14 +27,15 @@ router.post('/login', function(req, res, next) {
         // compare passwords
         passwordMatch = bcrypt.compareSync(req.body.password, hashedPass);
         if (passwordMatch) {
-            // console.log("passwords match");
-            console.log(req.user._id);
+            console.log("passwords match");
             // Make a token and return it as JSON
             var token = jwt.sign(user.toObject(), secret, {
                 expiresIn: 60 * 60 * 24 // expires in 24 hours
             });
             req.flash('success', 'You are now logged in.')
+                // res.render('/Profile')
             res.send({ user: user, token: token });
+
         } else {
             console.log("passwords don't match");
             // Return an error
