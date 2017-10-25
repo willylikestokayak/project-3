@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="SignupBox">
-          <Signup lift={this.liftTokenToState} />
+          <Signup liftfoo={this.liftTokenToState} />
         </div>
         <div className="LoginBox">
           <Login lift={this.liftTokenToState} />

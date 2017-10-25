@@ -22,6 +22,7 @@ class User extends Component {
                     </nav>
                     <Route path = '/history' component = { History }/>
                     <Route path = '/twitterprofile' component = { TwitterProfile } />
+
                 </div>
             </Router>
         )
