@@ -4,7 +4,6 @@ import Profile from './Profile';
 import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
-import ModalTest from './ModalTest';
 import {Button, Icon, SideNav, SideNavItem, Modal} from 'react-materialize';
 import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
