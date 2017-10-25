@@ -27,7 +27,6 @@ router.post('/', function(req, res, next) {
 	      console.log(err);
 	    else
 	      console.log(JSON.stringify(tone, null, 2));
-	  	  instance = undefined;
 	  	  instance = tone;
 	});
 	res.redirect('/')

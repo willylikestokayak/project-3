@@ -52,17 +52,15 @@ class Entry extends Component {
 			this.setState({
 				tones: tones,
 				sentences: sentences
-			})
-			//Add in conditonal for sentences later
-			//Only entries with multiple sentences get this array, so if not checked could cause a problem
-			
+			})		
 		});
 	}
 
 
 
     render(){
-    	var name = this.state.tones[0].tone_name || ''
+    	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
+
         return(
             <div>
                 <h5>Use the <span className='unique'>IBM Watson Cognitive Services AI</span> to detect tone in written text.</h5>
@@ -70,12 +68,13 @@ class Entry extends Component {
                 	<textarea rows='5' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
                 	<input type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
                 </form>
-                <div id='entry-response'>
-                	<h5>Watson Analysis:</h5>
-                	<p><span className='response'>Text</span></p>
+                <div id='entry-text-container'>
+                	<h5>Watson Text:</h5>
+                	<p><span className='entry-text'>Text</span></p>
                 	<p>{this.state.entry}</p>
-                	<div id='entry-response'>
-                		<h4>Watson Tone: {name}</h4>
+                	<div id='response'>
+                		<h5>Document Analysis</h5>
+                			{tonesResults}
                 	</div>
                 </div>
             </div>

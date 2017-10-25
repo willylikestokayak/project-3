@@ -7,9 +7,11 @@ class Response extends Component {
 		this.state = {
 			tones: this.props.tones
 		}
+
+
 	}
 
-	
+
 
     render(){
         return(
