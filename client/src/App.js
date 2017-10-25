@@ -27,15 +27,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="SignupBox">
-          <Signup liftfoo={this.liftTokenToState} />
+        <Navbar />
+        {/* <div className="SignupBox">
+          <Signup lift={this.liftTokenToState} />
         </div>
         <div className="LoginBox">
           <Login lift={this.liftTokenToState} />
         </div>
         <div>
 
-        </div>
+        </div> */}
       </div>
     );
   }
