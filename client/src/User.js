@@ -13,18 +13,23 @@ class User extends Component {
     render(){
         return(
             <Router>
-                <div className='userNav'>
-                    here's the User Profile
-                    <nav>
-                        <Link to ='/history'>History</Link>
+              <div className="row">
+                  <div className="col s12 m6">
+                    <div className="card blue-grey darken-1">
+                      <div className="card-content white-text">
+                        <span className="card-title">Your Profile</span>
+                        <p>Welcome to your Watson profile!</p>
+                      </div>
+                      <div className="card-action">
                         <Link to ='/twitterprofile'>Twitter</Link>
                         <Link to ='/profile'>Upload new text</Link>
-                    </nav>
-                    <Route path = '/history' component = { History }/>
-                    <Route path = '/twitterprofile' component = { TwitterProfile } />
+                      </div>
+                    </div>
+                  <Route path = '/history' component = { History }/>
+                  <Route path = '/twitterprofile' component = { TwitterProfile } />
+            </div>
+          </Router>
 
-                </div>
-            </Router>
         )
     }
 }
