@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Chart from 'chart.js';
+
 
 class Response extends Component {
 
@@ -9,15 +11,14 @@ class Response extends Component {
 		}
 	}
 
-	
-
     render(){
         return(
             <div>
-                Here's the response to the entry
+
             </div>
-        )
+        );
+            
     }
 }
 
-export default Response
+export default Response;
