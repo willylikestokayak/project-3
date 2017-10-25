@@ -10,6 +10,8 @@ import Login from './Login';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import Home from './Home';
 import Navbar from './Navbar';
+import Demo from './Demo';
+import About from './About';
 
 class App extends Component {
   constructor(props) {

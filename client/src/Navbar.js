@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import App from './App';
 import Profile from './Profile';
+import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import ModalTest from './ModalTest';
@@ -25,7 +26,9 @@ class Navbar extends Component {
       liftTokenToState(token) {
         this.setState({token: token})
       }
-
+      onClick(){
+          this.setState({})
+      }
     render(){
         return(
             <Router>
@@ -33,7 +36,7 @@ class Navbar extends Component {
                     <nav>
 
                       <div className="nav-wrapper black">
-                        <Link to ='/home' className="brand-logo">Watson</Link>
+                        <Link to ='/' className="brand-logo">Watson</Link>
                         <SideNav style={{background: 'black', color: 'white', width: 220}} 
                           trigger={<a href="#" data-activities="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>}
                           options={{closeClick: true}}
@@ -49,7 +52,7 @@ class Navbar extends Component {
                         </ul>
                       </div>
                     </nav>
-
+                    <Route exact path="/" component = {Home} />
                     <Route path='/profile' component ={Profile} />
                     <Route path='/login' render={(props) => (
                         <Login {...props} lift={this.liftTokenToState} />
