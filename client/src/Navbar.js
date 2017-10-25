@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import App from './App';
 import Profile from './Profile';
+import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
-import {Button, Icon, SideNav, SideNavItem} from 'react-materialize';
-
-
+import {Button, Icon, SideNav, SideNavItem, Modal} from 'react-materialize';
+import { findDOMNode } from 'react-dom';
+import $ from 'jquery';
 import {
   BrowserRouter as Router,
   Route,
@@ -13,6 +14,20 @@ import {
 } from 'react-router-dom';
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+          token: {}
+        }
+        this.liftTokenToState = this.liftTokenToState.bind(this)
+      }
+    
+      liftTokenToState(token) {
+        this.setState({token: token})
+      }
+      onClick(){
+          this.setState({})
+      }
     render(){
         return(
             <Router>
@@ -20,8 +35,13 @@ class Navbar extends Component {
                     <nav>
 
                       <div className="nav-wrapper black">
+<<<<<<< HEAD
                         <Link to ='/home' className="brand-logo">Watson</Link>
                         <SideNav style={{background: 'black', color: 'white', width: 220}}
+=======
+                        <Link to ='/' className="brand-logo">Watson</Link>
+                        <SideNav style={{background: 'black', color: 'white', width: 220}} 
+>>>>>>> aa720878f57151928c1287a85810670d22740410
                           trigger={<a href="#" data-activities="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>}
                           options={{closeClick: true}}
                         >
@@ -36,9 +56,19 @@ class Navbar extends Component {
                         </ul>
                       </div>
                     </nav>
+                    <Route exact path="/" component = {Home} />
                     <Route path='/profile' component ={Profile} />
+<<<<<<< HEAD
                     <Route path='/login' component ={Login} />
                     <Route path='/sign' component ={Signup} />
+=======
+                    <Route path='/login' render={(props) => (
+                        <Login {...props} lift={this.liftTokenToState} />
+                    )} />
+                    <Route path='/signup' render={(props) => (
+                        <Signup {...props} lift={this.liftTokenToState} />
+                    )} />
+>>>>>>> aa720878f57151928c1287a85810670d22740410
                 </div>
             </Router>
         );

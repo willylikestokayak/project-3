@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import WatsonData from './WatsonData';
 import History from './History';
+import User from './User';
 import TwitterProfile from './TwitterProfile';
 
 
@@ -19,19 +20,13 @@ class Profile extends Component {
         be much faster to show up. */
     //}
 
-    /* THIS IS FOR THE ENTRY COMPONENT */
-
-
-
-    /* END OF ENTRY COMPONENT */
 
     render(){
         return(
             <div>
                 User's Profile Page
+                <User />
                 <WatsonData />
-                <History />
-                <TwitterProfile />
             </div>
         )
     }

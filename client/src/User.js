@@ -25,10 +25,15 @@ class User extends Component {
                         <Link to ='/profile'>Upload new text</Link>
                       </div>
                     </div>
+                    </div>
                   <Route path = '/history' component = { History }/>
                   <Route path = '/twitterprofile' component = { TwitterProfile } />
             </div>
           </Router>
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa720878f57151928c1287a85810670d22740410
         )
     }
 }
