@@ -72,8 +72,10 @@ var twetSchema = new mongoose.Schema({
 var Text = mongoose.model('Text', textSchema);
 var Twet = mongoose.model('Twet', twetSchema);
 
-module.exports = {
-    User,
-    Text,
-    Twet
-};
+// module.exports = {
+//     User,
+//     Text,
+//     Twet
+// };
+
+module.exports = User;
