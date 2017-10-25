@@ -20,11 +20,6 @@ class Profile extends Component {
         be much faster to show up. */
     //}
 
-    /* THIS IS FOR THE ENTRY COMPONENT */
-
-
-
-    /* END OF ENTRY COMPONENT */
 
     render(){
         return(
