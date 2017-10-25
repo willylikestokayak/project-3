@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import User from './User';
 import WatsonData from './WatsonData';
 import History from './History';
 import TwitterProfile from './TwitterProfile';
@@ -30,7 +29,6 @@ class Profile extends Component {
         return(
             <div>
                 User's Profile Page
-                <User />
                 <WatsonData />
                 <History />
                 <TwitterProfile />
