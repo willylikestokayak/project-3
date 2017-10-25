@@ -26,9 +26,10 @@ class User extends Component {
                         <Link to ='/profile'>Upload new text</Link>
                       </div>
                     </div>
-                    <Route path = '/history' component = { History }/>
-                    <Route path = '/twitterprofile' component = { TwitterProfile } />
                   </div>
+                    <Route path = '/history' component = { History } />
+                    <Route path = '/twitterprofile' component = { TwitterProfile } />
+                </div>
             </Router>
         )
     }
@@ -38,4 +39,4 @@ export default User;
 
 
 
-      </div>
+  
