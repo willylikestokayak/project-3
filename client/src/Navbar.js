@@ -35,12 +35,13 @@ class Navbar extends Component {
                           <li><a href="#">Home</a></li>
                           <li><a href="#">About</a></li>
                           <li><a href="#">Contact</a></li>
+                          <li><a href='/signup'>signsins</a></li>
                         </ul>
                       </div>
                     </nav>
                     <Route path='/profile' component ={Profile} />
                     <Route path='/login' component ={Login} />
-                    <Route path='/sign' component ={Signup} />
+                    <Route path='/signup' component ={Signup} />
 
                 </div>
             </Router>
