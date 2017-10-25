@@ -7,7 +7,6 @@ class History extends Component {
         return(
             <div>
                 here's the saved history items of the user
-                <User />
                 <Inventory />
             </div>
         );
