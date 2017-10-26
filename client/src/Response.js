@@ -6,7 +6,7 @@ class Response extends Component {
     constructor(props){
         super(props);
         this.state = {
-            chartData:props.chartData
+            tones:props.tones
             // tones: this.props.tones,
             // sentences: this.props.sentences
               
@@ -23,7 +23,7 @@ class Response extends Component {
         return(
             <div className="chart">
             <Radar
-                data={this.state.chartData}
+                data={this.state.tones}
 
                 options={{
                     title:{
