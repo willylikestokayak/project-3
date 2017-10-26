@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link, 
+  withRouter
 } from 'react-router-dom';
 import './App.css';
 import Signup from './Signup';

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import App from './App';
 import Profile from './Profile';
 import Home from './Home';
@@ -44,9 +45,7 @@ class Navbar extends Component {
         })
       }
       logOut(event){
-        event.preventDefault();
         localStorage.removeItem('mernToken')
-        console.log("LOGOUT CLICKED")
         this.setState({
             token: {},
             user: {},
@@ -81,12 +80,11 @@ class Navbar extends Component {
                           options={{closeClick: true}}
                         >
                           <SideNavItem className="links"><Link to ='/profile'>Profile</Link></SideNavItem>
-                          <SideNavItem className="links"><Link to ='/login'>Log In</Link></SideNavItem>
-                          <SideNavItem className="links"><Link to ='/signup'>Sign Up</Link></SideNavItem>
+                          <SideNavItem className="links"><Link to ='/'>Log Out</Link></SideNavItem>
                         </SideNav>
                         <ul id="nav-mobile" className="right hide-on-med-and-down">
                           <li className="links"><Link to ='/profile'>Profile</Link></li>
-                          <li className="links"><a href="/logout" onClick={this.logOut}>log out</a></li>
+                          <li className="links"><Link to ='/' onClick={this.logOut}>Log out</Link></li>
                         </ul>
                       </div>
                     </nav>
@@ -114,15 +112,12 @@ class Navbar extends Component {
                           trigger={<a href="#" data-activities="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>}
                           options={{closeClick: true}}
                         >
-                          <SideNavItem><Link to ='/profile'>Profile</Link></SideNavItem>
                           <SideNavItem><Link to ='/login'>Log In</Link></SideNavItem>
                           <SideNavItem><Link to ='/signup'>Sign Up</Link></SideNavItem>
                         </SideNav>
                         <ul id="nav-mobile" className="right hide-on-med-and-down">
-                          {/* <li className="active"><Link to ='/profile'>Profile</Link></li> */}
                           <li className="active"><Link to ='/login'>Log In</Link></li>
                           <li className="active"><Link to ='/signup'>Sign Up</Link></li>
-                          {/* <li><a href="/logout" onClick={this.logOut}>log out</a></li> */}
                         </ul>
                       </div>
                     </nav>
@@ -143,4 +138,4 @@ class Navbar extends Component {
 }   
 }
 
-export default Navbar;
+export default (Navbar);
