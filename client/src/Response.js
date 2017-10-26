@@ -2,35 +2,14 @@ import React, { Component } from 'react';
 import { Bar, Line, Radar, Bubble } from 'react-chartjs-2';
 
 class Response extends Component {
+
     constructor(props){
         super(props);
         this.state = {
+        	data: this.props.tones,
             chartData:{
                 labels:['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical','Confident', 'Tentative'],
-                // datasets: [
-                //     {
-                //     label: 'My First dataset',
-                //     fill: false,
-                //     lineTension: 0.1,
-                //     backgroundColor: 'rgba(75,192,192,0.4)',
-                //     borderColor: 'rgba(75,192,192,1)',
-                //     borderCapStyle: 'butt',
-                //     borderDash: [],
-                //     borderDashOffset: 0.0,
-                //     borderJoinStyle: 'miter',
-                //     pointBorderColor: 'rgba(75,192,192,1)',
-                //     pointBackgroundColor: '#fff',
-                //     pointBorderWidth: 1,
-                //     pointHoverRadius: 5,
-                //     pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                //     pointHoverBorderColor: 'rgba(220,220,220,1)',
-                //     pointHoverBorderWidth: 2,
-                //     pointRadius: 1,
-                //     pointHitRadius: 10,
-                //     data: [{x:10,y:20,r:5}]
-                //     }
-                // ]
-                // }
+                
                 datasets:[
                     {
                         label:'Document Tone',
@@ -44,39 +23,47 @@ class Response extends Component {
                             0
                         ],
                         backgroundColor:[
-                            '#ca054d',
-                            '#0b132b',
-                            '#76e7cd',
-                            '#101d42',
-                            '#9381ff',
-                            '#76e7cd',
-                            '#ca054d'
+                            'red'
+                            // '#ca054d',
+                            // '#0b132b',
+                            // '#76e7cd',
+                            // '#101d42',
+                            // '#9381ff',
+                            // '#76e7cd',
+                            // '#ca054d'
                         ]
                     }
                 ]
             }
         }
     }
+    static defaultProps = {
+        displayTitle: true,
+        displayLegend: true,
+        legendPosition: 'right,'
+    }
+
     render(){
         return(
             <div className="chart">
             <Radar
                 data={this.state.chartData}
-                width={100}
-                height={100}
-                options={{}}
-            />
-            <Bar
-                data={this.state.chartData}
-                width={100}
-                height={100}
-                options={{}}
-            />
-            <Bubble
-                data={this.state.chartData}
-                width={100}
-                height={100}
-                options={{}}
+
+                options={{
+                    title:{
+                        display: this.props.displayTitle,
+                        text: 'Watson is checking your words',
+                        fontSize: 25
+                    },
+                    legend:{
+                        display: this.props.displayLegend,
+                        position: this.props.legendPosition
+                    },
+                    labels:{
+                        fontSize: 25,
+                        backgroundColor: '#76e7cd'
+                    }
+                }}
             />
             </div>
         );

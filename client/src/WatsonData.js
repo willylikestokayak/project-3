@@ -13,9 +13,8 @@ class WatsonData extends Component {
   render(){
     return(
       <div>
-        Entry and Response render here:
+        <p>This is the Watson Data component containing the Entry component</p>
         <Entry />
-        <Response />
       </div>
     );
   }

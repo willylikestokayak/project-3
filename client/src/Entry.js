@@ -9,10 +9,9 @@ class Entry extends Component {
 		this.state = {
 			entry: '',
 			tones: [{
-				score: undefined,
-				tone_id: undefined,
-				tone_name: undefined,
-				message: 'This text does not have a tone.'
+				score: '',
+				tone_id: '',
+				tone_name: ''
 			}],
 			sentences: []
 		}
@@ -77,14 +76,13 @@ class Entry extends Component {
 
         return(
             <div className="textanalysis">
-                <h5>Use the <span className='unique'>IBM Watson Cognitive Services AI</span> to detect tone in written text.</h5>
+                <h5>WYM Text Analyzer</h5>
                 <form id='watson-tone-entry'>
                 	<textarea rows='5' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
                 	<input type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
                 </form>
                 <div id='entry-text-container'>
-                	<h5>Watson Text:</h5>
-                	<p><span className='entry-text'>Text</span></p>
+                	<h5>Text</h5>
                 	<p>{this.state.entry}</p>
                 	<div id='response'>
                 		<h5>Document Analysis</h5>
@@ -92,7 +90,7 @@ class Entry extends Component {
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response data={this.state.sentences} />
+                	<Response tones={this.state.tones} sentences={this.state.sentences} />
                 </div>
             </div>
         )
