@@ -7,6 +7,7 @@ class Entry extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			chartData:{},
 			entry: '',
 			tones: [{
 				score: '',
@@ -68,7 +69,42 @@ class Entry extends Component {
 			})
 		});
 	}
-
+	componentWillMount(){
+		this.getChartData();
+	}
+	getChartData(){
+		//AJAX call here
+		this.setState({
+			chartData: {
+				labels:['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical','Confident', 'Tentative'],
+                
+                datasets:[
+                    {
+                        label:'Document Tone',
+                        data:[
+                            0.7138,
+                            0.56237,
+                            0.91,
+                            0,
+                            0.998,
+                            0.692132,
+                            0
+                        ],
+                        backgroundColor:[
+                            'red'
+                            // '#ca054d',
+                            // '#0b132b',
+                            // '#76e7cd',
+                            // '#101d42',
+                            // '#9381ff',
+                            // '#76e7cd',
+                            // '#ca054d'
+                        ]
+                    }
+                ]
+			}
+		})
+	}
 
 
     render(){
@@ -90,7 +126,7 @@ class Entry extends Component {
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response tones={this.state.tones} sentences={this.state.sentences} />
+                	<Response chartData={this.state.chartData} />
                 </div>
             </div>
         )

@@ -6,41 +6,17 @@ class Response extends Component {
     constructor(props){
         super(props);
         this.state = {
-        	data: this.props.tones,
-            chartData:{
-                labels:['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical','Confident', 'Tentative'],
-                
-                datasets:[
-                    {
-                        label:'Document Tone',
-                        data:[
-                            0.7138,
-                            0.56237,
-                            0.91,
-                            0,
-                            0.998,
-                            0.692132,
-                            0
-                        ],
-                        backgroundColor:[
-                            'red'
-                            // '#ca054d',
-                            // '#0b132b',
-                            // '#76e7cd',
-                            // '#101d42',
-                            // '#9381ff',
-                            // '#76e7cd',
-                            // '#ca054d'
-                        ]
-                    }
-                ]
+            chartData:props.chartData
+            // tones: this.props.tones,
+            // sentences: this.props.sentences
+              
             }
         }
-    }
+
     static defaultProps = {
         displayTitle: true,
         displayLegend: true,
-        legendPosition: 'right,'
+        legendPosition: 'left,'
     }
 
     render(){
@@ -61,7 +37,7 @@ class Response extends Component {
                     },
                     labels:{
                         fontSize: 25,
-                        backgroundColor: '#76e7cd'
+                        backgroundColor: 'red'
                     }
                 }}
             />
