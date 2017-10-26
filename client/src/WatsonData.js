@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Entry from './Entry';
-import Response from './Response';
 
 class WatsonData extends Component {
 	constructor(props) {

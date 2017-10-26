@@ -7,10 +7,11 @@ class Entry extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			analyzed: false,
 			entry: '',
 			tones: [{
 				score: '',
-				tone_id: '',
+				tone_id: '' ,
 				tone_name: ''
 			}],
 			sentences: []
@@ -45,7 +46,7 @@ class Entry extends Component {
 		.then( (response) => {
 			//Refernce to link objects
 			console.log(response.data.text)
-			//var text is essentially the key that I passed in the axios.post call, this is purely for 
+			//var text is essentially the key that I passed in the axios.post call, this is purely for simplicity purposes. 
 			var text = response.data.text
 
 			/* Some text may not get a document tone, so it is important to verify that there is a tone being sent, if there isn't and
@@ -53,7 +54,7 @@ class Entry extends Component {
 
 			var tones;
 			if(text.document_tone.tones) {
-			 	var tones = text.document_tone.tones
+			 	tones = text.document_tone.tones
 			} else {
 				console.log('There were no tones detected.')
 			}
@@ -63,10 +64,13 @@ class Entry extends Component {
 				sentences = text.sentences_tone
 			}
 			this.setState({
+				analyzed: true,
 				tones: tones,
 				sentences: sentences
 			})
 		});
+
+
 	}
 
 
@@ -90,7 +94,7 @@ class Entry extends Component {
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response tones={this.state.tones} sentences={this.state.sentences} />
+                	<Response test='test' tones={this.state.tones} analyzed={this.state.analyzed} />
                 </div>
             </div>
         )
