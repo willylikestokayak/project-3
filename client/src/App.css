@@ -18,6 +18,9 @@ body {
   background-color: #0b132b;
 }
 
+.card-action {
+  color: white;
+}
 
 .textanalysis {
   float: right;
