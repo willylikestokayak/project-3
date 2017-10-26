@@ -3,51 +3,36 @@ import { Bar, Line, Radar, Bubble } from 'react-chartjs-2';
 
 class Response extends Component {
 
+
     constructor(props){
         super(props);
         this.state = {
-        	data: this.props.tones,
-            chartData:{
-                labels:['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical','Confident', 'Tentative'],
-                
-                datasets:[
-                    {
-                        label:'Document Tone',
-                        data:[
-                            0.7138,
-                            0.56237,
-                            0.91,
-                            0,
-                            0.998,
-                            0.692132,
-                            0
-                        ],
-                        backgroundColor:[
-                            'red'
-                            // '#ca054d',
-                            // '#0b132b',
-                            // '#76e7cd',
-                            // '#101d42',
-                            // '#9381ff',
-                            // '#76e7cd',
-                            // '#ca054d'
-                        ]
-                    }
-                ]
-            }
+        	name: [],
+        	score: [],
+        	sentences: '',
+        	analyzed: '',
         }
-    }
-    static defaultProps = {
-        displayTitle: true,
-        displayLegend: true,
-        legendPosition: 'right,'
+             	var name = this.props.tones.map( (item, index) => (item.tone_name) )
+            	var score = this.props.tones.map( (item, index) => (item.score) )
+
+
+            	this.setState({
+            		name: name,
+            		score: score
+            	})
+            		
+            	console.log(score)
     }
 
+
     render(){
+    	if(this.props.analyzed) {
         return(
+        <div>
+        {this.state.test}
             <div className="chart">
-            <Radar
-                data={this.state.chartData}
+            <Line
+                data={this.state.score}
 
                 options={{
                     title:{
@@ -66,7 +51,13 @@ class Response extends Component {
                 }}
             />
             </div>
+        </div>
         );
+    	} else {
+    		return(
+    			<p>Chart will render when text is submitted</p>
+    		)
+    	}
     }
 }
 
