@@ -10,20 +10,26 @@ import $ from 'jquery';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Redirect,
+  withRouter
 } from 'react-router-dom';
 
 class Navbar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          token: {}
+          token: {},
+          user: {}
         }
         this.liftTokenToState = this.liftTokenToState.bind(this)
       }
     
-      liftTokenToState(token) {
-        this.setState({token: token})
+      liftTokenToState(data) {
+        this.setState({
+            token: data.token,
+            user: data.user
+        })
       }
       onClick(){
           this.setState({})
@@ -34,7 +40,7 @@ class Navbar extends Component {
                 <div>
                     <nav>
                       <div className="nav-wrapper black">
-                        <Link to ='/' className="brand-logo">Watson</Link>
+                        <Link to ='/' className="brand-logo">Wym</Link>
                         <SideNav style={{background: 'black', color: 'white', width: 220}} 
                           trigger={<a href="#" data-activities="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>}
                           options={{closeClick: true}}
@@ -51,7 +57,9 @@ class Navbar extends Component {
                       </div>
                     </nav>
                     <Route exact path="/" component = {Home} />
-                    <Route path='/profile' component ={Profile} />
+                    <Route path='/profile' render={(props) => (
+                        <Profile {...props} user={this.state.user} />
+                    )}  />
                     <Route path='/login' render={(props) => (
                         <Login {...props} lift={this.liftTokenToState} />
                     )} />
