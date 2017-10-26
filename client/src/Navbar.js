@@ -34,11 +34,13 @@ class Navbar extends Component {
         }
         this.liftTokenToState = this.liftTokenToState.bind(this)
         this.logOut = this.logOut.bind(this)
+        this.handleLogIn = this.handleLogIn.bind(this)
       }
       liftTokenToState(data) {
         this.setState({
             token: data.token,
-            user: data.user
+            user: data.user,
+            isLoggedIn: true
         })
       }
       logOut(event){
@@ -47,17 +49,27 @@ class Navbar extends Component {
         console.log("LOGOUT CLICKED")
         this.setState({
             token: {},
-            user: {}
+            user: {},
+            isLoggedIn: false
         })
+      }
+      handleLogIn(){
+          this.setState({
+              
+          })
       }
       componentDidMount(){
         console.log(this.state);
+        
+        
       }
       componentDidUpdate(){
         console.log(this.state);
+
       }
 
     render(){
+        if (this.state.isLoggedIn){
         return(
             <Router>
                 <div>
@@ -74,16 +86,52 @@ class Navbar extends Component {
                         </SideNav>
                         <ul id="nav-mobile" className="right hide-on-med-and-down">
                           <li className="active"><Link to ='/profile'>Profile</Link></li>
-                          <li className="active"><Link to ='/login'>Log In</Link></li>
-                          <li className="active"><Link to ='/signup'>Sign Up</Link></li>
+                          {/* <li className="active"><Link to ='/login'>Log In</Link></li> */}
+                          {/* <li className="active"><Link to ='/signup'>Sign Up</Link></li> */}
                           <li><a href="/logout" onClick={this.logOut}>log out</a></li>
                         </ul>
                       </div>
                     </nav>
                     <Route exact path="/" component = {Home} />
-                    <Route path='/profile' render={(props) => (
+                    <Route path='/profile' render={(props) => ( 
                         <Profile {...props} user={this.state.user}  />
                     )}  />
+                    <Route path='/login' render={(props) => (
+                        <Login {...props} lift={this.liftTokenToState}  />
+                    )} />
+                    <Route path='/signup' render={(props) => (
+                        <Signup {...props} lift={this.liftTokenToState} />
+                    )} />
+                </div>
+            </Router>
+        );
+    } else {
+        return(
+            <Router>
+                <div>
+                    <nav>
+                      <div className="nav-wrapper navbar">
+                        <Link to ='/' className="brand-logo">WYM</Link>
+                        <SideNav style={{background: '#0b132b', color: 'white', width: 220}}
+                          trigger={<a href="#" data-activities="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>}
+                          options={{closeClick: true}}
+                        >
+                          <SideNavItem><Link to ='/profile'>Profile</Link></SideNavItem>
+                          <SideNavItem><Link to ='/login'>Log In</Link></SideNavItem>
+                          <SideNavItem><Link to ='/signup'>Sign Up</Link></SideNavItem>
+                        </SideNav>
+                        <ul id="nav-mobile" className="right hide-on-med-and-down">
+                          {/* <li className="active"><Link to ='/profile'>Profile</Link></li> */}
+                          <li className="active"><Link to ='/login'>Log In</Link></li>
+                          <li className="active"><Link to ='/signup'>Sign Up</Link></li>
+                          {/* <li><a href="/logout" onClick={this.logOut}>log out</a></li> */}
+                        </ul>
+                      </div>
+                    </nav>
+                    <Route exact path="/" component = {Home} />
+                    <Route path='/profile' render={(props) =>  this.state.token ? ( 
+                        <Profile {...props} user={this.state.user}  />
+                    ): <Login {...props} lift={this.liftTokenToState} />}  />
                     <Route path='/login' render={(props) => (
                         <Login {...props} lift={this.liftTokenToState} />
                     )} />
@@ -92,8 +140,9 @@ class Navbar extends Component {
                     )} />
                 </div>
             </Router>
-        );
+        )
     }
+}   
 }
 
 export default Navbar;
