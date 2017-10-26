@@ -6,7 +6,8 @@ import History from './History';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 
 
@@ -15,7 +16,6 @@ class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            this: 'that',
             token: localStorage.getItem('mernToken'),
             user: this.props.user
         }
@@ -27,10 +27,16 @@ class Profile extends Component {
         be much faster to show up. */
         console.log(this.state)
         console.log(this.props)
+        // var tokenLength = (this.state.token).length
+        // console.log(tokenLength)
     }
 
     
     render(){
+        // var tokenLength = (this.state.user.name).length
+        // if(tokenLength === 0){
+        //     return <Redirect to ='/signin'/>
+        // };
         return(
             <div>
                 <Router>

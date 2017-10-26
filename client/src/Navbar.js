@@ -15,6 +15,16 @@ import {
   withRouter
 } from 'react-router-dom';
 
+function requireAuth(nextState, replace){
+        console.log("AUTH IS REQUIRED")
+        if (!sessionStorage.jwt) {
+            replace({
+            pathname: '/login',
+            state: { nextPathname: nextState.location.pathname }
+            })
+        }
+      };
+
 class Navbar extends Component {
     constructor(props) {
         super(props)
@@ -23,6 +33,7 @@ class Navbar extends Component {
           user: {}
         }
         this.liftTokenToState = this.liftTokenToState.bind(this)
+        this.logOut = this.logOut.bind(this)
       }
       liftTokenToState(data) {
         this.setState({
@@ -30,9 +41,16 @@ class Navbar extends Component {
             user: data.user
         })
       }
-      onClick(){
-          this.setState({})
+      logOut(event){
+        event.preventDefault();
+        localStorage.removeItem('mernToken')
+        console.log("LOGOUT CLICKED")
+        this.setState({
+            token: {},
+            user: {}
+        })
       }
+
     render(){
         return(
             <Router>
@@ -52,11 +70,12 @@ class Navbar extends Component {
                           <li className="active"><Link to ='/profile'>Profile</Link></li>
                           <li className="active"><Link to ='/login'>Log In</Link></li>
                           <li className="active"><Link to ='/signup'>Sign Up</Link></li>
+                          <li><a href="/logout" onClick={this.logOut}>log out</a></li>
                         </ul>
                       </div>
                     </nav>
                     <Route exact path="/" component = {Home} />
-                    <Route path='/profile' render={(props) => (
+                    <Route onEnter={requireAuth} path='/profile' render={(props) => (
                         <Profile {...props} user={this.state.user} />
                     )}  />
                     <Route path='/login' render={(props) => (
