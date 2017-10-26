@@ -15,15 +15,15 @@ import {
   withRouter
 } from 'react-router-dom';
 
-function requireAuth(nextState, replace){
-        console.log("AUTH IS REQUIRED")
-        if (!sessionStorage.jwt) {
-            replace({
-            pathname: '/login',
-            state: { nextPathname: nextState.location.pathname }
-            })
-        }
-      };
+// function requireAuth(nextState, replace){
+//         console.log("AUTH IS REQUIRED")
+//         if (this.state.token === null) {
+//             replace({
+//             pathname: '/login',
+//             state: { nextPathname: nextState.location.pathname }
+//             })
+//         }
+//       };
 
 class Navbar extends Component {
     constructor(props) {
@@ -50,6 +50,12 @@ class Navbar extends Component {
             user: {}
         })
       }
+      componentDidMount(){
+        console.log(this.state);
+      }
+      componentDidUpdate(){
+        console.log(this.state);
+      }
 
     render(){
         return(
@@ -75,8 +81,8 @@ class Navbar extends Component {
                       </div>
                     </nav>
                     <Route exact path="/" component = {Home} />
-                    <Route onEnter={requireAuth} path='/profile' render={(props) => (
-                        <Profile {...props} user={this.state.user} />
+                    <Route path='/profile' render={(props) => (
+                        <Profile {...props} user={this.state.user}  />
                     )}  />
                     <Route path='/login' render={(props) => (
                         <Login {...props} lift={this.liftTokenToState} />
