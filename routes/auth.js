@@ -33,7 +33,6 @@ router.post('/login', function(req, res, next) {
                 expiresIn: 60 * 60 * 24 // expires in 24 hours
             });
             req.flash('success', 'You are now logged in.')
-                // res.render('/Profile')
             res.send({ user: user, token: token });
 
         } else {
