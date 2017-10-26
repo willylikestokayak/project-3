@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Bar, Line, Radar, Bubble } from 'react-chartjs-2';
 
 class Response extends Component {
+
     constructor(props){
         super(props);
         this.state = {
+        	data: this.props.tones,
             chartData:{
                 labels:['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical','Confident', 'Tentative'],
                 
@@ -40,6 +42,7 @@ class Response extends Component {
         displayLegend: true,
         legendPosition: 'right,'
     }
+
     render(){
         return(
             <div className="chart">
