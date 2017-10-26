@@ -10,20 +10,25 @@ import { findDOMNode } from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Redirect,
+  withRouter
 } from 'react-router-dom';
 
 class Navbar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          token: {}
+          token: {},
+          user: {}
         }
         this.liftTokenToState = this.liftTokenToState.bind(this)
       }
-
-      liftTokenToState(token) {
-        this.setState({token: token})
+      liftTokenToState(data) {
+        this.setState({
+            token: data.token,
+            user: data.user
+        })
       }
       onClick(){
           this.setState({})
@@ -33,7 +38,6 @@ class Navbar extends Component {
             <Router>
                 <div>
                     <nav>
-
                       <div className="nav-wrapper navbar">
                         <Link to ='/' className="brand-logo">WYM</Link>
                         <SideNav style={{background: '#0b132b', color: 'white', width: 220}}
@@ -52,8 +56,9 @@ class Navbar extends Component {
                       </div>
                     </nav>
                     <Route exact path="/" component = {Home} />
-                    <Route path='/profile' component ={Profile} />
-
+                    <Route path='/profile' render={(props) => (
+                        <Profile {...props} user={this.state.user} />
+                    )}  />
                     <Route path='/login' render={(props) => (
                         <Login {...props} lift={this.liftTokenToState} />
                     )} />
