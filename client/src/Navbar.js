@@ -33,7 +33,6 @@ class Navbar extends Component {
             <Router>
                 <div>
                     <nav>
-
                       <div className="nav-wrapper black">
                         <Link to ='/' className="brand-logo">Watson</Link>
                         <SideNav style={{background: 'black', color: 'white', width: 220}} 
