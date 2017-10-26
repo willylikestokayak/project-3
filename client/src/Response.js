@@ -10,8 +10,7 @@ class Response extends Component {
 
 
 	}
-
-
+	
 
     render(){
         return(
