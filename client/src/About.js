@@ -5,16 +5,16 @@ class About extends Component {
         return(
             <div className="aboutBox">
               <h5>About the Developers</h5>
-                <div>
+                <div className="devs">
                   Stephanie
                 </div>
-                <div>
+                <div className="devs">
                   Justen
                 </div>
-                <div>
+                <div className="devs">
                   Chad
                 </div>
-                <div>
+                <div className="devs">
                   Ari
                 </div>
             </div>
