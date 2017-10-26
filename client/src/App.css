@@ -1,3 +1,27 @@
+body {
+  background-color: #101D42;
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbar {
+  background-color: #0b132b;
+  font-family: 'Days One', sans-serif;
+}
+
+.user {
+  float: left;
+  color: white;
+}
+
+.card {
+  background-color: #0b132b;
+}
+
+
+.textanalysis {
+  float: right;
+}
 .App {
     text-align: center;
 }

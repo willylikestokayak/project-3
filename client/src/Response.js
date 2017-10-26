@@ -16,10 +16,10 @@ class Response extends Component {
     render(){
         return(
             <div>
-                Here's the response to the entry
+
             </div>
         )
     }
 }
 
-export default Response
+export default Response;
