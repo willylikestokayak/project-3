@@ -3,7 +3,7 @@ import axios from 'axios';
 import Response from './Response';
 
 class Entry extends Component {
-	
+
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -26,13 +26,13 @@ class Entry extends Component {
 	}
 
 	onClick() {
-		
+
 		axios.post('/watson', {
 				text: this.state.entry
 			})
 			.then( (response) => {
 				//Refernce to link objects
-				
+
 			})
 			.catch(function(error) {
 				console.log(error)
@@ -66,7 +66,7 @@ class Entry extends Component {
 			this.setState({
 				tones: tones,
 				sentences: sentences
-			})		
+			})
 		});
 	}
 
@@ -76,7 +76,7 @@ class Entry extends Component {
     	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
 
         return(
-            <div>
+            <div className="textanalysis">
                 <h5>Use the <span className='unique'>IBM Watson Cognitive Services AI</span> to detect tone in written text.</h5>
                 <form id='watson-tone-entry'>
                 	<textarea rows='5' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />

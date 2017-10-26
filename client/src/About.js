@@ -4,7 +4,19 @@ class About extends Component {
     render(){
         return(
             <div className="aboutBox">
-                About us
+              <h5>About the Developers</h5>
+                <div>
+                  Stephanie
+                </div>
+                <div>
+                  Justen
+                </div>
+                <div>
+                  Chad
+                </div>
+                <div>
+                  Ari
+                </div>
             </div>
         );
     }
