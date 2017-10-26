@@ -9,7 +9,10 @@ class Entry extends Component {
 		this.state = {
 			entry: '',
 			tones: [{
-				tone_name: ''
+				score: undefined,
+				tone_id: undefined,
+				tone_name: undefined,
+				message: 'This text does not have a tone.'
 			}],
 			sentences: []
 		}
@@ -27,7 +30,7 @@ class Entry extends Component {
 		axios.post('/watson', {
 				text: this.state.entry
 			})
-			.then(function(response) {
+			.then( (response) => {
 				//Refernce to link objects
 				
 			})
@@ -43,8 +46,19 @@ class Entry extends Component {
 		.then( (response) => {
 			//Refernce to link objects
 			console.log(response.data.text)
+			//var text is essentially the key that I passed in the axios.post call, this is purely for 
 			var text = response.data.text
-			var tones = text.document_tone.tones
+
+			/* Some text may not get a document tone, so it is important to verify that there is a tone being sent, if there isn't and
+			there is an empty array, this may cause problems... */
+
+			var tones;
+			if(text.document_tone.tones) {
+			 	var tones = text.document_tone.tones
+			} else {
+				console.log('There were no tones detected.')
+			}
+			
 			var sentences;
 			if (text.sentences_tone) {
 				sentences = text.sentences_tone
@@ -76,6 +90,9 @@ class Entry extends Component {
                 		<h5>Document Analysis</h5>
                 			{tonesResults}
                 	</div>
+                </div>
+                <div id='response-component'>
+                	<Response data={this.state.sentences} />
                 </div>
             </div>
         )
