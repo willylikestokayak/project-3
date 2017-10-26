@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Redirect
+} from 'react-router-dom';
 
 class Signup extends Component {
   constructor(props) {
@@ -7,7 +11,8 @@ class Signup extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      redirect: false
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -37,11 +42,16 @@ class Signup extends Component {
       //Justen - I commented this out for it to work
       console.log(this.props)
       console.log(this)
-      this.props.lift(result.data.token)
+      this.props.lift(result.data)
+      this.setState({redirect: true})
     })
   }
 
   render() {
+    const {redirect} = this.state;
+    if(redirect){
+      return <Redirect to ='/'/>
+    };
     return (
       <form onSubmit={this.handleSubmit}>
         Name: <input type='text' value={this.state.name} onChange={this.handleNameChange} /><br />
