@@ -9,6 +9,10 @@ body {
   font-family: 'Days One', sans-serif;
 }
 
+li:hover {
+   background-color: #76e7cd;
+}
+
 .user {
   float: left;
   color: white;
@@ -16,9 +20,10 @@ body {
 
 .card {
   background-color: #0b132b;
+  width: 250px;
 }
 
-.card-action {
+.profileLinks {
   color: white;
 }
 
@@ -49,7 +54,15 @@ body {
     height: 600px;
 }
 
+.carouselImages {
+  image-resolution: 100%;
+}
+
 .aboutBox {
     border: 4px solid rosybrown;
     height: 400px;
+}
+
+.devs {
+  display: inline-block;
 }
