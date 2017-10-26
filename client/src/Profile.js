@@ -33,11 +33,10 @@ class Profile extends Component {
     render(){
         return(
             <div>
-                <div>Welcome: {this.state.user.name}</div>
                 <Router>
-                    <div className="row">
+                    <div className="row user">
                         <div className="col s12 m6">
-                            <div className="card blue-grey darken-1">
+                            <div className="card">
                             <div className="card-content white-text">
                                 <span className="card-title">Your Profile</span>
                                 <p>Welcome to your Wym profile {this.state.user.name}!</p>
