@@ -6,7 +6,8 @@ import History from './History';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 
 
@@ -15,7 +16,6 @@ class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            this: 'that',
             token: localStorage.getItem('mernToken'),
             user: this.props.user
         }
@@ -25,19 +25,20 @@ class Profile extends Component {
         /* Here is where a call for the persons profile needs to be made. Once the verification is made the credentials will be stored in the 
         state. The credentials will be passed down as props to all the other components so that when a component loads the information will 
         be much faster to show up. */
-        console.log(this.state)
-        console.log(this.props)
     }
 
     
     render(){
+        // var tokenLength = (this.state.user.name).length
+        // if(tokenLength === 0){
+        //     return <Redirect to ='/signin'/>
+        // };
         return(
             <div>
-                <div>Welcome: {this.state.user.name}</div>
                 <Router>
-                    <div className="row">
+                    <div className="row user">
                         <div className="col s12 m6">
-                            <div className="card blue-grey darken-1">
+                            <div className="card">
                             <div className="card-content white-text">
                                 <span className="card-title">Your Profile</span>
                                 <p>Welcome to your Wym profile {this.state.user.name}!</p>
