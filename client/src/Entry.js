@@ -14,7 +14,9 @@ class Entry extends Component {
 				tone_id: '' ,
 				tone_name: ''
 			}],
-			sentences: []
+			sentences: [],
+			name: [],
+			data: []
 		}
 	}
 
@@ -63,23 +65,36 @@ class Entry extends Component {
 			if (text.sentences_tone) {
 				sentences = text.sentences_tone
 			}
+
 			this.setState({
 				analyzed: true,
 				tones: tones,
 				sentences: sentences
 			})
-		});
 
+			var name = this.state.tones.map( (item, index) => (item.tone_name) )
+        	var score = this.state.tones.map( (item, index) => (item.score) )
+
+        	this.setState({
+        		name: name,
+        		data: score
+        	})
+
+		});
+		
 		this.sentenceClassify()
 	}
 
+
 	sentenceClassify() {
-		var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
+		
+		//var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
 		//var classify = this.state.sentences.map( (item, index) => )
 	}
 
     render(){
     	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
+    	
 
         return(
             <div className="text-analysis">
@@ -97,7 +112,7 @@ class Entry extends Component {
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response test='test' tones={this.state.tones} analyzed={this.state.analyzed} />
+                	<Response test='test' name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} />
                 </div>
             </div>
         )
