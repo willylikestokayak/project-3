@@ -32,8 +32,8 @@ class Profile extends Component {
             <div>
                 <Router>
 
-                    <div className="row">
-                      <div className="col s12 m6">
+                    <div className="col s12 m4">
+                      <div >
                           <div className="card">
                             <div className="card-content white-text">
                                 <img src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg" className="circle responsive-img" height="100" width="100" />
@@ -53,9 +53,9 @@ class Profile extends Component {
                             )} />
                     </div>
                 </Router>
-              <div>
+            <div className="col s12 m8">
                 <Entry user={this.state.user}/>
-                </div>
+            </div>
 
           </div>
         )
