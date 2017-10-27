@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Response from './Response';
 
+
 class Entry extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			analyzed: false,
+            analyzed: false,
+            title: '',
 			entry: '',
 			tones: [{
 				score: '',
@@ -25,7 +27,25 @@ class Entry extends Component {
 		this.setState({
 			entry: text,
 		})
-	}
+    }
+    //two functions for saving data to textdb
+    onSubmit(e) {
+        console.log("SUBMIT BUTTON CLICKED")
+        var savedTitle = e.target.value
+        this.setState({
+            title: savedTitle
+        })
+    }
+    clickSave(e) {
+        console.log("CLICK SAVE");
+        console.log(this.props)
+        console.log(this.state)
+        axios.post('/watson/save', {
+            user: this.props.user,
+            title: this.state.title,
+            content: this.state.entry
+        })
+    }
 
 	onClick() {
 
@@ -101,7 +121,10 @@ class Entry extends Component {
                 <h5>WYM Text Analyzer</h5>
                 <form id='watson-tone-entry'>
                 	<textarea rows='5' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
-                	<input type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
+                    <input type="text" placeholder="Title to Save" onChange={(e) => this.onSubmit(e)} />
+                	<input className="blue" type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
+                    <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/>
+
                 </form>
                 <div id='entry-text-container'>
                 	<h5>Text</h5>
