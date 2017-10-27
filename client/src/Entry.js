@@ -28,25 +28,23 @@ class Entry extends Component {
 	}
 
 	onClick() {
-
+		var grab = this.grabCache()
+		
 		axios.post('/watson', {
 				text: this.state.entry
 			})
 			.then( (response) => {
-				//Refernce to link objects
-
+				grab;
 			})
 			.catch(function(error) {
 				console.log(error)
 		});
-		//Have to use AJAX calls with react, calls a function to grab "instance" of last post on /watson route
-		this.grabCache()
 	}
 
 	grabCache() {
 		axios.get('/watson')
 		.then( (response) => {
-			//Refernce to link objects
+			//Reference to link objects
 			console.log(response.data.text)
 			//var text is essentially the key that I passed in the axios.post call, this is purely for simplicity purposes. 
 			var text = response.data.text
@@ -57,10 +55,7 @@ class Entry extends Component {
 			var tones;
 			if(text) {
 			 	tones = text.document_tone.tones
-			} else {
-				console.log('There were no tones detected.')
 			}
-			
 			var sentences;
 			if (text.sentences_tone) {
 				sentences = text.sentences_tone
@@ -82,7 +77,7 @@ class Entry extends Component {
 
 		});
 		
-		this.sentenceClassify()
+		//this.sentenceClassify()
 	}
 
 
