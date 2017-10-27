@@ -17,21 +17,22 @@ var tone_analyzer = new ToneAnalyzerV3({
 
 
 router.get('/', function(req, res, next) {
-	console.log(instance)
+	//console.log(instance)
 	res.json({text: instance});
+	instance = undefined;
 })
 
 router.post('/', function(req, res, next) {
-	
+	//This is a copy of what was in the documentation for the watson-developer-cloud node module.
 	tone_analyzer.tone({ text: req.body.text },
 	  function(err, tone) {
 	    if (err)
 	      console.log(err);
 	    else
-	      console.log(JSON.stringify(tone, null, 2));
+	      //console.log(JSON.stringify(tone, null, 2));
 	  	  instance = tone;
+	  	  console.log
 	});
-	res.redirect('/')
 });
 
 router.post('/save', function(req, res, next){
