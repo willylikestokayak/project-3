@@ -9,31 +9,37 @@ class Response extends Component {
         this.state = {
         	name: [],
         	score: [],
-        	sentences: '',
-        	analyzed: '',
         }
-             	var name = this.props.tones.map( (item, index) => (item.tone_name) )
-            	var score = this.props.tones.map( (item, index) => (item.score) )
-
-
-            	this.setState({
-            		name: name,
-            		score: score
-            	})
-            		
-            	console.log(score)
+        console.log(this.props.data)
     }
 
 
     render(){
+   
     	if(this.props.analyzed) {
+
+    	var name = this.props.name
+    	var data = this.props.data
+
+    	const data = {
+		  labels: name,
+		  datasets: [
+		    {
+		      label: 'General Document Tone',
+		      backgroundColor: 'rgba(179,181,198,0.2)',
+		      borderColor: 'rgba(179,181,198,1)',
+		      pointBackgroundColor: 'rgba(179,181,198,1)',
+		      pointBorderColor: '#fff',
+		      pointHoverBackgroundColor: '#fff',
+		      pointHoverBorderColor: 'rgba(179,181,198,1)',
+		      data: data
+		}]}
+
         return(
         <div>
-        {this.state.test}
             <div className="chart">
             <Line
-                data={this.state.score}
-
+                data={data} 
                 options={{
                     title:{
                         display: this.props.displayTitle,
