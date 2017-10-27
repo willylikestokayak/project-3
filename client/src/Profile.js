@@ -53,7 +53,9 @@ class Profile extends Component {
                           </div>
                         </div>
                         <Route path = '/history' component = { History }/>
-                        <Route path = '/twitterprofile' component = { TwitterProfile } />
+                        <Route path = '/twitterprofile' render={(props) => ( 
+                            <TwitterProfile {...props} user={this.state.user} />
+                            )} />
                     </div>
                 </Router>
               <div>

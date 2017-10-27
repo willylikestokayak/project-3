@@ -122,9 +122,9 @@ class Navbar extends Component {
                       </div>
                     </nav>
                     <Route exact path="/" component = {Home} />
-                    <Route path='/profile' render={(props) =>  this.state.token ? ( 
+                    <Route path='/profile' render={(props) => ( 
                         <Profile {...props} user={this.state.user}  />
-                    ): <Login {...props} lift={this.liftTokenToState} />}  />
+                    )}  />
                     <Route path='/login' render={(props) => (
                         <Login {...props} lift={this.liftTokenToState} />
                     )} />
