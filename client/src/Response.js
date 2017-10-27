@@ -6,10 +6,6 @@ class Response extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
-        	name: [],
-        	score: [],
-        }
         console.log(this.props.data)
     }
 
@@ -19,7 +15,7 @@ class Response extends Component {
     	if(this.props.analyzed) {
 
     	var name = this.props.name
-    	var data = this.props.data
+    	var data = this.props.data 
 
     	const data = {
 		  labels: name,
@@ -38,7 +34,7 @@ class Response extends Component {
         return(
         <div>
             <div className="chart">
-            <Line
+            <Radar
                 data={data} 
                 options={{
                     title:{
