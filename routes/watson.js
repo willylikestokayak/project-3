@@ -3,6 +3,7 @@ var router = express.Router();
 var isLoggedIn = require('../middleware/isLoggedIn');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 var instance;
+var { Text } = require('../models/user');
 
 //MAKE SURE TO REPLACE THE USERNAME AND PASSWORD WITH ENVIRONMENT VARIABLES
 var tone_analyzer = new ToneAnalyzerV3({
@@ -31,6 +32,20 @@ router.post('/', function(req, res, next) {
 	  	  instance = tone;
 	});
 	res.redirect('/')
+});
+
+router.post('/save', function(req, res, next){
+	Text.create({
+        userId: req.body.user.id,
+				title: req.body.title,
+    		content: req.body.content
+    }, function(err, user) {
+        if (err) {
+            res.send(err.message)
+        } else {
+            req.flash('success', 'Welcome to your new account! You are logged in.');
+        }
+    });
 })
 
 module.exports = router;
