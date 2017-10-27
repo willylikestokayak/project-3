@@ -19,20 +19,22 @@ class Response extends Component {
     	if(this.props.analyzed) {
 
     	var name = this.props.name
-    	var data = this.props.data
+        var score = this.props.data
+        console.log("this is name data..............." + name);
+        var labels = []
 
     	const data = {
-		  labels: name,
+		  labels: ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'],
 		  datasets: [
 		    {
-		      label: 'General Document Tone',
-		      backgroundColor: 'rgba(179,181,198,0.2)',
-		      borderColor: 'rgba(179,181,198,1)',
-		      pointBackgroundColor: 'rgba(179,181,198,1)',
-		      pointBorderColor: '#fff',
-		      pointHoverBackgroundColor: '#fff',
-		      pointHoverBorderColor: 'rgba(179,181,198,1)',
-		      data: data
+		      label: 'Tone Analysis',
+		      backgroundColor: 'red',
+		      borderColor: 'yellow',
+		      pointBackgroundColor: 'orange',
+		      pointBorderColor: 'green',
+		      pointHoverBackgroundColor: 'white',
+		      pointHoverBorderColor: 'grey',
+		      data: score
 		}]}
 
         return(
@@ -52,7 +54,7 @@ class Response extends Component {
                     },
                     labels:{
                         fontSize: 25,
-                        backgroundColor: '#76e7cd'
+                        backgroundColor: 'yellow'
                     }
                 }}
             />

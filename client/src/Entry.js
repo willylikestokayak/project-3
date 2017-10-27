@@ -62,7 +62,7 @@ class Entry extends Component {
 			}
 			
 			var sentences;
-			if (text.sentences_tone) {
+			if (text) {
 				sentences = text.sentences_tone
 			}
 
@@ -112,11 +112,11 @@ class Entry extends Component {
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response test='test' name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} />
+                	<Response test='test' name={this.state.name} data={this.state.data} options={this.state.options} analyzed={this.state.analyzed} />
                 </div>
             </div>
         )
     }
 }
 
-export default Entry
+export default Entry;

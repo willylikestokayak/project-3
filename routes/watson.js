@@ -16,9 +16,12 @@ var tone_analyzer = new ToneAnalyzerV3({
 
 
 router.get('/', function(req, res, next) {
-	console.log(instance)
+	//console.log('...................' + instance);
 	res.json({text: instance});
-})
+	//instance = undefined;
+	console.log('...................' + instance);
+});
+console.log('//////////////////ggggggggggggggggg' + instance);
 
 router.post('/', function(req, res, next) {
 	
