@@ -13,9 +13,9 @@ class User extends Component {
     render(){
         return(
             <Router>
-                <div className="row">
+              <div className="row user">
                   <div className="col s12 m6">
-                    <div className="card blue-grey darken-1">
+                    <div className="card">
                       <div className="card-content white-text">
                         <span className="card-title">Your Profile</span>
                         <p>Welcome to your Watson profile!</p>
@@ -26,11 +26,11 @@ class User extends Component {
                         <Link to ='/profile'>Upload new text</Link>
                       </div>
                     </div>
-                  </div>
-                    <Route path = '/history' component = { History } />
-                    <Route path = '/twitterprofile' component = { TwitterProfile } />
-                </div>
-            </Router>
+                    </div>
+                  <Route path = '/history' component = { History }/>
+                  <Route path = '/twitterprofile' component = { TwitterProfile } />
+            </div>
+          </Router>
         )
     }
 }

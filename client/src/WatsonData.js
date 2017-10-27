@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Entry from './Entry';
-import Response from './Response';
 
 class WatsonData extends Component {
 	constructor(props) {
@@ -13,9 +12,8 @@ class WatsonData extends Component {
   render(){
     return(
       <div>
-        Entry and Response render here:
+        <p>This is the Watson Data component containing the Entry component</p>
         <Entry />
-        <Response />
       </div>
     );
   }

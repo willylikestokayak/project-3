@@ -4,6 +4,7 @@ var isLoggedIn = require('../middleware/isLoggedIn');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 var instance;
 
+//MAKE SURE TO REPLACE THE USERNAME AND PASSWORD WITH ENVIRONMENT VARIABLES
 var tone_analyzer = new ToneAnalyzerV3({
   username: 'a32ea9d2-b998-443b-87b7-6aef61ba95d3',
   password: 'A2gBtjiGnf0A',
