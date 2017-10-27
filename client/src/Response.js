@@ -15,10 +15,10 @@ class Response extends Component {
     	if(this.props.analyzed) {
 
     	var name = this.props.name
-    	var data = this.props.data 
+    	var data = this.props.data
 
     	const data = {
-		  labels: name,
+		  labels:  ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'],
 		  datasets: [
 		    {
 		      label: 'General Document Tone',
@@ -34,7 +34,7 @@ class Response extends Component {
         return(
         <div>
             <div className="chart">
-            <Radar
+            <Bar
                 data={data} 
                 options={{
                     title:{

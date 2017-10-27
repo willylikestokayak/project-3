@@ -30,7 +30,6 @@ router.post('/', function(req, res, next) {
 	    else
 	      //console.log(JSON.stringify(tone, null, 2));
 	  	  instance = tone;
-	  	  console.log
 	});
 })
 

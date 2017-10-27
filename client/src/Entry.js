@@ -29,7 +29,7 @@ class Entry extends Component {
 
 	onClick() {
 		var grab = this.grabCache()
-		
+
 		axios.post('/watson', {
 				text: this.state.entry
 			})
@@ -46,7 +46,8 @@ class Entry extends Component {
 		.then( (response) => {
 			//Reference to link objects
 			console.log(response.data.text)
-			//var text is essentially the key that I passed in the axios.post call, this is purely for simplicity purposes. 
+			//var text is essentially the key that I passed in the axios.post call, it honestly I just wrote this so I don't have to type
+			//"response.data.text. etc..."" every time I'm grabbing data.
 			var text = response.data.text
 
 			/* Some text may not get a document tone, so it is important to verify that there is a tone being sent, if there isn't and
