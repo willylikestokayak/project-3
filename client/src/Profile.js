@@ -41,6 +41,7 @@ class Profile extends Component {
                       <div className="col s12 m6">
                           <div className="card">
                             <div className="card-content white-text">
+                              //filler image. this is where the user's profile image will eventually go: 
                                 <img src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg" className="circle responsive-img" height="100" width="100" />
                                 <span className="card-title">Welcome to your WYM Profile, {this.state.user.name}!</span>
 

@@ -53,12 +53,21 @@ class Signup extends Component {
       return <Redirect to ='/'/>
     };
     return (
-      <form onSubmit={this.handleSubmit}>
-        Name: <input type='text' value={this.state.name} onChange={this.handleNameChange} /><br />
-        Email: <input type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
-        Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
-        <input type='submit' value='Sign Up' />
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          Name: <input type='text' value={this.state.name} onChange={this.handleNameChange} /><br />
+          Email: <input type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
+          Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
+          <input type='submit' value='Sign Up' />
+        </form>
+        <div className="card">
+          <img src="http://fillmurray.com/g/300/300" id="img-preview" />
+
+            <input id="file-upload" type="file" />
+            Select a Profile image
+
+        </div>
+      </div>
     );
   }
 }
