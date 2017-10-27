@@ -3,6 +3,12 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var { Twet } = require('../models/user');
 
+router.get('/', function(req, res, next) {
+    Twet.findOne({ userId: req.body.user.id }).then(
+        //promises!!
+    )
+});
+
 router.post('/', function(req, res, next) {
     Twet.create({
         userId: req.body.user.id,
