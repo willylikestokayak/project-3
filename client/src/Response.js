@@ -2,37 +2,21 @@ import React, { Component } from 'react';
 import { Bar, Line, Radar, Bubble } from 'react-chartjs-2';
 
 class Response extends Component {
-
-
     constructor(props){
         super(props);
         this.state = {
-        	name: [],
-        	score: [],
-        	sentences: '',
-        	analyzed: '',
+        	chartData:props.chartData
         }
-             	var name = this.props.tones.map( (item, index) => (item.tone_name) )
-            	var score = this.props.tones.map( (item, index) => (item.score) )
-
-
-            	this.setState({
-            		name: name,
-            		score: score
-            	})
-            		
-            	console.log(score)
     }
-
-
+    // componentWillReceiveProps(){
+    //     //this is where you set state for chart data
+    //     tones = this.setState.chartData;
+    // }
     render(){
-    	if(this.props.analyzed) {
-        return(
-        <div>
-        {this.state.test}
+    	return(
             <div className="chart">
             <Line
-                data={this.state.score}
+                data={this.state.chartData}
 
                 options={{
                     title:{
@@ -51,13 +35,7 @@ class Response extends Component {
                 }}
             />
             </div>
-        </div>
         );
-    	} else {
-    		return(
-    			<p>Chart will render when text is submitted</p>
-    		)
-    	}
     }
 }
 

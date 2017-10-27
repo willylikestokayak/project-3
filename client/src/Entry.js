@@ -2,11 +2,17 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Response from './Response';
 
-class Entry extends Component {
+class Entry extends Component{
 
 	constructor(props) {
 		super(props)
 		this.state = {
+			chartData:{},
+			anger: '',
+			fear: '',
+			joy: '',
+			analytical: '',
+			//need to add all emotions
 			analyzed: false,
 			entry: '',
 			tones: [{
@@ -22,7 +28,7 @@ class Entry extends Component {
 		var text = e.target.value
 		this.setState({
 			entry: text,
-		})
+		});
 	}
 
 	onClick() {
@@ -37,47 +43,66 @@ class Entry extends Component {
 			.catch(function(error) {
 				console.log(error)
 		});
+		//console.log('........POST DATA ' + this.state.entry);
 		//Have to use AJAX calls with react, calls a function to grab "instance" of last post on /watson route
 		this.grabCache()
+		//console.log('......GRABCACHE ' + this.grabCache);
 	}
+	// componentWillReceiveProps(){
+	// this.grabCache();
+	//this.getChartData();
 
 	grabCache() {
 		axios.get('/watson')
-		.then( (response) => {
-			//Refernce to link objects
-			console.log(response.data.text)
-			//var text is essentially the key that I passed in the axios.post call, this is purely for simplicity purposes. 
-			var text = response.data.text
-
-			/* Some text may not get a document tone, so it is important to verify that there is a tone being sent, if there isn't and
-			there is an empty array, this may cause problems... */
-
-			var tones;
-			if(text.document_tone.tones) {
-			 	tones = text.document_tone.tones
-			} else {
-				console.log('There were no tones detected.')
-			}
+		.then((response) => {
+			console.log('...555555 response ' + response[0]);
 			
+			var text = response.data.text
+			console.log(".......///// TEXT " + response[0]);
+			var tones;
+			if(text) {
+				tones = text.document_tone.tones
+			} else {
+				console.log('no tones detected');
+			}
 			var sentences;
-			if (text.sentences_tone) {
+			if(text.sentences_tone){
 				sentences = text.sentences_tone
 			}
+	// 		this.setState({
+	// 			chartData: {
+	// 				labels:['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical','Confident', 'Tentative'],	 	
+	// 				datasets:[{
+	// 				label: 'testing charts',
+	// 				data: [0.3,0.5,0.9,0.2,0.,0,0.9],
+	// 				backgroundColor:[
+	// 					'red'
+	// 				]
+	// 			}]
+	// 	}
+	// })
+
 			this.setState({
 				analyzed: true,
 				tones: tones,
-				sentences: sentences
+				sentences: sentences,
+				
 			})
+		//console.log("..........s." + document_tone.tones[0].score);
 		});
-
-
-	}
+	}	
 
 
 
-    render(){
+// getChartData(){
+//chartData was moved from here
+// }
+
+
+
+    render() {
     	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
-
+			var test = this.state.anger
         return(
             <div className="textanalysis">
                 <h5>WYM Text Analyzer</h5>
@@ -90,15 +115,16 @@ class Entry extends Component {
                 	<p>{this.state.entry}</p>
                 	<div id='response'>
                 		<h5>Document Analysis</h5>
-                			{tonesResults}
+											{test}
+											{tonesResults}
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response test='test' tones={this.state.tones} analyzed={this.state.analyzed} />
+                	<Response chartData={this.state.chartData} />
                 </div>
             </div>
         )
     }
 }
 
-export default Entry
+export default Entry;
