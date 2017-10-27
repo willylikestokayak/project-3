@@ -14,15 +14,10 @@ class TwitterProfile extends Component {
         console.log("changed")
         var text = e.target.value
             this.setState({
-                entry: text,
+                handle: text,
             })
    }
     onClick(e){
-        var twitHandle = this.state.entry;
-        console.log(twitHandle)
-        this.setState({
-            handle: twitHandle
-        })
         axios.post('/twitter', {
             user: this.props.user,
             handle: this.state.handle,
@@ -33,7 +28,10 @@ class TwitterProfile extends Component {
         })
     }
     componentDidMount(){
-        console.log(this.props)
+        console.log(this.props.user.id)
+        axios.get('/twitter', {
+            user: this.props.user
+        })
     }
     render(){
         return(
