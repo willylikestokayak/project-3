@@ -35,7 +35,7 @@ class Navbar extends Component {
         }
         this.liftTokenToState = this.liftTokenToState.bind(this)
         this.logOut = this.logOut.bind(this)
-        this.handleLogIn = this.handleLogIn.bind(this)
+        // this.handleLogIn = this.handleLogIn.bind(this)
       }
       liftTokenToState(data) {
         this.setState({
@@ -134,7 +134,7 @@ class Navbar extends Component {
             </Router>
         )
     }
-}   
+}
 }
 
 

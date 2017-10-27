@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import WatsonData from './WatsonData';
+import Entry from './Entry';
 import TwitterProfile from './TwitterProfile';
 import History from './History';
 
@@ -37,11 +37,11 @@ class Profile extends Component {
             <div>
                 <Router>
 
-                    <div className="row">
-                      <div className="col s12 m6">
+                    <div className="noclear">
+
                           <div className="card">
                             <div className="card-content white-text">
-                              //filler image. this is where the user's profile image will eventually go: 
+                              //filler image. this is where the user's profile image will eventually go:
                                 <img src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg" className="circle responsive-img" height="100" width="100" />
                                 <span className="card-title">Welcome to your WYM Profile, {this.state.user.name}!</span>
 
@@ -52,16 +52,16 @@ class Profile extends Component {
                                 <Link to ='/'>Upload new text</Link>
                             </div>
                           </div>
+
+                          <Route path = '/history' component = { History }/>
+                          <Route path = '/twitterprofile' render={(props) => (
+                              <TwitterProfile {...props} user={this.state.user} />
+                              )} />
                         </div>
-                        <Route path = '/history' component = { History }/>
-                        <Route path = '/twitterprofile' render={(props) => ( 
-                            <TwitterProfile {...props} user={this.state.user} />
-                            )} />
-                    </div>
                 </Router>
-              <div>
-                <WatsonData />
-                </div>
+                  <div>
+                    <Entry />
+                  </div>
 
           </div>
         )
