@@ -82,7 +82,6 @@ router.post('/signup', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
     // TODO: will need to invalidate the token here
-    console.log("TTTTThis was hit")
     req.logout();
     req.flash('success', 'You have logged out. Goodbye!');
     res.redirect('/');
