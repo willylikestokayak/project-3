@@ -53,7 +53,7 @@ class Entry extends Component {
 			there is an empty array, this may cause problems... */
 
 			var tones;
-			if(text.document_tone.tones) {
+			if(text) {
 			 	tones = text.document_tone.tones
 			} else {
 				console.log('There were no tones detected.')
@@ -70,16 +70,19 @@ class Entry extends Component {
 			})
 		});
 
-
+		this.sentenceClassify()
 	}
 
-
+	sentenceClassify() {
+		var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
+		//var classify = this.state.sentences.map( (item, index) => )
+	}
 
     render(){
     	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
 
         return(
-            <div className="textanalysis">
+            <div className="text-analysis">
                 <h5>WYM Text Analyzer</h5>
                 <form id='watson-tone-entry'>
                 	<textarea rows='5' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
