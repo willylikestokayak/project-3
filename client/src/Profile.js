@@ -8,6 +8,7 @@ import {
   Link,
   Redirect
 } from 'react-router-dom';
+import {Row, Col} from 'react-materialize';
 
 
 class Profile extends Component {
@@ -29,35 +30,38 @@ class Profile extends Component {
 
     render(){
         return(
-            <div>
-                <Router>
+                <Row>
+                    <Col s={4}>
+                        <Router>
 
-                    <div className="noclear">
+                            <div>
 
-                          <div className="card">
-                            <div className="card-content white-text">
-                                <img src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg" className="circle responsive-img" height="100" width="100" />
-                                <span className="card-title">Welcome to your WYM Profile, {this.state.user.name}!</span>
+                                <div className="card">
+                                    <div className="card-content white-text">
+                                        <img src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg" className="circle responsive-img" height="100" width="100" />
+                                        <span className="card-title">Welcome to your WYM Profile, {this.state.user.name}!</span>
 
+                                    </div>
+                                    <div className="card-action profileLinks">
+                                        <Link to ='/history'>Saved Wyms</Link>
+                                        <Link to ='/twitterprofile'>Twitter</Link>
+                                        <Link to ='/'>Upload new text</Link>
+                                    </div>
+                                </div>
+
+                                <Route path = '/history' component = { History }/>
+                                <Route path = '/twitterprofile' render={(props) => (
+                                    <TwitterProfile {...props} user={this.state.user} />
+                                    )} />
                             </div>
-                            <div className="card-action profileLinks">
-                                <Link to ='/history'>Saved Wyms</Link>
-                                <Link to ='/twitterprofile'>Twitter</Link>
-                                <Link to ='/'>Upload new text</Link>
-                            </div>
-                          </div>
-
-                          <Route path = '/history' component = { History }/>
-                          <Route path = '/twitterprofile' render={(props) => (
-                              <TwitterProfile {...props} user={this.state.user} />
-                              )} />
-                        </div>
-                </Router>
-              <div>
-                <Entry user={this.state.user}/>
+                        </Router>
+                    </Col>
+            <Col s={8}>
+                <div>
+                    <Entry user={this.state.user}/>
                 </div>
-
-          </div>
+            </Col>
+            </Row>
         )
     }
 }
