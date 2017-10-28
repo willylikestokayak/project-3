@@ -7,22 +7,28 @@ class Response extends Component {
     constructor(props){
         super(props);
         console.log(this.props.data)
+        
     }
 
 
     render(){
-   
+        var tentative = this.props.tentative;
     	if(this.props.analyzed) {
 
     	var name = this.props.name
-    	var data = this.props.data 
+        var data = this.props.data
+        
+        // const labels = ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'];
+        // function getIndex(labels, data){
+
+        // }
 
     	const data = {
-		  labels: name,
+		  labels: ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'],
 		  datasets: [
 		    {
 		      label: 'General Document Tone',
-		      backgroundColor: 'rgba(179,181,198,0.2)',
+		      backgroundColor: null,
 		      borderColor: 'rgba(179,181,198,1)',
 		      pointBackgroundColor: 'rgba(179,181,198,1)',
 		      pointBorderColor: '#fff',
@@ -34,7 +40,7 @@ class Response extends Component {
         return(
         <div>
             <div className="chart">
-            <Radar
+            <Line
                 data={data} 
                 options={{
                     title:{
@@ -51,7 +57,8 @@ class Response extends Component {
                         backgroundColor: '#76e7cd'
                     }
                 }}
-            />
+            /> 
+            {/* Tentative is equal to {this.props.tentative} */}
             </div>
         </div>
         );

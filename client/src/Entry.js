@@ -8,19 +8,30 @@ class Entry extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-            analyzed: false,
+			analyzed: false,
+			anger: '',
+			tentative: '',
+			joy: '',
+			fear: '',
+			sadness: '',
+			analytical: '',
+			confident: '',
             title: '',
 			entry: '',
 			tones: [{
 				score: '',
-				tone_id: '' ,
+				tone_id: '',
 				tone_name: ''
 			}],
 			sentences: [],
 			name: [],
 			data: []
+
 		}
 	}
+	// this.setState{
+	// 	document_tone.tones[0].tone_id: document_tones.tones[0].score
+	// }
 
 	onChange(e) {
 		var text = e.target.value
@@ -66,8 +77,18 @@ class Entry extends Component {
 		.then( (response) => {
 			//Reference to link objects
 			console.log(response.data.text)
+			// console.log(response.data.text.document_tone.tones[0].tone_id)
+			// console.log(response.data.text.document_tone.tones[0].score)
 			//var text is essentially the key that I passed in the axios.post call, this is purely for simplicity purposes. 
 			var text = response.data.text
+			// var response0 = response.data.text.document_tone.tones[0].score
+			// var response1 = response.data.text.document_tone.tones[1].score
+			// var response2 = response.data.text.document_tone.tones[2].score
+			// var response3 = response.data.text.document_tone.tones[3].score
+			// var response4 = response.data.text.document_tone.tones[4].score
+			// var response5 = response.data.text.document_tone.tones[5].score
+			// var response6 = response.data.text.document_tone.tones[6].score
+
 
 			/* Some text may not get a document tone, so it is important to verify that there is a tone being sent, if there isn't and
 			there is an empty array, this may cause problems... */
@@ -77,15 +98,77 @@ class Entry extends Component {
 			 	tones = text.document_tone.tones
 			}
 			var sentences;
-			if (text.sentences_tone) {
+			if (text) {
 				sentences = text.sentences_tone
 			}
 
 			this.setState({
 				analyzed: true,
 				tones: tones,
-				sentences: sentences
+				sentences: sentences,
 			})
+			// if(response.data.text.document_tone.tones[0].tone_id === "anger"){
+			// 	this.setState({
+			// 		anger: response0
+			// 	})
+			// }
+			// if(response.data.text.document_tone.tones[1].tone_id === "tentative"){
+			// 	this.setState({
+			// 		tentative: response1
+			// 	})
+			// }
+			// if(response.data.text.document_tone.tones[4].tone_id === "tentative"){
+			// 	this.setState({
+			// 		tentative: response1
+			// 	})
+			// }
+			for (var i=0; i< (response.data.text.document_tone.tones).length; i++){
+				if(response.data.text.document_tone.tones[i].tone_id === "anger"){
+					this.setState({
+						anger: response.data.text.document_tone.tones[i].score
+					})
+					console.log(this.state.anger)
+				}
+				if(response.data.text.document_tone.tones[i].tone_id === "tentative"){
+					this.setState({
+						tentative: response.data.text.document_tone.tones[i].score
+					})
+					console.log(this.state.tentative)
+				}
+				if(response.data.text.document_tone.tones[i].tone_id === "fear"){
+					this.setState({
+						fear: response.data.text.document_tone.tones[i].score
+					})
+					console.log(this.state.fear)
+				}
+				if(response.data.text.document_tone.tones[i].tone_id === "joy"){
+					this.setState({
+						joy: response.data.text.document_tone.tones[i].score
+					})
+					console.log(this.state.joy)
+				}
+				if(response.data.text.document_tone.tones[i].tone_id === "sadness"){
+					this.setState({
+						sadness: response.data.text.document_tone.tones[i].score
+					})
+					console.log(this.state.sadness)
+				}
+				if(response.data.text.document_tone.tones[i].tone_id === "analytical"){
+					this.setState({
+						analytical: response.data.text.document_tone.tones[i].score
+					})
+					console.log(this.state.analytical)
+				}
+				if(response.data.text.document_tone.tones[i].tone_id === "confident"){
+					this.setState({
+						confident: response.data.text.document_tone.tones[i].score
+					})
+					console.log(this.state.confident)
+				}
+			}
+
+
+
 
 			var name = this.state.tones.map( (item, index) => (item.tone_name) )
         	var score = this.state.tones.map( (item, index) => (item.score) )
@@ -130,7 +213,7 @@ class Entry extends Component {
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response test='test' name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} />
+                	<Response test='test' name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} tentative={this.state.tentative}/>
                 </div>
             </div>
         )
