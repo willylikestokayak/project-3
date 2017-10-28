@@ -1,35 +1,38 @@
 body {
-  background-color: #101D42;
-  color: white;
-  font-family: 'Josefin Sans', sans-serif;
+    background-color: #101D42;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .navbar {
-  background-color: #0b132b;
-  font-family: 'Days One', sans-serif;
+    background-color: #0b132b;
+    font-family: 'Days One', sans-serif;
 }
 
 li:hover {
-   background-color: #76e7cd;
+    background-color: #76e7cd;
 }
 
 .user {
-  float: left;
-  color: white;
+    float: left;
+    color: white;
 }
 
 .card {
-  background-color: #0b132b;
-  width: 250px;
+    background-color: #0b132b;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .profileLinks {
-  color: white;
+    color: white;
 }
 
 .textanalysis {
-  float: right;
+    float: right;
 }
+
 .App {
     text-align: center;
 }
@@ -55,7 +58,7 @@ li:hover {
 }
 
 .carouselImages {
-  image-resolution: 100%;
+    image-resolution: 100%;
 }
 
 .aboutBox {
@@ -64,5 +67,5 @@ li:hover {
 }
 
 .devs {
-  display: inline-block;
+    display: inline-block;
 }
