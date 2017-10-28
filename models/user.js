@@ -22,7 +22,8 @@ var userSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
         maxlength: 99
-    }
+    },
+    profilePic: String
 });
 
 // Override 'toJSON' to prevent the password from being returned with the user
