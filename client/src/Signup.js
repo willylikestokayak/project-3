@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {CloduinaryContext, Transformation, Image, Cloudinary} from 'cloudinary-react'
 import {
   BrowserRouter as Router,
   Redirect
 } from 'react-router-dom';
+
 
 class Signup extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
+      profilePic: '',
       redirect: false
     }
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -19,6 +22,7 @@ class Signup extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  
 
   handleNameChange(e) {
     this.setState({name: e.target.value})
@@ -45,7 +49,14 @@ class Signup extends Component {
       this.props.lift(result.data)
       this.setState({redirect: true})
     })
+    var cloudinaryUrl = '	https://api.cloudinary.com/v1_1/drdpp9jiw/upload';
   }
+  uploadWidget() {
+        Cloudinary.openUploadWidget({ cloud_name: 'drdpp9jiw', upload_preset: 'spe0k8pn', tags:['xmas']},
+            function(error, result) {
+                console.log(result);
+            });
+    }
 
   render() {
     const {redirect} = this.state;
@@ -60,12 +71,20 @@ class Signup extends Component {
           Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
           <input type='submit' value='Sign Up' />
         </form>
-        <div className="card">
+        {/* <div className="card">
           <img src="http://fillmurray.com/g/300/300" id="img-preview" />
 
-            <input id="file-upload" type="file" />
+            <input id="file-upload" type="file" onSubmit={this.handleImage}/>
             Select a Profile image
 
+        </div> */}
+        <div className="main">
+          <h1>Galleria</h1>
+          <div className="upload">
+              <button onClick={this.uploadWidget.bind(this)} className="upload-button">
+                  Add Image
+              </button>
+          </div>
         </div>
       </div>
     );
