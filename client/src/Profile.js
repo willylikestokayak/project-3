@@ -25,6 +25,8 @@ class Profile extends Component {
         /* Here is where a call for the persons profile needs to be made. Once the verification is made the credentials will be stored in the
         state. The credentials will be passed down as props to all the other components so that when a component loads the information will
         be much faster to show up. */
+        console.log(this.state)
+        console.log(this.props)
     }
 
 
