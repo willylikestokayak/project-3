@@ -33,11 +33,11 @@ class Profile extends Component {
     render(){
         return(
                 <Row>
-                    <Col s={4}>
+                    {/* <Col s={4}> */}
                         <Router>
 
                             <div>
-
+                            <Col s={4}>
                                 <div className="card">
                                     <div className="card-content white-text">
                                         <img src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg" className="circle responsive-img" height="100" width="100" />
@@ -50,21 +50,25 @@ class Profile extends Component {
                                         <Link to ='/'>Upload new text</Link>
                                     </div>
                                 </div>
+                             </Col>
+                             <Col s={8}>   
                                 {/* <Route exact path ='/' render={(props) => (
                                     <Entry {...props} user={this.state.user} />
                                 )} /> */}
+                                <Route exact path='/' component ={Entry} />
                                 <Route path = '/history' render={(props) => ( 
                                     <History {...props} user={this.state.user} />
                                 )} />
                                 <Route path = '/twitterprofile' render={(props) => ( 
                                     <TwitterProfile {...props} user={this.state.user} />
                                     )} />
+                            </Col>
                             </div>
                         </Router>
-                    </Col>
+                    {/* </Col> */}
             <Col s={8}>
                 <div>
-                    <Entry user={this.state.user}/>
+                    {/* <Entry user={this.state.user}/> */}
                 </div>
             </Col>
             </Row>
