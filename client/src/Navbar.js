@@ -53,17 +53,11 @@ class Navbar extends Component {
         })
       }
 
-      liftTokenToState(token) {
-        this.setState({token: token})
-      }
       componentDidMount(){
-        console.log(this.state);
-        console.log(this.props)
 
 
       }
       componentDidUpdate(){
-        console.log(this.state);
 
       }
 
