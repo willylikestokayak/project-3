@@ -55,8 +55,10 @@ class Profile extends Component {
                                 {/* <Route exact path ='/' render={(props) => (
                                     <Entry {...props} user={this.state.user} />
                                 )} /> */}
-                                <Route exact path='/' component ={Entry} />
-                                <Route path = '/history' render={(props) => (
+                                <Route exact path='/' render={(props) => (
+                                    <Entry {...props} user={this.state.user} />
+                                )} />
+                                <Route path = '/history' render={(props) => ( 
                                     <History {...props} user={this.state.user} />
                                 )} />
                                 <Route path = '/twitterprofile' render={(props) => (

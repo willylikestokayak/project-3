@@ -38,7 +38,12 @@ class TwitterProfile extends Component {
     }
     render(){
         let twitterHandles = this.state.handle.map((item, index) => (
-            <li><a href={"/twitter/list/" + item._id} key={index}>{item.handle}</a></li>)
+            <Row>
+                <li className="inline" key={index}>{item.handle}</li>
+                {/* Need to create new onClick Function below to find user's tweets */}
+                <Button className="inline" key={index} onClick={(e) => this.onClick(e)} value={item._id}>View</Button>
+            </Row>
+            )
         );
         return(
             <div>

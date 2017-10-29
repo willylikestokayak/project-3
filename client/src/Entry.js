@@ -8,17 +8,25 @@ class Entry extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-            analyzed: false,
+			analyzed: false,
+			anger: '',
+			tentative: '',
+			joy: '',
+			fear: '',
+			sadness: '',
+			analytical: '',
+			confident: '',
             title: '',
 			entry: '',
 			tones: [{
 				score: '',
-				tone_id: '' ,
+				tone_id: '',
 				tone_name: ''
 			}],
 			sentences: [],
 			name: [],
 			data: []
+
 		}
 	}
 
@@ -28,7 +36,7 @@ class Entry extends Component {
 			entry: text,
 		})
     }
-    //two functions for saving data to textdb
+
     onSubmit(e) {
         var savedTitle = e.target.value
         this.setState({
@@ -36,8 +44,9 @@ class Entry extends Component {
         })
     }
     clickSave(e) {
-        console.log(this.props)
-        console.log(this.state)
+		console.log(this.props.user)
+		console.log(this.state.title)
+		console.log(this.state.entry)
         axios.post('/watson/save', {
             user: this.props.user,
             title: this.state.title,
@@ -46,58 +55,84 @@ class Entry extends Component {
     }
 
 	onClick() {
-		var grab = this.grabCache()
-
-		axios.post('/watson', {
-				text: this.state.entry
-			})
-			.then( (response) => {
-				grab;
-			})
-			.catch(function(error) {
-				console.log(error)
-		});
-	}
-
-	grabCache() {
-		axios.get('/watson')
-		.then( (response) => {
-			//Reference to link objects
-			console.log(response.data.text)
-			//var text is essentially the key that I passed in the axios.post call, this is purely for simplicity purposes.
-			var text = response.data.text
-
-			/* Some text may not get a document tone, so it is important to verify that there is a tone being sent, if there isn't and
-			there is an empty array, this may cause problems... */
-
-			var tones;
-			if(text) {
-			 	tones = text.document_tone.tones
+		
+				axios.post('/watson', {
+						text: this.state.entry
+					})
+					.then( (response) => {
+						// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
+						var text = response.data
+						console.log(text)
+						var tones;
+						if(text) {
+							tones = text.document_tone.tones
+							var sentences;
+						if (text.sentences_tone) {
+							sentences = text.sentences_tone.map( (item, index) => ({
+								className: item.tones.tone_id,
+								text: item.text
+							}) )
+							console.log(sentences)
+						}
+		
+						this.setState({
+							analyzed: true,
+							tones: tones,
+							sentences: sentences
+						})
+						var name = this.state.tones.map( (item, index) => (item.tone_name) )
+						var score = this.state.tones.map( (item, index) => (item.score) )
+		
+						this.setState({
+							name: name,
+							data: score
+						})
+						for (var i=0; i< (response.data.document_tone.tones).length; i++){
+                    if(response.data.document_tone.tones[i].tone_id === 'anger'){
+                        this.setState({
+                            anger: response.data.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.document_tone.tones[i].tone_id === 'tentative'){
+                        this.setState({
+                            tentative: response.data.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.document_tone.tones[i].tone_id === 'fear'){
+                        this.setState({
+                            fear: response.data.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.document_tone.tones[i].tone_id === 'joy'){
+                        this.setState({
+                            joy: response.data.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.document_tone.tones[i].tone_id === 'sadness'){
+                        this.setState({
+                            sadness: response.data.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.document_tone.tones[i].tone_id === 'analytical'){
+                        this.setState({
+                            analytical: response.data.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.document_tone.tones[i].tone_id === 'confident'){
+                        this.setState({
+                            confident: response.data.document_tone.tones[i].score
+                        });
+                    }
+				}
+				console.log(this.state);
+				console.log(this.props)
+							}
+		
+						})
+						.catch(function(error) {
+							console.log(error)
+					});
 			}
-			var sentences;
-			if (text.sentences_tone) {
-				sentences = text.sentences_tone
-			}
-
-			this.setState({
-				analyzed: true,
-				tones: tones,
-				sentences: sentences
-			})
-
-			var name = this.state.tones.map( (item, index) => (item.tone_name) )
-        	var score = this.state.tones.map( (item, index) => (item.score) )
-
-        	this.setState({
-        		name: name,
-        		data: score
-        	})
-
-		});
-
-		//this.sentenceClassify()
-	}
-
 
 	sentenceClassify() {
 
@@ -113,8 +148,8 @@ class Entry extends Component {
             <div className="text-analysis">
                 <h5>WYM Text Analyzer</h5>
                 <form id='watson-tone-entry'>
-                	<textarea rows='5' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
-                    <input type="text" placeholder="Title to Save" onChange={(e) => this.onSubmit(e)} />
+                	<input type="text" placeholder="Title to Save" onChange={(e) => this.onSubmit(e)} />
+                	<textarea rows='20' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
                 	<input className="blue" type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
                     <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/>
 
@@ -122,17 +157,19 @@ class Entry extends Component {
                 <div id='entry-text-container'>
                 	<h5>Text</h5>
                 	<p>{this.state.entry}</p>
+
                 	<div id='response'>
                 		<h5>Document Analysis</h5>
                 			{tonesResults}
+                		
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response test='test' name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} />
+                	<Response name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} tentative={this.state.tentative} anger={this.state.anger} joy={this.state.joy} fear={this.state.fear} sadness={this.state.sadness} analytical={this.state.analytical} confident={this.state.confident} />
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default Entry
+export default Entry;

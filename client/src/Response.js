@@ -3,41 +3,61 @@ import { Bar, Line, Radar, Bubble } from 'react-chartjs-2';
 
 class Response extends Component {
 
-
     constructor(props){
         super(props);
-        console.log(this.props.data)
     }
 
 
     render(){
-   
+        var tentative = this.props.tentative;
     	if(this.props.analyzed) {
 
-    	var name = this.props.name
-    	var data = this.props.data 
+        var name = this.props.name;
+        var anger = this.props.anger;
+        var tentative = this.props.tentative;
+        var joy = this.props.joy;
+        var fear = this.props.fear;
+        var sadness = this.props.sadness;
+        var analytical = this.props.analytical;
+        var confident = this.props.confident;
 
     	const data = {
-		  labels: name,
+		  labels:  ['anger', 'tentative', 'joy', 'fear', 'sadness', 'analytical', 'confident'], 
+
 		  datasets: [
 		    {
-		      label: 'General Document Tone',
-		      backgroundColor: 'rgba(179,181,198,0.2)',
-		      borderColor: 'rgba(179,181,198,1)',
-		      pointBackgroundColor: 'rgba(179,181,198,1)',
-		      pointBorderColor: '#fff',
-		      pointHoverBackgroundColor: '#fff',
-		      pointHoverBorderColor: 'rgba(179,181,198,1)',
-		      data: data
+		      label: [],   
+		      backgroundColor: [
+                  'red',
+                  'pink',
+                  'yellow',
+                  'orange',
+                  'grey',
+                  'green',
+                  'blue'
+              ],
+		      borderColor: 'white',
+		      //pointBackgroundColor: 'yellow',
+		      //pointBorderColor: '#fff',
+		      //pointHoverBackgroundColor: '#fff',
+		      //pointHoverBorderColor: 'green',
+		      data: [anger, tentative, joy, fear, sadness, analytical, confident]
 		}]}
 
         return(
         <div>
             <div className="chart">
-            <Radar
+            <Bar
                 data={data} 
                 options={{
-                    title:{
+                    legend: {
+                        display: false
+                    }
+                }}
+            /> 
+            {/* Tentative is equal to {this.props.tentative} */}
+
+            {/* title:{
                         display: this.props.displayTitle,
                         text: 'Watson is checking your words',
                         fontSize: 25
@@ -48,16 +68,14 @@ class Response extends Component {
                     },
                     labels:{
                         fontSize: 25,
-                        backgroundColor: '#76e7cd'
-                    }
-                }}
-            />
+                        backgroundColor: '#76e7cd' */}
+
             </div>
         </div>
-        );
-    	} else {
-    		return(
-    			<p>Chart will render when text is submitted</p>
+            )
+    } else {
+        return(
+    			<p>Click Analyze to get results</p>
     		)
     	}
     }
