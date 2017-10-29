@@ -3,7 +3,8 @@ var router = express.Router();
 var isLoggedIn = require('../middleware/isLoggedIn');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 var instance;
-var { Text } = require('../models/user');
+var list =[];
+var { User, Text } = require('../models/user');
 
 //MAKE SURE TO REPLACE THE USERNAME AND PASSWORD WITH ENVIRONMENT VARIABLES
 var tone_analyzer = new ToneAnalyzerV3({
@@ -31,7 +32,13 @@ router.post('/', function(req, res, next) {
 	    else
 	      //console.log(JSON.stringify(tone, null, 2));
 	  	  instance = tone;
-	  	  console.log
+	});
+});
+//route to send saved text back to page
+router.post('/list', function(req, res, next){
+	Text.find({userId: req.body.user}, function(err, texts){
+		if (err) return console.log(err);
+		res.send(texts)
 	});
 });
 
