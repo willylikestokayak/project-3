@@ -44,22 +44,22 @@ class Profile extends Component {
                                         <span className="card-title">Welcome to your WYM Profile, {this.state.user.name}!</span>
 
                                     </div>
-                                    <div className="card-action profileLinks">
+                                    <div className="card-action white-text">
                                         <Link to ='/history'>Saved Wyms</Link>
                                         <Link to ='/twitterprofile'>Twitter</Link>
                                         <Link to ='/'>Upload new text</Link>
                                     </div>
                                 </div>
                              </Col>
-                             <Col s={8}>   
+                             <Col s={8}>
                                 {/* <Route exact path ='/' render={(props) => (
                                     <Entry {...props} user={this.state.user} />
                                 )} /> */}
                                 <Route exact path='/' component ={Entry} />
-                                <Route path = '/history' render={(props) => ( 
+                                <Route path = '/history' render={(props) => (
                                     <History {...props} user={this.state.user} />
                                 )} />
-                                <Route path = '/twitterprofile' render={(props) => ( 
+                                <Route path = '/twitterprofile' render={(props) => (
                                     <TwitterProfile {...props} user={this.state.user} />
                                     )} />
                             </Col>
