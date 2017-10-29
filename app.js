@@ -13,11 +13,13 @@ var flash = require('connect-flash');
 
 // Mongoose stuff
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mern-local-auth');
+mongoose.connect('mongodb://localhost/watson');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var watson = require('./routes/watson');
+var twitter = require('./routes/twitter');
 
 var app = express();
 
@@ -41,19 +43,19 @@ app.use(express.static(path.join(__dirname, 'public')));
  * We'll set this to true.
  */
 app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
 }));
 
 // Add the flash module in
 app.use(flash());
 
 app.use(function(req, res, next) {
-  // before every route, attach the flash messages and current user to res.locals
-  res.locals.alerts = req.flash();
-  res.locals.currentUser = req.user;
-  next();
+    // before every route, attach the flash messages and current user to res.locals
+    res.locals.alerts = req.flash();
+    res.locals.currentUser = req.user;
+    next();
 });
 
 // initialize the passport configuration and session as middleware
@@ -63,6 +65,8 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/watson', watson)
+app.use('/twitter', twitter)
 
 // catch 404 and forward to error handler - commented out
 // app.use(function(req, res, next) {
