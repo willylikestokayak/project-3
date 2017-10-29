@@ -62,14 +62,12 @@ class Entry extends Component {
     }
     //two functions for saving data to textdb
     onSubmit(e) {
-        console.log("SUBMIT BUTTON CLICKED")
         var savedTitle = e.target.value
         this.setState({
             title: savedTitle
         })
     }
     clickSave(e) {
-        console.log("CLICK SAVE");
         console.log(this.props)
         console.log(this.state)
         axios.post('/watson/save', {
@@ -80,63 +78,56 @@ class Entry extends Component {
     }
 
 	onClick() {
-		var grab = this.grabCache()
 
 		axios.post('/watson', {
 				text: this.state.entry
 			})
 			.then( (response) => {
-				grab;
-			})
-			.catch(function(error) {
-				console.log(error)
-		});
+				var text = response.data
+				console.log(text)
+				var tones;
+				// THE MOMENT THE USER POSTS THE RESPONSE WILL ALREADY BE THE RESPONSE. I LEARNED ELECTRICTY
+				// IS PRETTY FAST.
+				if(text) {
+					tones = text.document_tone.tones
+					var sentences;
+				if (text.sentences_tone) {
+					sentences = text.sentences_tone.map( (item, index) => ({
+						className: item.tones.tone_id,
+						text: item.text
+					}) )
+					console.log(sentences)
+				}
+
+				this.setState({
+					analyzed: true,
+					tones: tones,
+					sentences: sentences
+				})
+				var name = this.state.tones.map( (item, index) => (item.tone_name) )
+	        	var score = this.state.tones.map( (item, index) => (item.score) )
+
+	        	this.setState({
+	        		name: name,
+	        		data: score
+	        	})
+					}
+
+				})
+				.catch(function(error) {
+					console.log(error)
+			});
 	}
 
-	grabCache() {
-		axios.get('/watson')
-		.then( (response) => {
-			//Reference to link objects
-			console.log(response.data.text)
-			//var text is essentially the key that I passed in the axios.post call, it honestly I just wrote this so I don't have to type
-			//"response.data.text. etc..."" every time I'm grabbing data.
-			var text = response.data.text
+	sentenceClassify() {
 
-			/* Some text may not get a document tone, so it is important to verify that there is a tone being sent, if there isn't and
-			there is an empty array, this may cause problems... */
-
-			var tones;
-			if(text) {
-			 	tones = text.document_tone.tones
-			}
-			var sentences;
-			if (text.sentences_tone) {
-				sentences = text.sentences_tone.map( (item, index) => ({
-					className: item.tones.tone_id,
-					text: item.text
-				}) )
-				console.log(sentences)
-			}
-
-			this.setState({
-				analyzed: true,
-				tones: tones,
-				sentences: sentences
-			})
-			var name = this.state.tones.map( (item, index) => (item.tone_name) )
-        	var score = this.state.tones.map( (item, index) => (item.score) )
-
-        	this.setState({
-        		name: name,
-        		data: score
-        	})
-        	
-		});
+		//var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
+		//var classify = this.state.sentences.map( (item, index) => )
 	}
 
     render(){
     	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
-    	
+
 
         return(
             <div className="text-analysis">

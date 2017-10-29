@@ -20,16 +20,25 @@ li:hover {
 
 .card {
     background-color: #0b132b;
+    width: 250px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+}
+
+.inline {
+    display: inline;
+}
+
+.noclear {
+    clear: none;
 }
 
 .profileLinks {
     color: white;
 }
 
-.textanalysis {
+.text-analysis {
     float: right;
 }
 
@@ -57,8 +66,12 @@ li:hover {
     height: 600px;
 }
 
-.carouselImages {
-    image-resolution: 100%;
+.carousel {
+    min-height: 600px;
+}
+
+.carousel .carousel-item {
+    width: 600px !important;
 }
 
 .aboutBox {

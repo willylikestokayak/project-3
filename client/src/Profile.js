@@ -25,17 +25,19 @@ class Profile extends Component {
         /* Here is where a call for the persons profile needs to be made. Once the verification is made the credentials will be stored in the
         state. The credentials will be passed down as props to all the other components so that when a component loads the information will
         be much faster to show up. */
+        console.log(this.state)
+        console.log(this.props)
     }
 
 
     render(){
         return(
                 <Row>
-                    <Col s={4}>
+                    {/* <Col s={4}> */}
                         <Router>
 
                             <div>
-                            
+                            <Col s={4}>
                                 <div className="card">
                                     <div className="card-content white-text">
                                         <img src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg" className="circle responsive-img" height="100" width="100" />
@@ -48,17 +50,25 @@ class Profile extends Component {
                                         <Link to ='/'>Upload new text</Link>
                                     </div>
                                 </div>
-                                
-                                <Route path = '/history' component = { History }/>
+                             </Col>
+                             <Col s={8}>   
+                                {/* <Route exact path ='/' render={(props) => (
+                                    <Entry {...props} user={this.state.user} />
+                                )} /> */}
+                                <Route exact path='/' component ={Entry} />
+                                <Route path = '/history' render={(props) => ( 
+                                    <History {...props} user={this.state.user} />
+                                )} />
                                 <Route path = '/twitterprofile' render={(props) => ( 
                                     <TwitterProfile {...props} user={this.state.user} />
                                     )} />
+                            </Col>
                             </div>
                         </Router>
-                    </Col>
+                    {/* </Col> */}
             <Col s={8}>
                 <div>
-                    <Entry user={this.state.user}/>
+                    {/* <Entry user={this.state.user}/> */}
                 </div>
             </Col>
             </Row>
