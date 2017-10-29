@@ -11,28 +11,6 @@ var tone_analyzer = new ToneAnalyzerV3({
     version_date: '2017-09-21'
 });
 
-
-<<<<<<< HEAD
-/* This is just a basic hookup to connect to the Watson API  */
-
-
-router.get('/', function(req, res, next) {
-    //console.log(instance)
-    res.json({ text: instance });
-    instance = undefined;
-})
-
-router.post('/', function(req, res, next) {
-    //This is a copy of what was in the documentation for the watson-developer-cloud node module.
-    tone_analyzer.tone({ text: req.body.text },
-        function(err, tone) {
-            if (err)
-                console.log(err);
-            else
-            //console.log(JSON.stringify(tone, null, 2));
-                instance = tone;
-        });
-=======
 router.post('/', function(req, res, next) {
 	tone_analyzer.tone({ text: req.body.text },
 	  function(err, tone) {
@@ -55,19 +33,14 @@ router.post('/wym', function(req, res, next){
 		if (err) return console.log(err);
 		res.send(texts)
 	});
->>>>>>> ef620e0b739b7855a3e7e268819a0b85150a5414
+
 });
 
 router.post('/save', function(req, res, next) {
     Text.create({
         userId: req.body.user.id,
-<<<<<<< HEAD
-        title: req.body.title,
-        content: req.body.content
-=======
 		title: req.body.title,
     	content: req.body.content
->>>>>>> ef620e0b739b7855a3e7e268819a0b85150a5414
     }, function(err, user) {
         if (err) {
             res.send(err.message)

@@ -24,46 +24,6 @@ class Entry extends Component {
 				tone_name: ''
 			}],
 			sentences: [],
-<<<<<<< HEAD
-			name: [],
-			data: []
-
-=======
-			classifyArr: [],
-			//COMMENTED OUT IS PREVIOUS WORKING VERSION OF THE CHART ARRAY.
-			//name: [],
-			//data: []
-			//WE WILL HAVE TO MAKE EACH OF EVERY TONE AS A RESPONSE NOT VERY EFFICIENT BUT WHATEVER I THINK IT WILL WORK 
-			chartData:[
-			 {
-				tone_name: "Anger",
-				score: 0
-			},
-			{
-				tone_name: "Fear",
-				score: 0
-			},
-			{
-				tone_name: "Joy",
-				score: 0
-			},
-			{
-				tone_name: "Sadness",
-				score: 0
-			},
-			{
-				tone_name: "Analytical",
-				score: 0
-			},
-			{
-				tone_name: "Analytical",
-				score: 0
-			},
-			{
-				tone_name: "Analytical",
-				score: 0
-			}]
->>>>>>> ef620e0b739b7855a3e7e268819a0b85150a5414
 		}
 	}
 
@@ -81,11 +41,6 @@ class Entry extends Component {
         })
     }
     clickSave(e) {
-<<<<<<< HEAD
-=======
-        console.log(this.props)
-        console.log(this.state)
->>>>>>> ef620e0b739b7855a3e7e268819a0b85150a5414
         axios.post('/watson/save', {
             user: this.props.user,
             title: this.state.title,
@@ -99,8 +54,64 @@ class Entry extends Component {
 				text: this.state.entry
 			})
 			.then( (response) => {
-<<<<<<< HEAD
-				grab;
+				//THIS IS ALSO THE RESPONSE FROM THE API
+				var text = response.data
+				console.log(text)
+				var tones;
+				if(text) {
+					tones = text.document_tone.tones
+					var sentences;
+				if (text.sentences_tone) {
+					sentences = text.sentences_tone.map( (item, index) => ({
+						className: item.tones.tone_id,
+						text: item.text
+					}) )
+					console.log(sentences)
+				}
+
+				this.setState({
+					analyzed: true,
+					tones: tones,
+					sentences: sentences
+				})
+
+				for (var i=0; i< (response.data.text.document_tone.tones).length; i++){
+                    if(response.data.text.document_tone.tones[i].tone_id === 'anger'){
+                        this.setState({
+                            anger: response.data.text.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.text.document_tone.tones[i].tone_id === 'tentative'){
+                        this.setState({
+                            tentative: response.data.text.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.text.document_tone.tones[i].tone_id === 'fear'){
+                        this.setState({
+                            fear: response.data.text.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.text.document_tone.tones[i].tone_id === 'joy'){
+                        this.setState({
+                            joy: response.data.text.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.text.document_tone.tones[i].tone_id === 'sadness'){
+                        this.setState({
+                            sadness: response.data.text.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.text.document_tone.tones[i].tone_id === 'analytical'){
+                        this.setState({
+                            analytical: response.data.text.document_tone.tones[i].score
+                        });
+                    }
+                    if(response.data.text.document_tone.tones[i].tone_id === 'confident'){
+                        this.setState({
+                            confident: response.data.text.document_tone.tones[i].score
+                        });
+                    }
+                }
 			})
 			.catch(function(error) {
 				console.log(error)
