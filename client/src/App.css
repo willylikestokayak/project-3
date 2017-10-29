@@ -19,18 +19,23 @@ li:hover {
 }
 
 .card {
-    background-color: #0b132b;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+  background-color: #0b132b;
+  width: 250px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.noclear {
+  clear: none;
 }
 
 .profileLinks {
     color: white;
 }
 
-.textanalysis {
-    float: right;
+.text-analysis {
+  float: right;
 }
 
 .App {
@@ -57,9 +62,12 @@ li:hover {
     height: 600px;
 }
 
-.carouselImages {
-    image-resolution: 100%;
+.carousel {
+min-height: 600px;
 }
+
+.carousel .carousel-item {
+width:600px !important;}
 
 .aboutBox {
     border: 4px solid rosybrown;

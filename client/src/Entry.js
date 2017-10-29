@@ -55,7 +55,7 @@ class Entry extends Component {
 
 	onClick() {
 		var grab = this.grabCache()
-		
+
 		axios.post('/watson', {
 				text: this.state.entry
 			})
@@ -72,7 +72,7 @@ class Entry extends Component {
 		.then( (response) => {
 			//Reference to link objects
 			console.log(response.data.text)
-			//var text is essentially the key that I passed in the axios.post call, this is purely for simplicity purposes. 
+			//var text is essentially the key that I passed in the axios.post call, this is purely for simplicity purposes.
 			var text = response.data.text
 
 			/* Some text may not get a document tone, so it is important to verify that there is a tone being sent, if there isn't and
@@ -102,20 +102,20 @@ class Entry extends Component {
         	})
 
 		});
-		
+
 		//this.sentenceClassify()
 	}
 
 
 	sentenceClassify() {
-		
+
 		//var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
 		//var classify = this.state.sentences.map( (item, index) => )
 	}
 
     render(){
     	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
-    	
+
 
         return(
             <div className="text-analysis">

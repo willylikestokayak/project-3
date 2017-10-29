@@ -35,7 +35,7 @@ class Navbar extends Component {
         }
         this.liftTokenToState = this.liftTokenToState.bind(this)
         this.logOut = this.logOut.bind(this)
-        this.handleLogIn = this.handleLogIn.bind(this)
+        // this.handleLogIn = this.handleLogIn.bind(this)
       }
       liftTokenToState(data) {
         this.setState({
@@ -52,15 +52,14 @@ class Navbar extends Component {
             isLoggedIn: false
         })
       }
-      handleLogIn(){
-          this.setState({
-              
-          })
+
+      liftTokenToState(token) {
+        this.setState({token: token})
       }
       componentDidMount(){
         console.log(this.state);
-        
-        
+
+
       }
       componentDidUpdate(){
         console.log(this.state);
@@ -89,7 +88,7 @@ class Navbar extends Component {
                       </div>
                     </nav>
                     <Route exact path="/" component = {Home} />
-                    <Route path='/profile' render={(props) => ( 
+                    <Route path='/profile' render={(props) => (
                         <Profile {...props} user={this.state.user}  />
                     )}  />
                     <Route path='/login' render={(props) => (
@@ -122,7 +121,7 @@ class Navbar extends Component {
                       </div>
                     </nav>
                     <Route exact path="/" component = {Home} />
-                    <Route path='/profile' render={(props) => ( 
+                    <Route path='/profile' render={(props) => (
                         <Profile {...props} user={this.state.user}  />
                     )}  />
                     <Route path='/login' render={(props) => (
@@ -135,7 +134,8 @@ class Navbar extends Component {
             </Router>
         )
     }
-}   
 }
+}
+
 
 export default Navbar;
