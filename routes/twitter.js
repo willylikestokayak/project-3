@@ -4,9 +4,10 @@ var mongoose = require('mongoose');
 var { Twet } = require('../models/user');
 
 router.get('/', function(req, res, next) {
-    Twet.findOne({ userId: req.body.user.id }).then(
-        //promises!!
-    )
+    Twet.find({ userId: req.body.user.id }, function(err, tweets){
+		if (err) return console.log(err);
+        res.send(tweets)
+    });
 });
 
 router.post('/', function(req, res, next) {

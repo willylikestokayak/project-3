@@ -28,14 +28,18 @@ class TwitterProfile extends Component {
         })
     }
     componentDidMount(){
-        console.log(this.props.user.id)
+
         axios.get('/twitter', {
-            user: this.props.user
+            user: this.props.user.id
+        }).then(result => {
+            this.setState({handle: result.data})
+            console.log(this.state.handle)
         })
     }
     render(){
         return(
             <div>
+                {this.state.handle}
                 <Row onSubmit={this.handleSubmit}>
                     <Input s={6} label="Your Twitter" onChange={ (e) => this.onChange(e)} />
                     {/* <input className='green' type='submit' onClick={ (e) => this.onClick(e) } value='My Tweets'/> */}
