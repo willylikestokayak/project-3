@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var isLoggedIn = require('../middleware/isLoggedIn');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
-var instance;
-var { Text } = require('../models/user');
+var { User, Text } = require('../models/user');
 
 //MAKE SURE TO REPLACE THE USERNAME AND PASSWORD WITH ENVIRONMENT VARIABLES
 var tone_analyzer = new ToneAnalyzerV3({
@@ -13,6 +12,7 @@ var tone_analyzer = new ToneAnalyzerV3({
 });
 
 
+<<<<<<< HEAD
 /* This is just a basic hookup to connect to the Watson API  */
 
 
@@ -32,13 +32,42 @@ router.post('/', function(req, res, next) {
             //console.log(JSON.stringify(tone, null, 2));
                 instance = tone;
         });
+=======
+router.post('/', function(req, res, next) {
+	tone_analyzer.tone({ text: req.body.text },
+	  function(err, tone) {
+	    if (err)
+	      console.log(err);
+	    else
+	  	  res.json(tone)
+	});
+});
+//route to send saved text back to page
+router.post('/list', function(req, res, next){
+	Text.find({userId: req.body.user}, function(err, texts){
+		if (err) return console.log(err);
+		res.send(texts)
+	});
+});
+//route to pull single wym for user to view again
+router.post('/wym', function(req, res, next){
+	Text.find({_id: req.body.id}, function(err, texts){
+		if (err) return console.log(err);
+		res.send(texts)
+	});
+>>>>>>> ef620e0b739b7855a3e7e268819a0b85150a5414
 });
 
 router.post('/save', function(req, res, next) {
     Text.create({
         userId: req.body.user.id,
+<<<<<<< HEAD
         title: req.body.title,
         content: req.body.content
+=======
+		title: req.body.title,
+    	content: req.body.content
+>>>>>>> ef620e0b739b7855a3e7e268819a0b85150a5414
     }, function(err, user) {
         if (err) {
             res.send(err.message)

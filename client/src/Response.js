@@ -3,7 +3,6 @@ import { Bar, Line, Radar, Bubble } from 'react-chartjs-2';
 
 class Response extends Component {
 
-
     constructor(props){
         super(props);
     }
@@ -24,6 +23,7 @@ class Response extends Component {
 
     	const data = {
 		  labels:  ['anger', 'tentative', 'joy', 'fear', 'sadness', 'analytical', 'confident'], //[anger, sadness, fear, tentative, joy, analytical, confident],
+
 		  datasets: [
 		    {
 		      label: [anger, tentative, joy, fear, sadness, analytical, confident],   //[data],   //[name],    //, //{response.data.text.document_tone.tones[i].tone_id},
@@ -57,12 +57,13 @@ class Response extends Component {
                     labels:{
                         fontSize: 25,
                         backgroundColor: '#76e7cd' */}
+
             </div>
         </div>
-        );
-    	} else {
-    		return(
-    			<p>Chart will render when text is submitted</p>
+            )
+    } else {
+        return(
+    			<p>Click Analyze to get results</p>
     		)
     	}
     }

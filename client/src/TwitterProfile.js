@@ -7,7 +7,7 @@ class TwitterProfile extends Component {
     constructor(props){
         super(props)
         this.state = {
-            handle: ''
+            handle: []
         }
     }
    onChange(e){
@@ -28,12 +28,23 @@ class TwitterProfile extends Component {
         })
     }
     componentDidMount(){
-        console.log(this.props.user.id)
-        axios.get('/twitter', {
-            user: this.props.user
-        })
+        //Getting the User's saved Twitter Handles
+        axios.post('/twitter/user', {
+            user: this.props.user.id
+        }).then(result => {
+            console.log(result.data)
+            this.setState({handle: result.data})
+        }).then(console.log(this.state.handle))
     }
     render(){
+        let twitterHandles = this.state.handle.map((item, index) => (
+            <Row>
+                <li className="inline" key={index}>{item.handle}</li>
+                {/* Need to create new onClick Function below to find user's tweets */}
+                <Button className="inline" key={index} onClick={(e) => this.onClick(e)} value={item._id}>View</Button>
+            </Row>
+            )
+        );
         return(
             <div>
                 <Row onSubmit={this.handleSubmit}>
@@ -41,6 +52,8 @@ class TwitterProfile extends Component {
                     {/* <input className='green' type='submit' onClick={ (e) => this.onClick(e) } value='My Tweets'/> */}
                     <Button type='submit' onClick={ (e) => this.onClick(e) }>My Tweets</Button>
                 </Row>
+                <h2>Your Saved Handles:</h2>
+                {twitterHandles}
                 <TweetAnalysis />
             </div>
         );

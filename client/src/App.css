@@ -1,35 +1,73 @@
 body {
-  background-color: #101D42;
-  color: white;
-  font-family: 'Josefin Sans', sans-serif;
+    background-color: #101D42;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+/* Materialize Web Icons */
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
 }
 
 .navbar {
-  background-color: #0b132b;
-  font-family: 'Days One', sans-serif;
+    background-color: #0b132b;
+    font-family: 'Days One', sans-serif;
 }
 
 li:hover {
-   background-color: #76e7cd;
+    background-color: #76e7cd;
 }
 
 .user {
-  float: left;
-  color: white;
+    float: left;
+    color: white;
 }
 
 .card {
-  background-color: #0b132b;
-  width: 250px;
+    background-color: #0b132b;
+    width: 250px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.inline {
+    display: inline;
+}
+
+.noclear {
+    clear: none;
 }
 
 .profileLinks {
-  color: white;
+    color: white;
 }
 
-.textanalysis {
-  float: right;
+.text-analysis {
+    float: right;
 }
+
 .App {
     text-align: center;
 }
@@ -54,8 +92,12 @@ li:hover {
     height: 600px;
 }
 
-.carouselImages {
-  image-resolution: 100%;
+.carousel {
+    min-height: 600px;
+}
+
+.carousel .carousel-item {
+    width: 600px !important;
 }
 
 .aboutBox {
@@ -64,5 +106,5 @@ li:hover {
 }
 
 .devs {
-  display: inline-block;
+    display: inline-block;
 }

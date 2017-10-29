@@ -21,6 +21,7 @@ class User extends Component {
                         <p>Welcome to your Watson profile!</p>
                       </div>
                       <div className="card-action">
+                        <Link to ='/history'>History</Link>
                         <Link to ='/twitterprofile'>Twitter</Link>
                         <Link to ='/profile'>Upload new text</Link>
                       </div>
