@@ -7,15 +7,15 @@ class Response extends Component {
     constructor(props){
         super(props);
         console.log(this.props.data)
-        this.state ={
-            anger: anger,
-			tentative: tentative,
-			joy: joy,
-			fear: fear,
-			sadness: sadness,
-			analytical: analytical,
-			confident: confident
-        }
+        // this.state ={
+        //     anger: anger,
+		// 	tentative: tentative,
+		// 	joy: joy,
+		// 	fear: fear,
+		// 	sadness: sadness,
+		// 	analytical: analytical,
+		// 	confident: confident
+        // }
     }
 
 
@@ -32,24 +32,26 @@ class Response extends Component {
         var sadness = this.props.sadness;
         var analytical = this.props.analytical;
         var confident = this.props.confident;
+        //var documentLabel = this.props.document_tone.tone_id;
 
         
         // const labels = ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'];
         // function getIndex(labels, data){
-            //{this.state.tentative}, {this.state.anger}, {this.state.joy}, {this.state.fear}, {this.state.sadness}, {this.state.analytical}, {this.state.confident}
+        //{this.state.tentative}, {this.state.anger}, {this.state.joy}, {this.state.fear}, {this.state.sadness}, {this.state.analytical}, {this.state.confident}
+        //{tentative}, {anger}, {joy}, {fear}, {sadness}, {analytical}, {confident}
         // }
 ///set labels to object state.
     	const data = {
-		  labels: [{tentative}, {anger}, {joy}, {fear}, {sadness}, {analytical}, {confident}],
+		  labels:  ['anger', 'sadness', 'fear', 'tentative', 'joy', 'analytical', 'confident'], //[anger, sadness, fear, tentative, joy, analytical, confident],
 		  datasets: [
 		    {
-		      label: 'General Document Tone',
-		      backgroundColor: null,
-		      borderColor: 'rgba(179,181,198,1)',
-		      pointBackgroundColor: 'rgba(179,181,198,1)',
+		      label: [data],   //[name],    //[anger, tentative, joy, fear, sadness, analytical, confident], //{response.data.text.document_tone.tones[i].tone_id},
+		      backgroundColor: 'white',
+		      borderColor: 'red',
+		      pointBackgroundColor: 'yellow',
 		      pointBorderColor: '#fff',
 		      pointHoverBackgroundColor: '#fff',
-		      pointHoverBorderColor: 'rgba(179,181,198,1)',
+		      pointHoverBorderColor: 'green',
 		      data: data
 		}]}
 

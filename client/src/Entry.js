@@ -106,7 +106,7 @@ class Entry extends Component {
 				analyzed: true,
 				tones: tones,
 				sentences: sentences,
-			})
+			});
 			// if(response.data.text.document_tone.tones[0].tone_id === "anger"){
 			// 	this.setState({
 			// 		anger: response0
