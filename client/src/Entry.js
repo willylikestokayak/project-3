@@ -17,8 +17,40 @@ class Entry extends Component {
 				tone_name: ''
 			}],
 			sentences: [],
-			name: [],
-			data: []
+			classifyArr: [],
+			//COMMENTED OUT IS PREVIOUS WORKING VERSION OF THE CHART ARRAY.
+			//name: [],
+			//data: []
+			//WE WILL HAVE TO MAKE EACH OF EVERY TONE AS A RESPONSE NOT VERY EFFICIENT BUT WHATEVER I THINK IT WILL WORK 
+			chartData:[
+			 {
+				tone_name: "Anger",
+				score: 0
+			},
+			{
+				tone_name: "Fear",
+				score: 0
+			},
+			{
+				tone_name: "Joy",
+				score: 0
+			},
+			{
+				tone_name: "Sadness",
+				score: 0
+			},
+			{
+				tone_name: "Analytical",
+				score: 0
+			},
+			{
+				tone_name: "Analytical",
+				score: 0
+			},
+			{
+				tone_name: "Analytical",
+				score: 0
+			}]
 		}
 	}
 
@@ -79,7 +111,11 @@ class Entry extends Component {
 			}
 			var sentences;
 			if (text.sentences_tone) {
-				sentences = text.sentences_tone
+				sentences = text.sentences_tone.map( (item, index) => ({
+					className: item.tones.tone_id,
+					text: item.text
+				}) )
+				console.log(sentences)
 			}
 
 			this.setState({
@@ -87,7 +123,6 @@ class Entry extends Component {
 				tones: tones,
 				sentences: sentences
 			})
-
 			var name = this.state.tones.map( (item, index) => (item.tone_name) )
         	var score = this.state.tones.map( (item, index) => (item.score) )
 
@@ -95,17 +130,8 @@ class Entry extends Component {
         		name: name,
         		data: score
         	})
-
+        	
 		});
-		
-		//this.sentenceClassify()
-	}
-
-
-	sentenceClassify() {
-		
-		//var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
-		//var classify = this.state.sentences.map( (item, index) => )
 	}
 
     render(){
@@ -125,9 +151,11 @@ class Entry extends Component {
                 <div id='entry-text-container'>
                 	<h5>Text</h5>
                 	<p>{this.state.entry}</p>
+
                 	<div id='response'>
                 		<h5>Document Analysis</h5>
                 			{tonesResults}
+                		
                 	</div>
                 </div>
                 <div id='response-component'>

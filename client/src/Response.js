@@ -3,7 +3,6 @@ import { Bar, Line, Radar, Bubble } from 'react-chartjs-2';
 
 class Response extends Component {
 
-
     constructor(props){
         super(props);
         console.log(this.props.data)
@@ -18,7 +17,7 @@ class Response extends Component {
     	var data = this.props.data
 
     	const data = {
-		  labels:  ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'],
+		  labels:  name,
 		  datasets: [
 		    {
 		      label: 'General Document Tone',
@@ -57,7 +56,7 @@ class Response extends Component {
         );
     	} else {
     		return(
-    			<p>Chart will render when text is submitted</p>
+    			<p>Click Analyze to get results</p>
     		)
     	}
     }

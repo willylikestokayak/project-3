@@ -12,12 +12,8 @@ var tone_analyzer = new ToneAnalyzerV3({
   version_date: '2017-09-21'
 });
 
-
-/* This is just a basic hookup to connect to the Watson API  */
-
-
 router.get('/', function(req, res, next) {
-	//console.log(instance)
+	console.log(instance)
 	res.json({text: instance});
 	instance = undefined;
 })
@@ -37,8 +33,8 @@ router.post('/', function(req, res, next) {
 router.post('/save', function(req, res, next){
 	Text.create({
         userId: req.body.user.id,
-				title: req.body.title,
-    		content: req.body.content
+		title: req.body.title,
+    	content: req.body.content
     }, function(err, user) {
         if (err) {
             res.send(err.message)
