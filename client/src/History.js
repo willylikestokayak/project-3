@@ -21,12 +21,14 @@ class History extends Component {
             console.log(this.state.wyms)
         })
     }
+    
     render(){
+        let wymsList = this.state.wyms.map((item, index) => (
+            <li><a href={"/watson/list/" + item._id} key={index}>{item.title}</a></li>)
+        );
         return(
             <div>
-                <ul>
-                {this.state.wyms.map((item, index) => ( <li key={index}>{item.title}</li>))}
-                </ul>
+                {wymsList}
                 {/* <Inventory /> */}
             </div>
         );
