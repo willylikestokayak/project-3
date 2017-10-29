@@ -3,7 +3,6 @@ var router = express.Router();
 var isLoggedIn = require('../middleware/isLoggedIn');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 var instance;
-var list =[];
 var { User, Text } = require('../models/user');
 
 //MAKE SURE TO REPLACE THE USERNAME AND PASSWORD WITH ENVIRONMENT VARIABLES
@@ -37,6 +36,13 @@ router.post('/', function(req, res, next) {
 //route to send saved text back to page
 router.post('/list', function(req, res, next){
 	Text.find({userId: req.body.user}, function(err, texts){
+		if (err) return console.log(err);
+		res.send(texts)
+	});
+});
+//route to pull single wym for user to view again
+router.post('/wym', function(req, res, next){
+	Text.find({_id: req.body.id}, function(err, texts){
 		if (err) return console.log(err);
 		res.send(texts)
 	});

@@ -3,10 +3,11 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var { Twet } = require('../models/user');
 
-router.get('/', function(req, res, next) {
-    Twet.find({ userId: req.body.user.id }, function(err, tweets){
+router.post('/user', function(req, res, next) {
+    Twet.find({ userId: req.body.user }, function(err, tweets){
 		if (err) return console.log(err);
         res.send(tweets)
+        console.log("req.body.user" + req.body.user)
     });
 });
 

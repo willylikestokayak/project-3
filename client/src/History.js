@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import Inventory from './Inventory';
 import axios from 'axios';
+import {Button, Row } from "react-materialize";
 
 class History extends Component {
     constructor(props){
         super(props)
         this.state = {
-            wyms: []
+            wyms: [],
+            toView: ''
         }
         this.componentDidMount = this.componentDidMount.bind(this)
     }
@@ -21,15 +23,30 @@ class History extends Component {
             console.log(this.state.wyms)
         })
     }
-    
+    //Get Individual wym props
+    onClick(e){
+        axios.post('/watson/wym', {
+            user: this.props.user.id,
+            id: e.target.value
+        }).then(result => {
+            this.setState({toView: result.data[0].content})
+            console.log(this.state.toView)
+            // console.log(result.data.data.content)
+        })
+    }
+
     render(){
         let wymsList = this.state.wyms.map((item, index) => (
-            <li><a href={"/watson/list/" + item._id} key={index}>{item.title}</a></li>)
+            <Row>
+                <li className="inline" key={index}>{item.title}</li>
+                <Button className="inline" key={index} onClick={(e) => this.onClick(e)} value={item._id}>View</Button>
+            </Row>
+        )
         );
         return(
             <div>
                 {wymsList}
-                {/* <Inventory /> */}
+                <Inventory content={this.state.toView}/>
             </div>
         );
     }
