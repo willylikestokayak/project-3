@@ -44,6 +44,9 @@ class Entry extends Component {
         })
     }
     clickSave(e) {
+		console.log(this.props.user)
+		console.log(this.state.title)
+		console.log(this.state.entry)
         axios.post('/watson/save', {
             user: this.props.user,
             title: this.state.title,
