@@ -83,11 +83,10 @@ class Entry extends Component {
 				text: this.state.entry
 			})
 			.then( (response) => {
+				// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
 				var text = response.data
 				console.log(text)
 				var tones;
-				// THE MOMENT THE USER POSTS THE RESPONSE WILL ALREADY BE THE RESPONSE. I LEARNED ELECTRICTY
-				// IS PRETTY FAST.
 				if(text) {
 					tones = text.document_tone.tones
 					var sentences;
@@ -133,8 +132,8 @@ class Entry extends Component {
             <div className="text-analysis">
                 <h5>WYM Text Analyzer</h5>
                 <form id='watson-tone-entry'>
-                	<textarea rows='5' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
-                    <input type="text" placeholder="Title to Save" onChange={(e) => this.onSubmit(e)} />
+                	<input type="text" placeholder="Title to Save" onChange={(e) => this.onSubmit(e)} />
+                	<textarea rows='20' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
                 	<input className="blue" type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
                     <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/>
 
