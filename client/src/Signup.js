@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {CloduinaryContext, Transformation, Image, Cloudinary} from 'cloudinary-react'
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
+import {CloudinaryContext, Transformation, Image, Cloudinary} from 'cloudinary-react'
 import {
   BrowserRouter as Router,
   Redirect
 } from 'react-router-dom';
 
+const CLOUDINARY_UPLOAD_PRESET = 'spe0k8pn';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/drdpp9jiw/upload';
 
 class Signup extends Component {
   constructor(props) {
@@ -14,15 +18,17 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      profilePic: '',
+      uploadedFileCloudinaryUrl: '',
       redirect: false
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleImageUpload = this.handleImageUpload.bind(this);
+    this.onImageDrop = this.onImageDrop.bind(this);
   }
-  
+
 
   handleNameChange(e) {
     this.setState({name: e.target.value})
@@ -39,7 +45,8 @@ class Signup extends Component {
     axios.post('/auth/signup', {
       name: this.state.name,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      profilePic: this.state.uploadedFileCloudinaryUrl
     }).then(result => {
       console.log(result.data)
       localStorage.setItem('mernToken', result.data.token)
@@ -49,14 +56,34 @@ class Signup extends Component {
       this.props.lift(result.data)
       this.setState({redirect: true})
     })
-    var cloudinaryUrl = '	https://api.cloudinary.com/v1_1/drdpp9jiw/upload';
+
   }
-  uploadWidget() {
-        Cloudinary.openUploadWidget({ cloud_name: 'drdpp9jiw', upload_preset: 'spe0k8pn', tags:['xmas']},
-            function(error, result) {
-                console.log(result);
-            });
-    }
+
+  onImageDrop(files) {
+    this.setState({
+      uploadedFile: files[0]
+    });
+    this.handleImageUpload(files[0]);
+  }
+
+  handleImageUpload(file) {
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                        .field('file', file);
+    upload.end((err, response) => {
+      if(err) {
+        console.log(err);
+      }
+      if(response.body.secure_url !== '') {
+        this.setState({
+          uploadedFileCloudinaryUrl: response.body.secure_url
+
+        });
+        console.log(this.state.uploadedFileCloudinaryUrl);
+      }
+    });
+  }
+
 
   render() {
     const {redirect} = this.state;
@@ -71,20 +98,20 @@ class Signup extends Component {
           Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
           <input type='submit' value='Sign Up' />
         </form>
-        {/* <div className="card">
-          <img src="http://fillmurray.com/g/300/300" id="img-preview" />
-
-            <input id="file-upload" type="file" onSubmit={this.handleImage}/>
-            Select a Profile image
-
-        </div> */}
-        <div className="main">
-          <h1>Galleria</h1>
-          <div className="upload">
-              <button onClick={this.uploadWidget.bind(this)} className="upload-button">
-                  Add Image
-              </button>
-          </div>
+        <div className="FileUpload">
+          <Dropzone
+            multiple={false}
+            accept="image/*"
+            onDrop={this.onImageDrop.bind(this)}>
+            <p>Drop an image or click to select a file to upload.</p>
+          </Dropzone>
+        </div>
+        <div>
+          {this.state.uploadedFileCloudinaryUrl === '' ? null :
+          <div>
+            <p>{this.state.uploadedFile.name}</p>
+            <img src={this.state.uploadedFileCloudinaryUrl} />
+          </div>}
         </div>
       </div>
     );
