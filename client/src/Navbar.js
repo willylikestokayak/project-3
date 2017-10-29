@@ -58,6 +58,7 @@ class Navbar extends Component {
       }
       componentDidMount(){
         console.log(this.state);
+        console.log(this.props)
 
 
       }

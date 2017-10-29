@@ -43,15 +43,7 @@ class Entry extends Component {
             title: this.state.title,
             content: this.state.entry
         })
-        // .then((response)=>{
-        //     this.retrieveWyms
-        // })
     }
-    // retrieveWyms(){
-    //     axios.get('/watson/save').then((response)=> {
-    //         console.log(response)
-    //     })
-    // }
 
 	onClick() {
 		var grab = this.grabCache()
