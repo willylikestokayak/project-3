@@ -126,43 +126,43 @@ class Entry extends Component {
 				if(response.data.text.document_tone.tones[i].tone_id === "anger"){
 					this.setState({
 						anger: response.data.text.document_tone.tones[i].score
-					})
+					});
 					console.log(this.state.anger)
 				}
 				if(response.data.text.document_tone.tones[i].tone_id === "tentative"){
 					this.setState({
 						tentative: response.data.text.document_tone.tones[i].score
-					})
+					});
 					console.log(this.state.tentative)
 				}
 				if(response.data.text.document_tone.tones[i].tone_id === "fear"){
 					this.setState({
 						fear: response.data.text.document_tone.tones[i].score
-					})
+					});
 					console.log(this.state.fear)
 				}
 				if(response.data.text.document_tone.tones[i].tone_id === "joy"){
 					this.setState({
 						joy: response.data.text.document_tone.tones[i].score
-					})
+					});
 					console.log(this.state.joy)
 				}
 				if(response.data.text.document_tone.tones[i].tone_id === "sadness"){
 					this.setState({
 						sadness: response.data.text.document_tone.tones[i].score
-					})
+					});
 					console.log(this.state.sadness)
 				}
 				if(response.data.text.document_tone.tones[i].tone_id === "analytical"){
 					this.setState({
 						analytical: response.data.text.document_tone.tones[i].score
-					})
+					});
 					console.log(this.state.analytical)
 				}
 				if(response.data.text.document_tone.tones[i].tone_id === "confident"){
 					this.setState({
 						confident: response.data.text.document_tone.tones[i].score
-					})
+					});
 					console.log(this.state.confident)
 				}
 			}
@@ -213,11 +213,11 @@ class Entry extends Component {
                 	</div>
                 </div>
                 <div id='response-component'>
-                	<Response test='test' name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} tentative={this.state.tentative}/>
+                	<Response test='test' name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} tentative={this.state.tentative} anger={this.state.anger} joy={this.state.joy} fear={this.state.fear} sadness={this.state.sadness} analytical={this.state.analytical} confident={this.state.confident}/>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default Entry
+export default Entry;

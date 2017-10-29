@@ -7,7 +7,15 @@ class Response extends Component {
     constructor(props){
         super(props);
         console.log(this.props.data)
-        
+        this.state ={
+            anger: anger,
+			tentative: tentative,
+			joy: joy,
+			fear: fear,
+			sadness: sadness,
+			analytical: analytical,
+			confident: confident
+        }
     }
 
 
@@ -15,16 +23,24 @@ class Response extends Component {
         var tentative = this.props.tentative;
     	if(this.props.analyzed) {
 
-    	var name = this.props.name
-        var data = this.props.data
+    	var name = this.props.name;
+        var data = this.props.data;
+        var anger = this.props.anger;
+        var tentative = this.props.tentative;
+        var joy = this.props.joy;
+        var fear = this.props.fear;
+        var sadness = this.props.sadness;
+        var analytical = this.props.analytical;
+        var confident = this.props.confident;
+
         
         // const labels = ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'];
         // function getIndex(labels, data){
-
+            //{this.state.tentative}, {this.state.anger}, {this.state.joy}, {this.state.fear}, {this.state.sadness}, {this.state.analytical}, {this.state.confident}
         // }
-
+///set labels to object state.
     	const data = {
-		  labels: ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'],
+		  labels: [{tentative}, {anger}, {joy}, {fear}, {sadness}, {analytical}, {confident}],
 		  datasets: [
 		    {
 		      label: 'General Document Tone',
