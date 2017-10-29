@@ -48,9 +48,13 @@ class Profile extends Component {
                                         <Link to ='/'>Upload new text</Link>
                                     </div>
                                 </div>
-
-                                <Route path = '/history' component = { History }/>
-                                <Route path = '/twitterprofile' render={(props) => (
+                                {/* <Route exact path ='/' render={(props) => (
+                                    <Entry {...props} user={this.state.user} />
+                                )} /> */}
+                                <Route path = '/history' render={(props) => ( 
+                                    <History {...props} user={this.state.user} />
+                                )} />
+                                <Route path = '/twitterprofile' render={(props) => ( 
                                     <TwitterProfile {...props} user={this.state.user} />
                                     )} />
                             </div>

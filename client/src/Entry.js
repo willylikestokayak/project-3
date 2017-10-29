@@ -30,14 +30,12 @@ class Entry extends Component {
     }
     //two functions for saving data to textdb
     onSubmit(e) {
-        console.log("SUBMIT BUTTON CLICKED")
         var savedTitle = e.target.value
         this.setState({
             title: savedTitle
         })
     }
     clickSave(e) {
-        console.log("CLICK SAVE");
         console.log(this.props)
         console.log(this.state)
         axios.post('/watson/save', {
@@ -45,7 +43,15 @@ class Entry extends Component {
             title: this.state.title,
             content: this.state.entry
         })
+        // .then((response)=>{
+        //     this.retrieveWyms
+        // })
     }
+    // retrieveWyms(){
+    //     axios.get('/watson/save').then((response)=> {
+    //         console.log(response)
+    //     })
+    // }
 
 	onClick() {
 		var grab = this.grabCache()
