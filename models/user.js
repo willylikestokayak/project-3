@@ -23,7 +23,9 @@ var userSchema = new mongoose.Schema({
         minlength: 8,
         maxlength: 99
     },
-    profilePic: String
+    profilePic: {
+      type: String
+    }
 });
 
 // Override 'toJSON' to prevent the password from being returned with the user
@@ -32,7 +34,8 @@ userSchema.set('toJSON', {
         var returnJson = {
             id: ret._id,
             email: ret.email,
-            name: ret.name
+            name: ret.name,
+            profilePic: ret.profilePic
         };
         return returnJson;
     }

@@ -38,8 +38,8 @@ class History extends Component {
     render(){
         let wymsList = this.state.wyms.map((item, index) => (
             <Row>
-                <li className="inline" key={index}>{item.title}</li>
-                <Button className="inline" key={index} onClick={(e) => this.onClick(e)} value={item._id}><i class="material-icons">add_circle</i>View</Button>
+                {/* <li className="inline" key={index}>{item.title}</li> */}
+                <Button className="inline fullWidth" key={index} onClick={(e) => this.onClick(e)} value={item._id}><i class="material-icons">add_circle</i>{item.title}</Button>
             </Row>
         )
         );

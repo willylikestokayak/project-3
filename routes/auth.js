@@ -28,6 +28,7 @@ router.post('/login', function(req, res, next) {
         passwordMatch = bcrypt.compareSync(req.body.password, hashedPass);
         if (passwordMatch) {
             console.log("passwords match");
+            console.log(user);
             // Make a token and return it as JSON
             var token = jwt.sign(user.toObject(), secret, {
                 expiresIn: 60 * 60 * 24 // expires in 24 hours
@@ -63,7 +64,8 @@ router.post('/signup', function(req, res, next) {
             User.create({
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                profilePic: req.body.profilePic
             }, function(err, user) {
                 if (err) {
                     res.send(err.message)

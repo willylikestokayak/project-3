@@ -44,6 +44,9 @@ class Entry extends Component {
         })
     }
     clickSave(e) {
+		console.log(this.props.user)
+		console.log(this.state.title)
+		console.log(this.state.entry)
         axios.post('/watson/save', {
             user: this.props.user,
             title: this.state.title,
@@ -68,7 +71,7 @@ class Entry extends Component {
     				if (text.sentences_tone) {
                         console.log('This is text.sentences_tone: ' + text.sentences_tone)
     					sentences = text.sentences_tone.map( (item, index) => ({
-    						className: item.tones[0],
+    						className: item.tones,
     						text: item.text
     					}) )
     				}
@@ -85,8 +88,13 @@ class Entry extends Component {
 				var score = this.state.tones.map( (item, index) => (item.score) )
 
 				this.setState({
-					name: name,
-					data: score
+					anger: '',
+                    tentative: '',
+                    fear: '',
+                    joy: '',
+                    sadness: '',
+                    analytical: '',
+                    confident: ''
 				})
 				for (var i=0; i< (response.data.document_tone.tones).length; i++){
                     if(response.data.document_tone.tones[i].tone_id === 'anger'){

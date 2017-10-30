@@ -56,6 +56,11 @@ li:hover {
     display: inline;
 }
 
+.fullWidth {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
 .noclear {
     clear: none;
 }
@@ -107,4 +112,8 @@ li:hover {
 
 .devs {
     display: inline-block;
+}
+
+.row {
+    margin-bottom: 0
 }

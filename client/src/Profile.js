@@ -40,26 +40,28 @@ class Profile extends Component {
                             <Col s={4}>
                                 <div className="card">
                                     <div className="card-content white-text">
-                                        <img src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg" className="circle responsive-img" height="100" width="100" />
+                                        <img src={this.state.user.profilePic} className="circle responsive-img" height="100" width="100" />
                                         <span className="card-title">Welcome to your WYM Profile, {this.state.user.name}!</span>
 
                                     </div>
-                                    <div className="card-action profileLinks">
+                                    <div className="card-action white-text">
                                         <Link to ='/history'>Saved Wyms</Link>
                                         <Link to ='/twitterprofile'>Twitter</Link>
                                         <Link to ='/'>Upload new text</Link>
                                     </div>
                                 </div>
                              </Col>
-                             <Col s={8}>   
+                             <Col s={8}>
                                 {/* <Route exact path ='/' render={(props) => (
                                     <Entry {...props} user={this.state.user} />
                                 )} /> */}
-                                <Route exact path='/' component ={Entry} />
+                                <Route exact path='/' render={(props) => (
+                                    <Entry {...props} user={this.state.user} />
+                                )} />
                                 <Route path = '/history' render={(props) => ( 
                                     <History {...props} user={this.state.user} />
                                 )} />
-                                <Route path = '/twitterprofile' render={(props) => ( 
+                                <Route path = '/twitterprofile' render={(props) => (
                                     <TwitterProfile {...props} user={this.state.user} />
                                     )} />
                             </Col>

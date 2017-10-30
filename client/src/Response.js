@@ -22,17 +22,24 @@ class Response extends Component {
         var confident = this.props.confident;
 
     	const data = {
-		  labels:  ['Anger', 'Tentative', 'Joy', 'Fear', 'Sadness', 'Analytical', 'Confident'], //[anger, sadness, fear, tentative, joy, analytical, confident],
-
+		  labels:  ['Anger', 'Tentative', 'Joy', 'Fear', 'Sadness', 'Analytical', 'Confident'], 
 		  datasets: [
 		    {
-		      label: [anger, tentative, joy, fear, sadness, analytical, confident],   //[data],   //[name],    //, //{response.data.text.document_tone.tones[i].tone_id},
-		      backgroundColor: 'white',
-		      borderColor: 'red',
-		      pointBackgroundColor: 'yellow',
-		      pointBorderColor: '#fff',
-		      pointHoverBackgroundColor: '#fff',
-		      pointHoverBorderColor: 'green',
+		      label: [],   
+		      backgroundColor: [
+                  'red', //Anger
+                  'pink', //Tentative
+                  'yellow', //Joy
+                  'orange', //Fear
+                  'grey', //Sadness
+                  'green', //Analytical
+                  'blue' //Confident
+              ],
+		      borderColor: 'white',
+		      //pointBackgroundColor: 'yellow',
+		      //pointBorderColor: '#fff',
+		      //pointHoverBackgroundColor: '#fff',
+		      //pointHoverBorderColor: 'green',
 		      data: [anger, tentative, joy, fear, sadness, analytical, confident]
 		}]}
 
@@ -41,7 +48,11 @@ class Response extends Component {
             <div className="chart">
             <Bar
                 data={data} 
-                options={{}}
+                options={{
+                    legend: {
+                        display: false
+                    }
+                }}
             /> 
             {/* Tentative is equal to {this.props.tentative} */}
 
