@@ -77,7 +77,6 @@ class Signup extends Component {
       if(response.body.secure_url !== '') {
         this.setState({
           uploadedFileCloudinaryUrl: response.body.secure_url
-
         });
         console.log(this.state.uploadedFileCloudinaryUrl);
       }
