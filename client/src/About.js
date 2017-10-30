@@ -5,7 +5,6 @@ class About extends Component {
     render(){
         return(
           <div className="aboutBox">
-            <Row>
               <h5>About the Developers</h5>
               <div className="devs">
                 <Col m={3} s={6}>
@@ -41,6 +40,7 @@ class About extends Component {
 		              </Card>
                 </Col>
               </div>
+            
             </div>
         );
     }
