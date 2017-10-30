@@ -97,10 +97,6 @@ class Signup extends Component {
           <Input label="Email" type='text' value={this.state.email} onChange={this.handleEmailChange} />
           <Input label="Password" type='password' value={this.state.password} onChange={this.handlePasswordChange} />
           <Button type="submit" className="valign-wrapper"onSubmit={this.handleSubmit}><i class="material-icons right-align">security</i> Log in</Button>
-          {/* Name: <input type='text' value={this.state.name} onChange={this.handleNameChange} /><br /> */}
-          {/* Email: <input type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
-          Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br /> */}
-          {/* <input type='submit' value='Sign Up' /> */}
         </form>
         <div className="FileUpload inline">
           <Dropzone
