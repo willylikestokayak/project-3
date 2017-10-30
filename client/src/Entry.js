@@ -151,7 +151,7 @@ class Entry extends Component {
 		console.log(this.props)
 					}
 
-				})
+				)
 				.catch(function(error) {
 					console.log(error)
 			});
