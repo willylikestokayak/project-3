@@ -37,9 +37,19 @@ The following 7 tones can be detected in submitted text:
 
 ### Planning
 
+#### Day 1
+
+* Assigned roles to each team member
+#### Day 2 & 3
+
+#### Day 4, 5, 6
+
+#### Day 7
+
+
 | Day   | Tasks  |        
 | ------|:------:|
-| 1     | JS Framework |
+| 1     | * Assigned roles |
 | 2 & 3     | JS Framework |
 | 7       | * Finishing touches to styling *     |
 Wireframes

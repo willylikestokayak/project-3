@@ -24,19 +24,36 @@ class Demo extends Component {
                     	<Slide
                     		src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg"
                     		title="Welcome to WYM!">
-                    		Tone analyzing is super cool, yo.
+                    		A tone analzyer app utilizing the IBM Watson API.
                     	</Slide>
                     	<Slide
                     		src="http://i.dailymail.co.uk/i/pix/2012/02/02/article-2095088-1178BD6E000005DC-983_468x560.jpg"
-                    		title="Look at this other slide!"
+                    		title="Create an account to get started"
                     		placement="left">
-                    		We have so many slides.
                     	</Slide>
                     	<Slide
                     		src="http://www.lastwordonnothing.com/wp-content/uploads/2013/02/009azw4s1.jpg"
-                    		title="Another slide."
+                    		title="Submit a text of your choice."
                     		placement="right">
-                    		Who else has this many slides?
+                    		Receive immediate tone feedback on the text that you submit.
+                    	</Slide>
+                      <Slide
+                    		src="http://www.lastwordonnothing.com/wp-content/uploads/2013/02/009azw4s1.jpg"
+                    		title="Review your tone feedback."
+                    		placement="left">
+                    		Feedback is provided in helpful graphs and broken down line by line.
+                    	</Slide>
+                      <Slide
+                    		src="http://www.lastwordonnothing.com/wp-content/uploads/2013/02/009azw4s1.jpg"
+                    		title="Save your text for future reference."
+                    		placement="right">
+                    		Easily refer back to previous tone analysis by saving your submitted text to your profile.
+                    	</Slide>
+                      <Slide
+                    		src="http://www.lastwordonnothing.com/wp-content/uploads/2013/02/009azw4s1.jpg"
+                    		title="Perfect your twitter feed."
+                    		placement="left">
+                    		Perform a tone analysis on your entire twitter feed to fine tune your social media presence.
                     	</Slide>
                     </Slider>
 
