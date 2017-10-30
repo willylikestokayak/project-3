@@ -46,11 +46,13 @@ class Login extends Component {
       return <Redirect to ='/profile'/>
     };
     return (
+      // <div id='modal1' className='modal'>
+      //   <div className="modal-content">
         <div>
           <form className="loginField" onSubmit={this.handleSubmit}>
             <Input label="Email" type='text' value={this.state.email} onChange={this.handleEmailChange} />
             <Input label="Password" type='password' value={this.state.password} onChange={this.handlePasswordChange} />
-            <Button type="submit" className="valign-wrapper"onSubmit={this.handleSubmit}><i class="material-icons right-align">security</i> Log in</Button>
+            <Button type="submit" className="valign-wrapper submitButton"onSubmit={this.handleSubmit}><i class="material-icons right-align">security</i> Log in</Button>
           </form>
           {/* <img src="img/watson-image.png" alt="Watson" className="responsive-img" height="100" width="100" /> */}
         </div>

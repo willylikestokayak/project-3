@@ -46,27 +46,14 @@ li:hover {
 
 .card {
     background-color: #0b132b;
-    /* width: 250px; */
+    width: 250px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    color: #ca054d
-}
-
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-    color: #ca054d;
 }
 
 .inline {
     display: inline;
-}
-
-.navList {
-    display: block;
-}
-
-.button {
-    margin-top: 22px;
 }
 
 .fullWidth {
@@ -125,9 +112,17 @@ li:hover {
 .devs {
     display: inline-block;
     margin: 10px;
+    max-height: 300px;
+    min-height: 300px;
+    max-width: 400px;
     background-color: #0b132b;
+    color: white;
 }
 
+
+.devNames {
+  color: #76e7cd;
+}
 .inputField {
     max-height: 200px;
 }
@@ -140,6 +135,15 @@ li:hover {
 
 .row {
     margin-bottom: 0
+}
+
+.FileUpload {
+  margin-top: 25px;
+  display: inline-block;
+}
+
+.submitButton {
+  background-color: #76e7cd;
 }
 
 @media only screen and (min-width: 768px) {

@@ -7,6 +7,9 @@ Link to app:
 WYM (What You Mean) utilizes the IBM Watson Tone Analyzer API (more info: >>>insert link>>>) to analyze tone of a user's submitted text. WYM is able to detect a range of 7 different tones and provide the user with tone feedback of the text that was provided.
 
 The following 7 tones can be detected in submitted text:
+* Anger
+* Fear
+* Joy
 * Sadness
 * Analytical
 * Tentative
@@ -30,22 +33,51 @@ The following 7 tones can be detected in submitted text:
 
 | Tech        | Application  |        
 | ------------|:------------:|
-| React.js    | JS Framework |
-| Node.js     | JS Framework |
-| Mongo       | Database     |   
+| React.js    | JS Framework    |
+| Node.js     | JS Framework    |
+| Mongo       | Database        |  
+| materialize | Design Framework|
 
 
 ### Planning
 
-| Day   | Tasks  |        
-| ------|:------:|
-| 1     | JS Framework |
-| 2 & 3     | JS Framework |
-| 7       | * Finishing touches to styling *     |
-Wireframes
+#### Weekend Before Project Weekend
+
+* Each group member brainstormed independently
+* Trello board was set up to start organizing main project requirements & planning phase
+
+#### Day 1
+
+* Finalized idea for app
+* Listed out MVP features and stretch goal features
+* Drew out wireframes & component structure
+* Assigned roles to each team member
+
+Wireframes:
+
+>>>>Need to grab them from Chad
+
+#### Day 2 & 3
+
+* Built models
+* Set up basic components and routes
+
+#### Day 4, 5, 6
+
+* Built out all components
+* Added additional functionalities such as profile image uploads and charts
+
+#### Day 7
+
+* Assigned finishing touches to each group member
+* Fixed styling issues
+* Small bug fixes
 
 ## Next Steps
 
-### Features to Be Added
-
-### Current Issues to Be Fixed
+1. Ability for user to edit their profile image.
+2. Trend analysis that enables users to view trends in their written tone over time.
+3. Feedback for users in the form of suggestions based on the tone response for their text.
+4. Ability to upload text in csv format.
+5. Tags for doc types (i.e. cover letter, resume, etc.)
+6. Improve styling
