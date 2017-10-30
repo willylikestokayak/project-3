@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Response from './Response';
+import {Row, Input, Button} from 'react-materialize';
 
 
 class Entry extends Component {
@@ -28,6 +29,18 @@ class Entry extends Component {
 			data: []
 
 		}
+		this.componentDidMount = this.componentDidMount.bind(this)
+	}
+	componentDidMount(){
+		this.setState({
+			anger: '',
+			tentative: '',
+			joy: '',
+			fear: '',
+			sadness: '',
+			analytical: '',
+			confident: ''
+		})
 	}
 
 	onChange(e) {
@@ -44,9 +57,7 @@ class Entry extends Component {
         })
     }
     clickSave(e) {
-		console.log(this.props.user)
-		console.log(this.state.title)
-		console.log(this.state.entry)
+		e.preventDefault()
         axios.post('/watson/save', {
             user: this.props.user,
             title: this.state.title,
@@ -55,48 +66,45 @@ class Entry extends Component {
     }
 
 	onClick() {
-		axios.post('/watson', {
-				text: this.state.entry
-			})
-			.then( (response) => {
-				// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
-				var text = response.data
-                console.log(text)
-				var tones;
-                // CHECK FOR RESPONSE
-				if(text) {
-					tones = text.document_tone.tones
-					var sentences;
-                    // IF THERE IS RESPONSE, CHECK FOR A SENTENCES_TONE ARRAY OF OBJECTS AS WELL
-    				if (text.sentences_tone) {
-                        console.log('This is text.sentences_tone: ' + text.sentences_tone)
-    					sentences = text.sentences_tone.map( (item, index) => ({
-    						className: item.tones,
-    						text: item.text
-    					}) )
-    				}
-                    //console.log(sentences)
-				}
-
-				this.setState({
-					analyzed: true,
-					tones: tones,
-					sentences: sentences
-				})
-
-				var name = this.state.tones.map( (item, index) => (item.tone_name) )
-				var score = this.state.tones.map( (item, index) => (item.score) )
-
-				this.setState({
-					anger: '',
-                    tentative: '',
-                    fear: '',
-                    joy: '',
-                    sadness: '',
-                    analytical: '',
-                    confident: ''
-				})
-				for (var i=0; i< (response.data.document_tone.tones).length; i++){
+				axios.post('/watson', {
+						text: this.state.entry
+					})
+					.then( (response) => {
+						// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
+						var text = response.data
+						console.log(text)
+						var tones;
+						if(text) {
+							tones = text.document_tone.tones
+							var sentences;
+						if (text.sentences_tone) {
+							sentences = text.sentences_tone.map( (item, index) => ({
+								className: item.tones.tone_id,
+								text: item.text
+							}) )
+							console.log(sentences)
+						}
+		
+						this.setState({
+							analyzed: true,
+							tones: tones,
+							sentences: sentences
+						})
+						var name = this.state.tones.map( (item, index) => (item.tone_name) )
+						var score = this.state.tones.map( (item, index) => (item.score) )
+		
+						this.setState({
+							name: name,
+							data: score,
+							anger: '',
+							tentative: '',
+							joy: '',
+							fear: '',
+							sadness: '',
+							analytical: '',
+							confident: ''
+						});
+						for (var i=0; i< (response.data.document_tone.tones).length; i++){
                     if(response.data.document_tone.tones[i].tone_id === 'anger'){
                         this.setState({
                             anger: response.data.document_tone.tones[i].score
@@ -131,29 +139,38 @@ class Entry extends Component {
                         this.setState({
                             confident: response.data.document_tone.tones[i].score
                         });
-                    }
-        		}
-        		console.log(this.state);
-        		console.log(this.props)
-			})
-			.catch(function(error) {
-				console.log(error)
-			});
-	}
+
+				}
+				console.log(this.state);
+				console.log(this.props)
+							}
+		
+						})
+						.catch(function(error) {
+							console.log(error)
+					})
+				
+				}
 
     render(){
     	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
 
 
         return(
-            <div className="text-analysis">
+            <div className="text-analysis fullWidth">
                 <h5>WYM Text Analyzer</h5>
                 <form id='watson-tone-entry'>
-                	<input type="text" placeholder="Title to Save" onChange={(e) => this.onSubmit(e)} />
-                	<textarea rows='20' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
-                	<input className="blue" type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
-                    <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/>
-
+					<Row>
+						<Input s={6} label="Give a Title to Save" onChange={ (e) => this.onSubmit(e)} />
+						<Button className="left button" onClick={ (e) => this.clickSave(e) }>Save Wym</Button>
+					</Row>
+					<Row>
+						<Input s={6} type="textarea" className="materialize-textarea" id="textarea1" label="Insert text to detect tone" onChange={ (e) => this.onChange(e) }  />
+						<Button className="left button" onClick={ (e) => this.onClick(e) }>Analyze</Button>
+					</Row>
+                	{/* <textarea className="materialize-textarea" id="textarea1" rows='20' cols='100' placeholder='Insert text to detect tone' onChange={ (e) => this.onChange(e) } /> */}
+                	{/* <input className="blue" type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/> */}
+                    {/* <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/> */}
                 </form>
                 <div id='entry-text-container'>
                 	<h5>Text</h5>
