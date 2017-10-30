@@ -37,7 +37,7 @@ class Profile extends Component {
                         <Router>
 
                             <div>
-                            <Col s={4}>
+                            <Col s={12} m={4}>
                                 <div className="card">
                                     <div className="card-content white-text">
                                         <img src={this.state.user.profilePic} className="circle responsive-img" height="100" width="100" />
@@ -45,13 +45,13 @@ class Profile extends Component {
 
                                     </div>
                                     <div className="card-action white-text">
-                                        <Link to ='/history'>Saved Wyms</Link>
-                                        <Link to ='/twitterprofile'>Twitter</Link>
-                                        <Link to ='/'>Upload new text</Link>
+                                        <Link className="navList center" to ='/'>Upload new text</Link>
+                                        <Link className="navList center" to ='/history'>Saved Wyms</Link>
+                                        <Link className="navList center" to ='/twitterprofile'>Twitter</Link>
                                     </div>
                                 </div>
                              </Col>
-                             <Col s={8}>
+                             <Col s={12} m={8}>
                                 {/* <Route exact path ='/' render={(props) => (
                                     <Entry {...props} user={this.state.user} />
                                 )} /> */}
