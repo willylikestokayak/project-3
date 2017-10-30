@@ -22,19 +22,18 @@ class Response extends Component {
         var confident = this.props.confident;
 
     	const data = {
-		  labels:  ['anger', 'tentative', 'joy', 'fear', 'sadness', 'analytical', 'confident'], 
-
+		  labels:  ['Anger', 'Tentative', 'Joy', 'Fear', 'Sadness', 'Analytical', 'Confident'], 
 		  datasets: [
 		    {
 		      label: [],   
 		      backgroundColor: [
-                  'red',
-                  'pink',
-                  'yellow',
-                  'orange',
-                  'grey',
-                  'green',
-                  'blue'
+                  'red', //Anger
+                  'pink', //Tentative
+                  'yellow', //Joy
+                  'orange', //Fear
+                  'grey', //Sadness
+                  'green', //Analytical
+                  'blue' //Confident
               ],
 		      borderColor: 'white',
 		      //pointBackgroundColor: 'yellow',

@@ -66,7 +66,6 @@ class Entry extends Component {
     }
 
 	onClick() {
-
 				axios.post('/watson', {
 						text: this.state.entry
 					})
@@ -140,7 +139,7 @@ class Entry extends Component {
                         this.setState({
                             confident: response.data.document_tone.tones[i].score
                         });
-                    }
+
 				}
 				console.log(this.state);
 				console.log(this.props)
@@ -152,13 +151,6 @@ class Entry extends Component {
 					})
 				
 				}
-
-
-	sentenceClassify() {
-
-		//var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
-		//var classify = this.state.sentences.map( (item, index) => )
-	}
 
     render(){
     	var tonesResults = this.state.tones.map( (item, index) => (<div className='results'> <h6>{item.tone_name}</h6> <p>{item.score}</p> </div>) )
@@ -199,3 +191,4 @@ class Entry extends Component {
 }
 
 export default Entry;
+

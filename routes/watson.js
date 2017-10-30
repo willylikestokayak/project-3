@@ -11,16 +11,14 @@ var tone_analyzer = new ToneAnalyzerV3({
     version_date: '2017-09-21'
 });
 
-
-
 router.post('/', function(req, res, next) {
-    tone_analyzer.tone({ text: req.body.text },
-        function(err, tone) {
-            if (err)
-                console.log(err);
-            else
-                res.json(tone)
-        });
+	tone_analyzer.tone({ text: req.body.text },
+	  function(err, tone) {
+	    if (err)
+	      console.log(err);
+	    else
+	  	  res.json(tone)
+	});
 });
 //route to send saved text back to page
 router.post('/list', function(req, res, next) {
@@ -30,18 +28,18 @@ router.post('/list', function(req, res, next) {
     });
 });
 //route to pull single wym for user to view again
-router.post('/wym', function(req, res, next) {
-    Text.find({ _id: req.body.id }, function(err, texts) {
-        if (err) return console.log(err);
-        res.send(texts)
-    });
+router.post('/wym', function(req, res, next){
+	Text.find({_id: req.body.id}, function(err, texts){
+		if (err) return console.log(err);
+		res.send(texts)
+	});
 });
 
 router.post('/save', function(req, res, next) {
     Text.create({
         userId: req.body.user.id,
-        title: req.body.title,
-        content: req.body.content
+		title: req.body.title,
+    	content: req.body.content
     }, function(err, user) {
         if (err) {
             res.send(err.message)
