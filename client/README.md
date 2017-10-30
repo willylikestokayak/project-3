@@ -1,5 +1,4 @@
-## Component Map
-![alt text](public/img/componentFlow.png)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
