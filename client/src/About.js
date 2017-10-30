@@ -1,23 +1,32 @@
 import React, {Component} from 'react';
+import {Row, Col} from 'react-materialize';
+
 
 class About extends Component {
     render(){
         return(
-            <div className="aboutBox">
+          <div className="aboutBox">
+            <Row>
               <h5>About the Developers</h5>
-                <div className="devs">
+            </Row>
+            <Row>
+                <Col s={6} m={3} className="devs">
                   Stephanie
-                </div>
-                <div className="devs">
-                  Justen
-                </div>
-                <div className="devs">
+                </Col>
+                <Col s={6} m={3} className="devs">
+                  <img className="circle responsive-img" height="100" width="100" src="img/justen-pic.jpg" alt="Justen Pic"/>
+                  <h3 className="marginTwenty">Justen</h3>
+                  <p>As full-stack developer from Seattle, WA, Justen enjoys tossing around in bed dreaming about writing code that makes no sense. He'd like to tell you what he does besides programming, but he doesn't remember doing anything else</p>
+                  <a href="https://github.com/justecii">Justen's Github</a>
+                </Col>
+                <Col s={6} m={3} className="devs">
                   Chad
-                </div>
-                <div className="devs">
+                </Col>
+                <Col s={6} m={3} className="devs">
                   Ari
-                </div>
-            </div>
+                </Col>
+            </Row>
+          </div>
         );
     }
 }
