@@ -92,10 +92,6 @@ li:hover {
     height: 200px;
 }
 
-.demo {
-    margin-top: 25px;
-}
-
 .carousel {
     min-height: 600px;
 }
@@ -119,10 +115,10 @@ li:hover {
     color: white;
 }
 
-
 .devNames {
-  color: #76e7cd;
+    color: #76e7cd;
 }
+
 .inputField {
     max-height: 200px;
 }
@@ -137,18 +133,29 @@ li:hover {
     margin-bottom: 0
 }
 
+.button {
+    margin-top: 20px;
+}
+
+.halfWidth {
+    width: 50%
+}
+
 .FileUpload {
-  margin-top: 25px;
-  display: inline-block;
+    margin-top: 25px;
+    display: inline-block;
 }
 
 .submitButton {
-  background-color: #76e7cd;
+    background-color: #76e7cd;
 }
 
 @media only screen and (min-width: 768px) {
     .sticky {
         position: fixed;
         top: 65px;
+    }
+    .demo {
+        margin: 50px 0px;
     }
 }

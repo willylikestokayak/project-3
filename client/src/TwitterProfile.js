@@ -47,8 +47,7 @@ class TwitterProfile extends Component {
     render(){
         let twitterHandles = this.state.twitterList.map((item, index) => (
             <Row>
-                <li className="inline" key={index}>{item.handle}</li>
-                <Button className="inline" key={index} onClick={(e) => this.getTweets(e)} value={item._id}>View Tweets</Button>
+                <Button className="inline halfWidth" key={index} onClick={(e) => this.getTweets(e)} value={item._id}>@{item.handle}</Button>
             </Row>
             )
         );
@@ -56,10 +55,10 @@ class TwitterProfile extends Component {
             <div>
                 <Row onSubmit={this.handleSubmit}>
                     <Input s={6} label="Your Twitter" onChange={ (e) => this.onChange(e)} />
-                    {/* <input className='green' type='submit' onClick={ (e) => this.onClick(e) } value='My Tweets'/> */}
                     <Button className="left button" type='submit' onClick={ (e) => this.onClick(e) }>Find Tweets</Button>
                 </Row>
-                <h2>Your Saved Handles:</h2>
+                <h3>Saved Handles:</h3>
+                <h5>Click on the profile to view tweets</h5>
                 {twitterHandles}
                 <TweetAnalysis />
             </div>

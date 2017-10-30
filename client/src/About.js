@@ -29,9 +29,9 @@ class About extends Component {
                 <Col m={3} s={6} className="devs">
 		              <Card>
                     <CardTitle className="devNames">Chad Coker</CardTitle>
-		                 <h5>Project Manager & Front End Developer</h5>
+		                 <h5>Full Stack Developer & Chart-Man</h5>
                      <br />
-                     <p>Here is some text about me yay.</p>
+                     <p>A full stack dev in training who has found a home in Seattle, WA. Prior to code training, Chad enjoyed equal parts hiking, kayaking, surfing and reading with some Netflix binges sprinkled on top.</p>
 		              </Card>
                 </Col>
                 <Col m={3} s={6} className="devs">
