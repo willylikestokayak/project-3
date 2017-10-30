@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Redirect
 } from 'react-router-dom';
+import {Button, Input} from 'react-materialize';
 
 class Login extends Component {
   constructor(props) {
@@ -45,15 +46,14 @@ class Login extends Component {
       return <Redirect to ='/profile'/>
     };
     return (
-      // <div id='modal1' className='modal'>
-      //   <div className="modal-content">
-          <form onSubmit={this.handleSubmit}>
-            Email: <input type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
-            Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
-            <input type='submit' value='Log in' />
+        <div>
+          <form className="loginField" onSubmit={this.handleSubmit}>
+            <Input label="Email" type='text' value={this.state.email} onChange={this.handleEmailChange} />
+            <Input label="Password" type='password' value={this.state.password} onChange={this.handlePasswordChange} />
+            <Button type="submit" className="valign-wrapper"onSubmit={this.handleSubmit}><i class="material-icons right-align">security</i> Log in</Button>
           </form>
-      //   </div>
-      // </div>
+          {/* <img src="img/watson-image.png" alt="Watson" className="responsive-img" height="100" width="100" /> */}
+        </div>
 
     );
   }

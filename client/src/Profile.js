@@ -37,8 +37,8 @@ class Profile extends Component {
                         <Router>
 
                             <div>
-                            <Col s={12} m={4}>
-                                <div className="card">
+                            <Col s={12} m={6} l={4}>
+                                <div className="card sticky">
                                     <div className="card-content white-text">
                                         <img src={this.state.user.profilePic} className="circle responsive-img" height="100" width="100" />
                                         <span className="card-title">Welcome to your WYM Profile, {this.state.user.name}!</span>
@@ -51,7 +51,7 @@ class Profile extends Component {
                                     </div>
                                 </div>
                              </Col>
-                             <Col s={12} m={8}>
+                             <Col s={12} m={6} l={8}>
                                 {/* <Route exact path ='/' render={(props) => (
                                     <Entry {...props} user={this.state.user} />
                                 )} /> */}

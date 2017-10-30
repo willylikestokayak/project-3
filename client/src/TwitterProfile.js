@@ -37,12 +37,18 @@ class TwitterProfile extends Component {
             this.setState({twitterList: result.data})
         }).then(console.log(this.state.handle))
     }
+    getTweets(e){
+        axios.post('/twitter/find', {
+            id: e.target.value
+        }).then(result => {
+            console.log(result.data)
+        })
+    }
     render(){
         let twitterHandles = this.state.twitterList.map((item, index) => (
             <Row>
                 <li className="inline" key={index}>{item.handle}</li>
-                {/* Need to create new onClick Function below to find user's tweets */}
-                <Button className="inline" key={index} onClick={(e) => this.onClick(e)} value={item._id}>View</Button>
+                <Button className="inline" key={index} onClick={(e) => this.getTweets(e)} value={item._id}>View Tweets</Button>
             </Row>
             )
         );
@@ -51,7 +57,7 @@ class TwitterProfile extends Component {
                 <Row onSubmit={this.handleSubmit}>
                     <Input s={6} label="Your Twitter" onChange={ (e) => this.onChange(e)} />
                     {/* <input className='green' type='submit' onClick={ (e) => this.onClick(e) } value='My Tweets'/> */}
-                    <Button className="left button" type='submit' onClick={ (e) => this.onClick(e) }>My Tweets</Button>
+                    <Button className="left button" type='submit' onClick={ (e) => this.onClick(e) }>Find Tweets</Button>
                 </Row>
                 <h2>Your Saved Handles:</h2>
                 {twitterHandles}
