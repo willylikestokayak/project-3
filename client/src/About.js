@@ -4,7 +4,8 @@ import {Card, Col} from 'react-materialize';
 class About extends Component {
     render(){
         return(
-            <div className="aboutBox">
+          <div className="aboutBox">
+            <Row>
               <h5>About the Developers</h5>
               <div className="devs">
                 <Col m={3} s={6}>
@@ -17,8 +18,10 @@ class About extends Component {
               <div className="devs">
                 <Col m={3} s={6}>
 		              <Card title='Justen Cracraft'>
-		                 <h6>Project Manager & Front End Developer</h6>
-                     <p>Here is some text about me yay.</p>
+                     <img className="circle responsive-img" height="100" width="100" src="img/justen-pic.jpg" alt="Justen Pic"/>
+		                 <h6>Back-End Developer & Git Master</h6>
+                     <p>As full-stack developer from Seattle, WA, Justen enjoys tossing around in bed dreaming about writing code that makes no sense. He'd like to tell you what he does besides programming, but he doesn't remember doing anything else</p>
+                     <a href="https://github.com/justecii">Justen's Github</a>
 		              </Card>
                 </Col>
               </div>
