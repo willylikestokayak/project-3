@@ -16,9 +16,11 @@ The following 7 tones can be detected in submitted text:
 
 | User        | User Application  |        
 | ------------|:------------:|
-| React.js    | JS Framework |
-| Node.js     | JS Framework |
-| Mongo       | Database     |   
+| PR/Communications Professional   | As a PR/Communications professional, I want to be able to analyze the tone of my communication materials in order to build a consistent and alluring brand. |
+| Personal profile/communication    | Input public profile and or personal communications for tone analysis to ensure you are conveying the desired tone. |
+| Job Seeker       | As a job seeker I want to be able to refine my tone in my resume, cover letter, and other application materials in order to build and improve my personal brand.     |  
+| Manager providing communication feedback to employee       | As a manager, I want to be able to review my employees' internal and external written communication so that I can provide them with constructive feedback.    |   
+
 
 ### Installation Instructions for Dependencies
 
@@ -39,7 +41,7 @@ The following 7 tones can be detected in submitted text:
 | ------|:------:|
 | 1     | JS Framework |
 | 2 & 3     | JS Framework |
-| Mongo       | Database     |
+| 7       | * Finishing touches to styling *     |
 Wireframes
 
 ## Next Steps
