@@ -65,6 +65,7 @@ class Entry extends Component {
         })
     }
 
+
 	onClick(e) {
 		e.preventDefault();
 		axios.post('/watson', {
@@ -73,17 +74,21 @@ class Entry extends Component {
 			.then( (response) => {
 				// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
 				var text = response.data
-				console.log(text)
+                console.log(text)
 				var tones;
+                // CHECK FOR RESPONSE
 				if(text) {
 					tones = text.document_tone.tones
 					var sentences;
-				if (text.sentences_tone) {
-					sentences = text.sentences_tone.map( (item, index) => ({
-						className: item.tones.tone_id,
-						text: item.text
-					}) )
-					console.log(sentences)
+                    // IF THERE IS RESPONSE, CHECK FOR A SENTENCES_TONE ARRAY OF OBJECTS AS WELL
+    				if (text.sentences_tone) {
+                        console.log('This is text.sentences_tone: ' + text.sentences_tone)
+    					sentences = text.sentences_tone.map( (item, index) => ({
+    						className: item.tones,
+    						text: item.text
+    					}) )
+    				}
+                    //console.log(sentences)
 				}
 
 				this.setState({

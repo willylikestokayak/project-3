@@ -34,12 +34,14 @@ class About extends Component {
                      <p>Here is some text about me yay.</p>
 		              </Card>
                 </Col>
-                <Col m={3} s={6}  className="devs">
+                <Col m={3} s={6} className="devs">
 		              <Card>
                     <CardTitle className="devNames">Ari Minton</CardTitle>
-		                 <h5>Project Manager & Front End Developer</h5>
-                     <br />
-                     <p>Here is some text about me yay.</p>
+                     <img className="circle responsive-img" height="100" width="100" src="img/ari-pic.jpg" alt="Ari is smiling" />
+		                 <h5>Full Stack Developer / API and Text Analysis</h5>
+                     <p>Ari is a Full Stack Web Developer living in Seattle, WA, but he's mostly known for telling everybody that
+                     he's from Alaska. You can see him cracking open a cold one (of La Croix sparkling water) during General Assembly's happy hour on Fridays.</p>
+                     <a href='https://github.com/Ari-M'>Ari's Github</a>
 		              </Card>
                 </Col>
             </div>
