@@ -22,7 +22,7 @@ class Response extends Component {
         var confident = this.props.confident;
 
     	const data = {
-		  labels:  ['anger', 'tentative', 'joy', 'fear', 'sadness', 'analytical', 'confident'], //[anger, sadness, fear, tentative, joy, analytical, confident],
+		  labels:  ['Anger', 'Tentative', 'Joy', 'Fear', 'Sadness', 'Analytical', 'Confident'], //[anger, sadness, fear, tentative, joy, analytical, confident],
 
 		  datasets: [
 		    {

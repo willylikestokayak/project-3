@@ -24,6 +24,9 @@ class Entry extends Component {
 				tone_name: ''
 			}],
 			sentences: [],
+			name: [],
+			data: []
+
 		}
 	}
 
@@ -49,24 +52,27 @@ class Entry extends Component {
     }
 
 	onClick() {
-
 		axios.post('/watson', {
 				text: this.state.entry
 			})
 			.then( (response) => {
-				//THIS IS ALSO THE RESPONSE FROM THE API
+				// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
 				var text = response.data
-				console.log(text)
+                console.log(text)
 				var tones;
+                // CHECK FOR RESPONSE
 				if(text) {
 					tones = text.document_tone.tones
 					var sentences;
-				if (text.sentences_tone) {
-					sentences = text.sentences_tone.map( (item, index) => ({
-						className: item.tones.tone_id,
-						text: item.text
-					}) )
-					console.log(sentences)
+                    // IF THERE IS RESPONSE, CHECK FOR A SENTENCES_TONE ARRAY OF OBJECTS AS WELL
+    				if (text.sentences_tone) {
+                        console.log('This is text.sentences_tone: ' + text.sentences_tone)
+    					sentences = text.sentences_tone.map( (item, index) => ({
+    						className: item.tones[0],
+    						text: item.text
+    					}) )
+    				}
+                    //console.log(sentences)
 				}
 
 				this.setState({
@@ -75,156 +81,56 @@ class Entry extends Component {
 					sentences: sentences
 				})
 
-				for (var i=0; i< (response.data.text.document_tone.tones).length; i++){
-                    if(response.data.text.document_tone.tones[i].tone_id === 'anger'){
+				var name = this.state.tones.map( (item, index) => (item.tone_name) )
+				var score = this.state.tones.map( (item, index) => (item.score) )
+
+				this.setState({
+					name: name,
+					data: score
+				})
+				for (var i=0; i< (response.data.document_tone.tones).length; i++){
+                    if(response.data.document_tone.tones[i].tone_id === 'anger'){
                         this.setState({
-                            anger: response.data.text.document_tone.tones[i].score
+                            anger: response.data.document_tone.tones[i].score
                         });
                     }
-                    if(response.data.text.document_tone.tones[i].tone_id === 'tentative'){
+                    if(response.data.document_tone.tones[i].tone_id === 'tentative'){
                         this.setState({
-                            tentative: response.data.text.document_tone.tones[i].score
+                            tentative: response.data.document_tone.tones[i].score
                         });
                     }
-                    if(response.data.text.document_tone.tones[i].tone_id === 'fear'){
+                    if(response.data.document_tone.tones[i].tone_id === 'fear'){
                         this.setState({
-                            fear: response.data.text.document_tone.tones[i].score
+                            fear: response.data.document_tone.tones[i].score
                         });
                     }
-                    if(response.data.text.document_tone.tones[i].tone_id === 'joy'){
+                    if(response.data.document_tone.tones[i].tone_id === 'joy'){
                         this.setState({
-                            joy: response.data.text.document_tone.tones[i].score
+                            joy: response.data.document_tone.tones[i].score
                         });
                     }
-                    if(response.data.text.document_tone.tones[i].tone_id === 'sadness'){
+                    if(response.data.document_tone.tones[i].tone_id === 'sadness'){
                         this.setState({
-                            sadness: response.data.text.document_tone.tones[i].score
+                            sadness: response.data.document_tone.tones[i].score
                         });
                     }
-                    if(response.data.text.document_tone.tones[i].tone_id === 'analytical'){
+                    if(response.data.document_tone.tones[i].tone_id === 'analytical'){
                         this.setState({
-                            analytical: response.data.text.document_tone.tones[i].score
+                            analytical: response.data.document_tone.tones[i].score
                         });
                     }
-                    if(response.data.text.document_tone.tones[i].tone_id === 'confident'){
+                    if(response.data.document_tone.tones[i].tone_id === 'confident'){
                         this.setState({
-                            confident: response.data.text.document_tone.tones[i].score
+                            confident: response.data.document_tone.tones[i].score
                         });
                     }
-                }
+        		}
+        		console.log(this.state);
+        		console.log(this.props)
 			})
 			.catch(function(error) {
 				console.log(error)
-		});
-	}
-
-	grabCache() {
-		axios.get('/watson')
-		.then( (response) => {
-			var text = response.data.text
-			var tones;
-			if(text) {
-			 	tones = text.document_tone.tones
-			}
-			var sentences;
-			if (text) {
-				sentences = text.sentences_tone
-			}
-
-			this.setState({
-				analyzed: true,
-				tones: tones,
-				sentences: sentences,
 			});
-
-			for (var i=0; i< (response.data.text.document_tone.tones).length; i++){
-				if(response.data.text.document_tone.tones[i].tone_id === "anger"){
-					this.setState({
-						anger: response.data.text.document_tone.tones[i].score
-					});
-				}
-				if(response.data.text.document_tone.tones[i].tone_id === "tentative"){
-					this.setState({
-						tentative: response.data.text.document_tone.tones[i].score
-					});
-				}
-				if(response.data.text.document_tone.tones[i].tone_id === "fear"){
-					this.setState({
-						fear: response.data.text.document_tone.tones[i].score
-					});
-				}
-				if(response.data.text.document_tone.tones[i].tone_id === "joy"){
-					this.setState({
-						joy: response.data.text.document_tone.tones[i].score
-					});
-				}
-				if(response.data.text.document_tone.tones[i].tone_id === "sadness"){
-					this.setState({
-						sadness: response.data.text.document_tone.tones[i].score
-					});
-				}
-				if(response.data.text.document_tone.tones[i].tone_id === "analytical"){
-					this.setState({
-						analytical: response.data.text.document_tone.tones[i].score
-					});
-				}
-				if(response.data.text.document_tone.tones[i].tone_id === "confident"){
-					this.setState({
-						confident: response.data.text.document_tone.tones[i].score
-					});
-				}
-			}
-
-			var name = this.state.tones.map( (item, index) => (item.tone_name) )
-        	var score = this.state.tones.map( (item, index) => (item.score) )
-
-        	this.setState({
-        		name: name,
-        		data: score
-        	})
-
-		});
-=======
-				// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
-				var text = response.data
-				console.log(text)
-				var tones;
-				if(text) {
-					tones = text.document_tone.tones
-					var sentences;
-				if (text.sentences_tone) {
-					sentences = text.sentences_tone.map( (item, index) => ({
-						className: item.tones.tone_id,
-						text: item.text
-					}) )
-					console.log(sentences)
-				}
-
-				this.setState({
-					analyzed: true,
-					tones: tones,
-					sentences: sentences
-				})
-				var name = this.state.tones.map( (item, index) => (item.tone_name) )
-	        	var score = this.state.tones.map( (item, index) => (item.score) )
-
-	        	this.setState({
-	        		name: name,
-	        		data: score
-	        	})
-					}
-
-				})
-				.catch(function(error) {
-					console.log(error)
-			});
->>>>>>> ef620e0b739b7855a3e7e268819a0b85150a5414
-	}
-
-	sentenceClassify() {
-
-		//var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
-		//var classify = this.state.sentences.map( (item, index) => )
 	}
 
     render(){
@@ -260,3 +166,4 @@ class Entry extends Component {
 }
 
 export default Entry;
+

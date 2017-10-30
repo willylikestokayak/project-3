@@ -21,11 +21,11 @@ router.post('/', function(req, res, next) {
 	});
 });
 //route to send saved text back to page
-router.post('/list', function(req, res, next){
-	Text.find({userId: req.body.user}, function(err, texts){
-		if (err) return console.log(err);
-		res.send(texts)
-	});
+router.post('/list', function(req, res, next) {
+    Text.find({ userId: req.body.user }, function(err, texts) {
+        if (err) return console.log(err);
+        res.send(texts)
+    });
 });
 //route to pull single wym for user to view again
 router.post('/wym', function(req, res, next){
@@ -33,7 +33,6 @@ router.post('/wym', function(req, res, next){
 		if (err) return console.log(err);
 		res.send(texts)
 	});
-
 });
 
 router.post('/save', function(req, res, next) {
