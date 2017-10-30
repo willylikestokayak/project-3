@@ -112,6 +112,8 @@ li:hover {
 .devs {
     display: inline-block;
     margin: 10px;
+    max-height: 300px;
+    min-height: 300px;
     max-width: 400px;
     background-color: #0b132b;
     color: white;

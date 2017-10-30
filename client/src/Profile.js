@@ -44,10 +44,12 @@ class Profile extends Component {
                                         <span className="card-title">Welcome to your WYM Profile, {this.state.user.name}!</span>
 
                                     </div>
-                                    <div className="card-action white-text">
-                                        <Link className="navList center" to ='/'>Upload new text</Link>
-                                        <Link className="navList center" to ='/history'>Saved Wyms</Link>
-                                        <Link className="navList center" to ='/twitterprofile'>Twitter</Link>
+                                    <div className="card-action">
+                                      <ul>
+                                        <li><Link className="navList center white-text" to ='/'>Upload new text</Link></li>
+                                        <li><Link className="navList center white-text" to ='/history'>Saved Wyms</Link></li>
+                                        <li><Link className="navList center white-text" to ='/twitterprofile'>Twitter</Link></li>
+                                      </ul>
                                     </div>
                                 </div>
                              </Col>
