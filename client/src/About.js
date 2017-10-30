@@ -8,7 +8,7 @@ class About extends Component {
               <h5>About the Developers</h5>
               <div className="devs">
                 <Col m={3} s={6}>
-		              <Card title='Stephanie Hester'>
+		              <Card title='Stefanye Hester'>
 		                 <h6>Project Manager & Front End Developer</h6>
                      <p>Here is some text about me yay.</p>
 		              </Card>
@@ -27,8 +27,9 @@ class About extends Component {
               <div className="devs">
                 <Col m={3} s={6}>
 		              <Card title='Chad Coker'>
-		                 <h6>Project Manager & Front End Developer</h6>
-                     <p>Here is some text about me yay.</p>
+                    <img className="circle responsive-img" height="200" width="200" src="img/chad-pic.jpg" alt="Chad Pic"/>   
+                     <h6>Project Manager & Front End Developer</h6>
+                     <p>A full stack dev in training who has found a home in Seattle, WA. Prior to code training, Chad enjoyed equal parts hiking, kayaking, surfing and reading with some Netflix binges sprinkled on top.</p>
 		              </Card>
                 </Col>
               </div>

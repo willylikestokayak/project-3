@@ -96,7 +96,14 @@ class Entry extends Component {
 		
 						this.setState({
 							name: name,
-							data: score
+							data: score,
+							anger: '',
+							tentative: '',
+							joy: '',
+							fear: '',
+							sadness: '',
+							analytical: '',
+							confident: ''
 						})
 						for (var i=0; i< (response.data.document_tone.tones).length; i++){
                     if(response.data.document_tone.tones[i].tone_id === 'anger'){
