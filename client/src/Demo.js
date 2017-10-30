@@ -19,7 +19,7 @@ class Demo extends Component {
                   //      'http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg'
                   //    ]}
                   // />
-                  <div>
+                  <div className="demo">
                     <Slider>
                     	<Slide
                     		src="http://images.archant.co.uk/polopoly_fs/1.4371969.1452244455!/image/image.jpg_gen/derivatives/landscape_630/image.jpg"
