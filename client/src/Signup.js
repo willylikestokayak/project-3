@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
+import {Col} from 'react-materialize';
 import {CloudinaryContext, Transformation, Image, Cloudinary} from 'cloudinary-react'
 import {
   BrowserRouter as Router,
@@ -95,7 +96,7 @@ class Signup extends Component {
           Name: <input type='text' value={this.state.name} onChange={this.handleNameChange} /><br />
           Email: <input type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
           Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
-          <input type='submit' value='Sign Up' />
+          <input type='submit' value='Sign Up' className="submitButton"/>
         </form>
         <div className="FileUpload">
           <Dropzone

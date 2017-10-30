@@ -117,6 +117,19 @@ li:hover {
     color: white;
 }
 
+.devNames {
+  color: #76e7cd;
+}
+
 .row {
     margin-bottom: 0
+}
+
+.FileUpload {
+  margin-top: 25px;
+  display: inline-block;
+}
+
+.submitButton {
+  background-color: #76e7cd;
 }

@@ -30,32 +30,42 @@ The following 7 tones can be detected in submitted text:
 
 | Tech        | Application  |        
 | ------------|:------------:|
-| React.js    | JS Framework |
-| Node.js     | JS Framework |
-| Mongo       | Database     |   
+| React.js    | JS Framework    |
+| Node.js     | JS Framework    |
+| Mongo       | Database        |  
+| materialize | Design Framework|
 
 
 ### Planning
 
+#### Weekend Before Project Weekend
+
+* Each group member brainstormed independently
+* Trello board was set up to start organizing main project requirements & planning phase
+
 #### Day 1
 
+* Finalized idea for app
+* Listed out MVP features and stretch goal features
+* Drew out wireframes
 * Assigned roles to each team member
+
 #### Day 2 & 3
+
+* Built models
+* Set up basic components and routes
 
 #### Day 4, 5, 6
 
 #### Day 7
 
+* Assigned finishing touches to each group member
+* Small bug fixes
 
-| Day   | Tasks  |        
-| ------|:------:|
-| 1     | * Assigned roles |
-| 2 & 3     | JS Framework |
-| 7       | * Finishing touches to styling *     |
+
 Wireframes
 
 ## Next Steps
 
-### Features to Be Added
-
-### Current Issues to Be Fixed
+1. Ability for user to edit their profile image
+2. 
