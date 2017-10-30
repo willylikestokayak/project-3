@@ -7,6 +7,7 @@ import {
   BrowserRouter as Router,
   Redirect
 } from 'react-router-dom';
+import {Input, Button} from 'react-materialize'
 
 const CLOUDINARY_UPLOAD_PRESET = 'spe0k8pn';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/drdpp9jiw/upload';
@@ -91,13 +92,13 @@ class Signup extends Component {
     };
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          Name: <input type='text' value={this.state.name} onChange={this.handleNameChange} /><br />
-          Email: <input type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
-          Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
-          <input type='submit' value='Sign Up' />
+        <form className="inline loginField" onSubmit={this.handleSubmit}>
+          <Input label="Name" value={this.state.name} onChange={this.handleNameChange} />
+          <Input label="Email" type='text' value={this.state.email} onChange={this.handleEmailChange} />
+          <Input label="Password" type='password' value={this.state.password} onChange={this.handlePasswordChange} />
+          <Button type="submit" className="valign-wrapper"onSubmit={this.handleSubmit}><i class="material-icons right-align">security</i> Log in</Button>
         </form>
-        <div className="FileUpload">
+        <div className="FileUpload inline">
           <Dropzone
             multiple={false}
             accept="image/*"

@@ -37,4 +37,13 @@ router.post('/', function(req, res, next) {
     });
 });
 
+//gonna try to call twitter API
+router.post('/find', function(req, res, next){
+    Twet.find({_id: req.body.id}, function(err, tweets){
+        if (err) return console.log(err);
+        res.send(tweets)
+        console.log("req.body.id" + req.body.id)
+    })
+})
+
 module.exports = router;
