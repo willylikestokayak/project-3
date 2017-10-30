@@ -85,8 +85,15 @@ class Entry extends Component {
 		
 						this.setState({
 							name: name,
-							data: score
-						})
+							data: score,
+							anger: '',
+							tentative: '',
+							joy: '',
+							fear: '',
+							sadness: '',
+							analytical: '',
+							confident: ''
+						});
 						for (var i=0; i< (response.data.document_tone.tones).length; i++){
                     if(response.data.document_tone.tones[i].tone_id === 'anger'){
                         this.setState({
@@ -131,8 +138,10 @@ class Entry extends Component {
 						})
 						.catch(function(error) {
 							console.log(error)
-					});
-			}
+					})
+				
+				}
+
 
 	sentenceClassify() {
 
@@ -152,6 +161,8 @@ class Entry extends Component {
                 	<textarea rows='20' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
                 	<input className="blue" type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
                     <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/>
+					{/* <input className="blue" type='button' onClick={ (e) => this.resetForm(e) } value='Clears' /> */}
+
 
                 </form>
                 <div id='entry-text-container'>
