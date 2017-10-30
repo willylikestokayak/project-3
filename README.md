@@ -54,8 +54,9 @@ The following 7 tones can be detected in submitted text:
 * Assigned roles to each team member
 
 Wireframes:
-
->>>>Need to grab them from Chad
+![alt text](public/img/whiteboard1.JPG)
+![alt text](public/img/whiteboard2.JPG)
+![alt text](public/img/whiteboard3.JPG)
 
 #### Day 2 & 3
 
