@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Response from './Response';
+import {Row, Input, Button} from 'react-materialize';
 
 
 class Entry extends Component {
@@ -28,6 +29,18 @@ class Entry extends Component {
 			data: []
 
 		}
+		this.componentDidMount = this.componentDidMount.bind(this)
+	}
+	componentDidMount(){
+		this.setState({
+			anger: '',
+			tentative: '',
+			joy: '',
+			fear: '',
+			sadness: '',
+			analytical: '',
+			confident: ''
+		})
 	}
 
 	onChange(e) {
@@ -44,9 +57,7 @@ class Entry extends Component {
         })
     }
     clickSave(e) {
-		console.log(this.props.user)
-		console.log(this.state.title)
-		console.log(this.state.entry)
+		e.preventDefault()
         axios.post('/watson/save', {
             user: this.props.user,
             title: this.state.title,
@@ -132,6 +143,7 @@ class Entry extends Component {
                             confident: response.data.document_tone.tones[i].score
                         });
                     }
+<<<<<<< HEAD
         		}
         		console.log(this.state);
         		console.log(this.props)
@@ -139,6 +151,25 @@ class Entry extends Component {
 			.catch(function(error) {
 				console.log(error)
 			});
+=======
+				}
+				console.log(this.state);
+				console.log(this.props)
+							}
+		
+						})
+						.catch(function(error) {
+							console.log(error)
+					})
+				
+				}
+
+
+	sentenceClassify() {
+
+		//var structureArray = this.state.sentences.map( (item, index) => ({label: item.tone_id, text: item.text}))
+		//var classify = this.state.sentences.map( (item, index) => )
+>>>>>>> b8bc72c62e1b7e899f428cdf5ca1e7e38c8795ef
 	}
 
     render(){
@@ -146,14 +177,20 @@ class Entry extends Component {
 
 
         return(
-            <div className="text-analysis">
+            <div className="text-analysis fullWidth">
                 <h5>WYM Text Analyzer</h5>
                 <form id='watson-tone-entry'>
-                	<input type="text" placeholder="Title to Save" onChange={(e) => this.onSubmit(e)} />
-                	<textarea rows='20' cols='100' placeholder='Insert text here to detect tone' onChange={ (e) => this.onChange(e) } />
-                	<input className="blue" type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/>
-                    <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/>
-
+					<Row>
+						<Input s={6} label="Give a Title to Save" onChange={ (e) => this.onSubmit(e)} />
+						<Button className="left button" onClick={ (e) => this.clickSave(e) }>Save Wym</Button>
+					</Row>
+					<Row>
+						<Input s={6} type="textarea" className="materialize-textarea" id="textarea1" label="Insert text to detect tone" onChange={ (e) => this.onChange(e) }  />
+						<Button className="left button" onClick={ (e) => this.onClick(e) }>Analyze</Button>
+					</Row>
+                	{/* <textarea className="materialize-textarea" id="textarea1" rows='20' cols='100' placeholder='Insert text to detect tone' onChange={ (e) => this.onChange(e) } /> */}
+                	{/* <input className="blue" type='button' onClick={ (e) => this.onClick(e) } value='Analyze'/> */}
+                    {/* <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/> */}
                 </form>
                 <div id='entry-text-container'>
                 	<h5>Text</h5>
