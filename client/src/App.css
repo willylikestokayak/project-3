@@ -4,6 +4,7 @@ body {
     font-family: 'Josefin Sans', sans-serif;
 }
 
+
 /* Materialize Web Icons */
 
 .material-icons {
@@ -33,7 +34,6 @@ body {
     background-color: #0b132b;
     font-family: 'Days One', sans-serif;
 }
-
 
 li:hover {
     background-color: #76e7cd;
@@ -93,7 +93,7 @@ li:hover {
 }
 
 .demo {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 .carousel {
@@ -119,8 +119,18 @@ li:hover {
     color: white;
 }
 
+
 .devNames {
   color: #76e7cd;
+}
+.inputField {
+    max-height: 200px;
+}
+
+.loginField {
+    max-width: 500px;
+    margin-left: 2%;
+    margin-top: 2%;
 }
 
 .row {
@@ -134,4 +144,11 @@ li:hover {
 
 .submitButton {
   background-color: #76e7cd;
+}
+
+@media only screen and (min-width: 768px) {
+    .sticky {
+        position: fixed;
+        top: 65px;
+    }
 }

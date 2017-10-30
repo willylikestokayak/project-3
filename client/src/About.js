@@ -6,7 +6,6 @@ class About extends Component {
         return(
           <div className="aboutBox">
               <h4>About the Developers</h4>
-
                 <Col m={3} s={6} className="devs">
 		              <Card>
                     <CardTitle className="devNames">Stephanie Hester</CardTitle>

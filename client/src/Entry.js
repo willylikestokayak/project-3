@@ -65,85 +65,92 @@ class Entry extends Component {
         })
     }
 
-	onClick() {
-
-				axios.post('/watson', {
-						text: this.state.entry
-					})
-					.then( (response) => {
-						// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
-						var text = response.data
-						console.log(text)
-						var tones;
-						if(text) {
-							tones = text.document_tone.tones
-							var sentences;
-						if (text.sentences_tone) {
-							sentences = text.sentences_tone.map( (item, index) => ({
-								className: item.tones.tone_id,
-								text: item.text
-							}) )
-							console.log(sentences)
-						}
-		
-						this.setState({
-							analyzed: true,
-							tones: tones,
-							sentences: sentences
-						})
-						var name = this.state.tones.map( (item, index) => (item.tone_name) )
-						var score = this.state.tones.map( (item, index) => (item.score) )
-		
-						this.setState({
-							name: name,
-							data: score
-						})
-						for (var i=0; i< (response.data.document_tone.tones).length; i++){
-                    if(response.data.document_tone.tones[i].tone_id === 'anger'){
-                        this.setState({
-                            anger: response.data.document_tone.tones[i].score
-                        });
-                    }
-                    if(response.data.document_tone.tones[i].tone_id === 'tentative'){
-                        this.setState({
-                            tentative: response.data.document_tone.tones[i].score
-                        });
-                    }
-                    if(response.data.document_tone.tones[i].tone_id === 'fear'){
-                        this.setState({
-                            fear: response.data.document_tone.tones[i].score
-                        });
-                    }
-                    if(response.data.document_tone.tones[i].tone_id === 'joy'){
-                        this.setState({
-                            joy: response.data.document_tone.tones[i].score
-                        });
-                    }
-                    if(response.data.document_tone.tones[i].tone_id === 'sadness'){
-                        this.setState({
-                            sadness: response.data.document_tone.tones[i].score
-                        });
-                    }
-                    if(response.data.document_tone.tones[i].tone_id === 'analytical'){
-                        this.setState({
-                            analytical: response.data.document_tone.tones[i].score
-                        });
-                    }
-                    if(response.data.document_tone.tones[i].tone_id === 'confident'){
-                        this.setState({
-                            confident: response.data.document_tone.tones[i].score
-                        });
-                    }
+	onClick(e) {
+		e.preventDefault();
+		axios.post('/watson', {
+				text: this.state.entry
+			})
+			.then( (response) => {
+				// THIS RESPONSE IS ALSO THE RESPONSE FROM THE API
+				var text = response.data
+				console.log(text)
+				var tones;
+				if(text) {
+					tones = text.document_tone.tones
+					var sentences;
+				if (text.sentences_tone) {
+					sentences = text.sentences_tone.map( (item, index) => ({
+						className: item.tones.tone_id,
+						text: item.text
+					}) )
+					console.log(sentences)
 				}
-				console.log(this.state);
-				console.log(this.props)
-							}
-		
-						})
-						.catch(function(error) {
-							console.log(error)
-					});
+
+				this.setState({
+					analyzed: true,
+					tones: tones,
+					sentences: sentences
+				})
+				var name = this.state.tones.map( (item, index) => (item.tone_name) )
+				var score = this.state.tones.map( (item, index) => (item.score) )
+
+				this.setState({
+					name: name,
+					data: score,
+					anger: '',
+							tentative: '',
+							joy: '',
+							fear: '',
+							sadness: '',
+							analytical: '',
+							confident: ''
+				})
+				for (var i=0; i< (response.data.document_tone.tones).length; i++){
+			if(response.data.document_tone.tones[i].tone_id === 'anger'){
+				this.setState({
+					anger: response.data.document_tone.tones[i].score
+				});
 			}
+			if(response.data.document_tone.tones[i].tone_id === 'tentative'){
+				this.setState({
+					tentative: response.data.document_tone.tones[i].score
+				});
+			}
+			if(response.data.document_tone.tones[i].tone_id === 'fear'){
+				this.setState({
+					fear: response.data.document_tone.tones[i].score
+				});
+			}
+			if(response.data.document_tone.tones[i].tone_id === 'joy'){
+				this.setState({
+					joy: response.data.document_tone.tones[i].score
+				});
+			}
+			if(response.data.document_tone.tones[i].tone_id === 'sadness'){
+				this.setState({
+					sadness: response.data.document_tone.tones[i].score
+				});
+			}
+			if(response.data.document_tone.tones[i].tone_id === 'analytical'){
+				this.setState({
+					analytical: response.data.document_tone.tones[i].score
+				});
+			}
+			if(response.data.document_tone.tones[i].tone_id === 'confident'){
+				this.setState({
+					confident: response.data.document_tone.tones[i].score
+				});
+			}
+		}
+		console.log(this.state);
+		console.log(this.props)
+					}
+
+				})
+				.catch(function(error) {
+					console.log(error)
+			});
+	}
 
 	sentenceClassify() {
 
@@ -160,11 +167,11 @@ class Entry extends Component {
                 <h5>WYM Text Analyzer</h5>
                 <form id='watson-tone-entry'>
 					<Row>
-						<Input s={6} label="Give a Title to Save" onChange={ (e) => this.onSubmit(e)} />
+						<Input s={9} label="Give a Title to Save" onChange={ (e) => this.onSubmit(e)} />
 						<Button className="left button" onClick={ (e) => this.clickSave(e) }>Save Wym</Button>
 					</Row>
 					<Row>
-						<Input s={6} type="textarea" className="materialize-textarea" id="textarea1" label="Insert text to detect tone" onChange={ (e) => this.onChange(e) }  />
+						<Input s={9} type="textarea" className="materialize-textarea inputField" id="textarea1" label="Insert text to detect tone" onChange={ (e) => this.onChange(e) }  />
 						<Button className="left button" onClick={ (e) => this.onClick(e) }>Analyze</Button>
 					</Row>
                 	{/* <textarea className="materialize-textarea" id="textarea1" rows='20' cols='100' placeholder='Insert text to detect tone' onChange={ (e) => this.onChange(e) } /> */}
