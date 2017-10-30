@@ -45,9 +45,11 @@ class Profile extends Component {
 
                                     </div>
                                     <div className="card-action white-text">
-                                        <Link to ='/history'>Saved Wyms</Link>
-                                        <Link to ='/twitterprofile'>Twitter</Link>
-                                        <Link to ='/'>Upload new text</Link>
+                                      <ul>
+                                        <li><Link to ='/history'>Saved Wyms</Link></li>
+                                        <li><Link to ='/twitterprofile'>Twitter</Link></li>
+                                        <li><Link to ='/'>Upload new text</Link></li>
+                                      </ul>
                                     </div>
                                 </div>
                              </Col>
@@ -58,7 +60,7 @@ class Profile extends Component {
                                 <Route exact path='/' render={(props) => (
                                     <Entry {...props} user={this.state.user} />
                                 )} />
-                                <Route path = '/history' render={(props) => ( 
+                                <Route path = '/history' render={(props) => (
                                     <History {...props} user={this.state.user} />
                                 )} />
                                 <Route path = '/twitterprofile' render={(props) => (
